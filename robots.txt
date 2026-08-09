@@ -1,0 +1,18 @@
+# robots.txt — Studio Bobine
+# Les moteurs peuvent explorer tout le site public.
+User-agent: *
+Allow: /
+
+# --- Pages non publiques : documents de travail, maquettes de style,
+# --- tunnel de commande. Elles portent aussi une balise noindex.
+Disallow: /checklist-lancement.html
+Disallow: /feuille-de-route.html
+Disallow: /styles-comparateur.html
+Disallow: /style-brutaliste.html
+Disallow: /style-editorial-couleurs.html
+Disallow: /montage-video.html
+Disallow: /commande-upload.html
+Disallow: /commande-confirmation.html
+
+# Emplacement du plan du site
+Sitemap: https://www.studiobobine.fr/sitemap.xml

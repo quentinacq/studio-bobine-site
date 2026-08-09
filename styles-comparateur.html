@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio Bobine — Comparateur de styles UI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#0d0d0f;color:#fff;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  .page-head{text-align:center;padding:60px 24px 30px;max-width:820px;margin:0 auto}
+  .page-head .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8b8b95;border:1px solid #2a2a30;padding:6px 14px;border-radius:100px;margin-bottom:22px}
+  .page-head h1{font-family:'Fraunces',serif;font-size:clamp(30px,5vw,46px);line-height:1.1;margin-bottom:16px;font-weight:600}
+  .page-head p{font-size:17px;color:#a5a5ae;line-height:1.6}
+  .nav-styles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+  .nav-styles a{font-size:13.5px;font-weight:600;color:#c5c5cd;background:#18181c;border:1px solid #2a2a30;padding:9px 16px;border-radius:100px;transition:.2s;text-decoration:none}
+  .nav-styles a:hover{background:#232329;color:#fff;border-color:#3a3a42}
+
+  .style-block{max-width:1200px;margin:0 auto 34px;padding:0 24px}
+  .style-meta{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding:20px 4px 18px;border-bottom:1px solid #1e1e24;margin-bottom:22px}
+  .style-meta .num{font-family:'JetBrains Mono',monospace;font-size:13px;color:#6b6b75}
+  .style-meta h2{font-family:'Fraunces',serif;font-size:26px;font-weight:600}
+  .style-meta .desc{font-size:14.5px;color:#9a9aa3;flex:1;min-width:240px}
+  .frame{border-radius:18px;overflow:hidden;border:1px solid #24242c;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+
+  /* ===== each preview is fully self-scoped via its wrapper class ===== */
+  .prev{position:relative;height:560px;overflow:hidden}
+  .prev .inner{position:absolute;inset:0;overflow-y:auto}
+
+  /* ============ STYLE 1 — ÉDITORIAL / MODE ============ */
+  .s-edito{background:#f4f1ea;color:#1a1a1a;font-family:'Inter',sans-serif}
+  .s-edito .top{display:flex;justify-content:space-between;align-items:center;padding:26px 40px;border-bottom:1px solid #1a1a1a}
+  .s-edito .brand{font-family:'Playfair Display',serif;font-size:24px;font-weight:800;letter-spacing:-.01em}
+  .s-edito .top nav{display:flex;gap:26px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+  .s-edito .top nav span{cursor:pointer}
+  .s-edito .hero{padding:56px 40px 40px}
+  .s-edito .kicker{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px}
+  .s-edito h1{font-family:'Playfair Display',serif;font-size:clamp(44px,7vw,88px);line-height:.98;font-weight:900;letter-spacing:-.02em;margin-bottom:28px}
+  .s-edito h1 em{font-style:italic;font-weight:600}
+  .s-edito .row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;border-top:2px solid #1a1a1a;padding-top:24px}
+  .s-edito .row p{font-size:16px;max-width:440px;line-height:1.5}
+  .s-edito .row .cta{white-space:nowrap;background:#1a1a1a;color:#f4f1ea;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:16px 28px;border-radius:0}
+  .s-edito .marq{margin-top:38px;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:14px 0;font-family:'Playfair Display',serif;font-style:italic;font-size:20px;white-space:nowrap;overflow:hidden}
+  .s-edito .marq span{display:inline-block;padding-left:100%;animation:scrollx 16s linear infinite}
+  @keyframes scrollx{to{transform:translateX(-100%)}}
+
+  /* ============ STYLE 2 — NÉO-BRUTALISTE ============ */
+  .s-brut{background:#ffe14d;color:#111;font-family:'Space Grotesk',sans-serif}
+  .s-brut .top{display:flex;justify-content:space-between;align-items:center;padding:20px 32px;border-bottom:3px solid #111}
+  .s-brut .brand{font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase}
+  .s-brut .top nav{display:flex;gap:8px}
+  .s-brut .top nav span{font-size:13px;font-weight:700;background:#fff;border:2px solid #111;padding:7px 13px;box-shadow:3px 3px 0 #111;cursor:pointer}
+  .s-brut .hero{padding:44px 32px}
+  .s-brut .badge{display:inline-block;background:#ff5c00;color:#fff;font-weight:700;font-size:13px;text-transform:uppercase;border:2px solid #111;padding:6px 14px;box-shadow:4px 4px 0 #111;margin-bottom:24px}
+  .s-brut h1{font-family:'Archivo Black',sans-serif;font-size:clamp(38px,6.5vw,74px);line-height:.95;text-transform:uppercase;margin-bottom:24px}
+  .s-brut h1 .hl{background:#00e0b8;padding:0 8px;border:3px solid #111;display:inline-block;transform:rotate(-1.5deg)}
+  .s-brut p{font-size:17px;font-weight:500;max-width:460px;margin-bottom:28px;line-height:1.5}
+  .s-brut .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .s-brut .btns a{font-weight:700;font-size:15px;padding:15px 26px;border:3px solid #111;cursor:pointer;text-decoration:none;box-shadow:5px 5px 0 #111;transition:.1s}
+  .s-brut .btns a:active{transform:translate(3px,3px);box-shadow:2px 2px 0 #111}
+  .s-brut .btns .p1{background:#ff5c00;color:#fff}
+  .s-brut .btns .p2{background:#fff;color:#111}
+  .s-brut .cards{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+  .s-brut .cards div{flex:1;min-width:130px;background:#fff;border:3px solid #111;box-shadow:5px 5px 0 #111;padding:16px;font-weight:700;font-size:14px}
+  .s-brut .cards div b{display:block;font-family:'Archivo Black';font-size:26px;margin-bottom:4px}
+
+  /* ============ STYLE 3 — CINÉMA SOMBRE ============ */
+  .s-cine{background:#0a0a0c;color:#f0efe9;font-family:'Manrope',sans-serif;position:relative}
+  .s-cine::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 15%,rgba(224,122,63,.22),transparent 70%);pointer-events:none}
+  .s-cine .top{position:relative;display:flex;justify-content:space-between;align-items:center;padding:24px 40px;z-index:2}
+  .s-cine .brand{font-family:'Instrument Serif',serif;font-size:26px;letter-spacing:.01em}
+  .s-cine .brand span{color:#e07a3f}
+  .s-cine .top nav{display:flex;gap:28px;font-size:14px;color:#9c9c96}
+  .s-cine .top nav span{cursor:pointer;transition:.2s}
+  .s-cine .top nav span:hover{color:#fff}
+  .s-cine .hero{position:relative;z-index:2;padding:60px 40px;max-width:800px}
+  .s-cine .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:#e07a3f;margin-bottom:26px;display:flex;align-items:center;gap:12px}
+  .s-cine .kicker::before{content:"";width:40px;height:1px;background:#e07a3f}
+  .s-cine h1{font-family:'Instrument Serif',serif;font-size:clamp(46px,8vw,92px);line-height:1;font-weight:400;margin-bottom:26px;letter-spacing:-.01em}
+  .s-cine h1 em{font-style:italic;color:#e07a3f}
+  .s-cine p{font-size:18px;color:#b5b5ae;max-width:520px;line-height:1.6;margin-bottom:34px}
+  .s-cine .btns{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .s-cine .btns a{text-decoration:none;cursor:pointer}
+  .s-cine .btns .p1{background:#e07a3f;color:#0a0a0c;font-weight:700;font-size:15px;padding:15px 30px;border-radius:100px}
+  .s-cine .btns .p2{color:#f0efe9;font-weight:600;font-size:15px;display:flex;align-items:center;gap:10px}
+  .s-cine .btns .p2 .play{width:38px;height:38px;border-radius:50%;border:1px solid #45453e;display:flex;align-items:center;justify-content:center}
+  .s-cine .btns .p2 .play::after{content:"";border-left:10px solid #e07a3f;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px}
+  .s-cine .strip{position:relative;z-index:2;margin-top:44px;padding:0 40px;display:flex;gap:40px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#6b6b64;letter-spacing:.1em}
+  .s-cine .strip div b{color:#f0efe9;font-size:22px;font-family:'Instrument Serif',serif;display:block;letter-spacing:0}
+
+  /* ============ STYLE 4 — PASTEL DOUX / ARRONDI ============ */
+  .s-soft{background:linear-gradient(160deg,#fef1f4,#eef4ff);color:#3a2f3a;font-family:'Manrope',sans-serif}
+  .s-soft .top{display:flex;justify-content:space-between;align-items:center;padding:22px 36px}
+  .s-soft .brand{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:#c2528a;display:flex;align-items:center;gap:9px}
+  .s-soft .brand .dot{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#ff9ec4,#a78bfa)}
+  .s-soft .top nav{display:flex;gap:8px}
+  .s-soft .top nav span{font-size:13.5px;font-weight:600;color:#7a6a80;background:rgba(255,255,255,.6);padding:9px 15px;border-radius:100px;cursor:pointer}
+  .s-soft .hero{padding:52px 36px;display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+  .s-soft .pill{display:inline-block;background:#fff;color:#c2528a;font-weight:700;font-size:13px;padding:8px 16px;border-radius:100px;margin-bottom:20px;box-shadow:0 6px 18px rgba(194,82,138,.14)}
+  .s-soft h1{font-family:'Fraunces',serif;font-size:clamp(38px,6vw,62px);line-height:1.04;margin-bottom:18px;color:#4a3a4a}
+  .s-soft h1 em{font-style:italic;color:#a78bfa}
+  .s-soft p{font-size:17px;color:#7a6a80;max-width:420px;line-height:1.6;margin-bottom:26px}
+  .s-soft .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .s-soft .btns a{text-decoration:none;font-weight:700;font-size:15px;padding:15px 26px;border-radius:100px;cursor:pointer}
+  .s-soft .btns .p1{background:linear-gradient(135deg,#ff9ec4,#c2528a);color:#fff;box-shadow:0 10px 26px rgba(194,82,138,.32)}
+  .s-soft .btns .p2{background:#fff;color:#7a6a80}
+  .s-soft .visual{position:relative;height:300px}
+  .s-soft .visual .blob{position:absolute;border-radius:44% 56% 62% 38%/48% 42% 58% 52%;filter:blur(2px)}
+  .s-soft .visual .b1{width:220px;height:220px;background:linear-gradient(135deg,#ffc4dd,#ff9ec4);top:20px;right:30px;animation:morph 8s ease-in-out infinite}
+  .s-soft .visual .b2{width:150px;height:150px;background:linear-gradient(135deg,#c9b8ff,#a78bfa);bottom:10px;left:20px;animation:morph 10s ease-in-out infinite reverse}
+  @keyframes morph{50%{border-radius:58% 42% 38% 62%/52% 58% 42% 48%}}
+  .s-soft .visual .card{position:absolute;background:rgba(255,255,255,.75);backdrop-filter:blur(10px);border-radius:22px;padding:16px 20px;box-shadow:0 14px 34px rgba(120,80,120,.16);font-weight:600;font-size:14px}
+  .s-soft .visual .c1{top:40px;left:0;color:#c2528a}
+  .s-soft .visual .c2{bottom:30px;right:0;color:#7c5cd0}
+
+  @media(max-width:720px){
+    .s-soft .hero{grid-template-columns:1fr}
+    .s-soft .visual{display:none}
+    .s-edito .row{flex-direction:column;align-items:flex-start}
+    .prev{height:520px}
+    .top nav{display:none!important}
+  }
+
+  .foot{text-align:center;padding:40px 24px 70px;color:#6b6b75;font-size:14px;max-width:700px;margin:0 auto}
+  .foot b{color:#c5c5cd}
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <span class="tag">Exploration de direction artistique</span>
+  <h1>Quatre styles pour votre site</h1>
+  <p>Le même message d'accueil, décliné en quatre directions visuelles différentes de la version actuelle. Parcourez-les et dites-moi celle qui vous parle — on l'appliquera à tout le site.</p>
+  <div class="nav-styles">
+    <a href="#s1">01 · Éditorial</a>
+    <a href="#s2">02 · Néo-brutaliste</a>
+    <a href="#s3">03 · Cinéma sombre</a>
+    <a href="#s4">04 · Pastel doux</a>
+  </div>
+</div>
+
+<!-- STYLE 1 -->
+<div class="style-block" id="s1">
+  <div class="style-meta">
+    <span class="num">STYLE 01</span>
+    <h2>Éditorial / Magazine</h2>
+    <span class="desc">Typographie serif imposante, noir & crème, mise en page façon magazine de mode. Chic, premium, intemporel.</span>
+  </div>
+  <div class="frame"><div class="prev"><div class="inner">
+    <div class="s-edito">
+      <div class="top">
+        <div class="brand">Studio Bobine</div>
+        <nav><span>Travaux</span><span>Studio</span><span>Journal</span><span>Contact</span></nav>
+      </div>
+      <div class="hero">
+        <div class="kicker">Studio de montage vidéo — Est. 2026</div>
+        <h1>Vos voyages,<br>montés comme<br>un <em>film</em>.</h1>
+        <div class="row">
+          <p>Vous filmez, on façonne vos rushs en récits qui donnent des frissons. Pour créateurs, couples et familles.</p>
+          <a class="cta">Demander un devis</a>
+        </div>
+        <div class="marq"><span>Vlogs de voyage · Souvenirs de famille · Reels &amp; Shorts · Mariages · Aftermovies · Vlogs de voyage · Souvenirs de famille ·</span></div>
+      </div>
+    </div>
+  </div></div></div>
+</div>
+
+<!-- STYLE 2 -->
+<div class="style-block" id="s2">
+  <div class="style-meta">
+    <span class="num">STYLE 02</span>
+    <h2>Néo-brutaliste</h2>
+    <span class="desc">Couleurs franches, bordures épaisses, ombres dures, typo massive. Audacieux, jeune, mémorable — idéal pour se démarquer auprès des créateurs.</span>
+  </div>
+  <div class="frame"><div class="prev"><div class="inner">
+    <div class="s-brut">
+      <div class="top">
+        <div class="brand">Studio Bobine</div>
+        <nav><span>Pour qui</span><span>Tarifs</span><span>Contact</span></nav>
+      </div>
+      <div class="hero">
+        <span class="badge">🎬 Montage vidéo</span>
+        <h1>Vos rushs,<br>montés en <span class="hl">vrai film</span></h1>
+        <p>Vous filmez, on s'occupe du reste. Livré en 48 h, par un vrai monteur.</p>
+        <div class="btns">
+          <a class="p1">Demander un devis →</a>
+          <a class="p2">Voir les exemples</a>
+        </div>
+        <div class="cards">
+          <div><b>48h</b>Délai moyen</div>
+          <div><b>300+</b>Vidéos livrées</div>
+          <div><b>4.9</b>Note moyenne</div>
+        </div>
+      </div>
+    </div>
+  </div></div></div>
+</div>
+
+<!-- STYLE 3 -->
+<div class="style-block" id="s3">
+  <div class="style-meta">
+    <span class="num">STYLE 03</span>
+    <h2>Cinéma sombre</h2>
+    <span class="desc">Fond noir, serif italique élégant, accent ambré, ambiance post-production. Haut de gamme et émotionnel — parfait pour les mariages et événements.</span>
+  </div>
+  <div class="frame"><div class="prev"><div class="inner">
+    <div class="s-cine">
+      <div class="top">
+        <div class="brand">Studio <span>Bobine</span></div>
+        <nav><span>Films</span><span>Le studio</span><span>Journal</span><span>Contact</span></nav>
+      </div>
+      <div class="hero">
+        <div class="kicker">Studio de montage vidéo</div>
+        <h1>Vos plus beaux<br>voyages, montés<br>en <em>vraie histoire</em>.</h1>
+        <p>Vous filmez, on transforme vos rushs en films qui donnent des frissons. Pour les créateurs, les couples et les familles.</p>
+        <div class="btns">
+          <a class="p1">Demander un devis</a>
+          <a class="p2"><span class="play"></span> Voir la démo</a>
+        </div>
+      </div>
+      <div class="strip">
+        <div><b>300+</b>vidéos livrées</div>
+        <div><b>48h</b>délai moyen</div>
+        <div><b>4.9/5</b>satisfaction</div>
+      </div>
+    </div>
+  </div></div></div>
+</div>
+
+<!-- STYLE 4 -->
+<div class="style-block" id="s4">
+  <div class="style-meta">
+    <span class="num">STYLE 04</span>
+    <h2>Pastel doux / Arrondi</h2>
+    <span class="desc">Dégradés rose-lavande, formes organiques, verre dépoli, tout en rondeur. Chaleureux et tendre — parle aux familles, couples et souvenirs.</span>
+  </div>
+  <div class="frame"><div class="prev"><div class="inner">
+    <div class="s-soft">
+      <div class="top">
+        <div class="brand"><span class="dot"></span>Studio Bobine</div>
+        <nav><span>Pour qui</span><span>Tarifs</span><span>Contact</span></nav>
+      </div>
+      <div class="hero">
+        <div>
+          <span class="pill">✨ Montage vidéo sur mesure</span>
+          <h1>Vos souvenirs,<br>montés avec <em>amour</em>.</h1>
+          <p>Vous filmez, on transforme vos rushs en jolis films à revoir encore et encore. Pour les couples et les familles.</p>
+          <div class="btns">
+            <a class="p1">Demander un devis</a>
+            <a class="p2">Voir les exemples</a>
+          </div>
+        </div>
+        <div class="visual">
+          <div class="blob b1"></div>
+          <div class="blob b2"></div>
+          <div class="card c1">🎬 Montage en cours…</div>
+          <div class="card c2">💞 Livré en 48h</div>
+        </div>
+      </div>
+    </div>
+  </div></div></div>
+</div>
+
+<div class="foot">
+  <p>Ces aperçus montrent uniquement la <b>section d'accueil</b> de chaque style. Le style choisi sera ensuite décliné sur tout le site (tarifs, portfolio, blog, événements…). Dites-moi le numéro qui vous plaît — ou un mélange de plusieurs.</p>
+</div>
+
+</body>
+</html>

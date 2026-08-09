@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirmation de commande — Studio Bobine</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fff8ef;--paper:#fffdf9;--ink:#2a2320;--ink-soft:#6b5f57;
+    --coral:#ff6b4a;--coral-deep:#e8482a;--sun:#ffc043;--teal:#1f9e8f;--plum:#7c4dff;--line:#efe4d6;--shadow:rgba(90,60,40,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.1;font-weight:600}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:720px;margin:0 auto;padding:0 26px}
+  .eyebrow{display:inline-block;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-deep);
+    background:#ffe9df;padding:6px 14px;border-radius:100px;margin-bottom:18px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:600;font-size:15.5px;font-family:'DM Sans';
+    padding:15px 28px;border-radius:100px;cursor:pointer;border:2px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,opacity .2s}
+  .btn-main{background:var(--coral);color:#fff;box-shadow:0 8px 24px rgba(255,107,74,.32)}
+  .btn-main:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,107,74,.42)}
+  .btn-main:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+  .btn-out{background:transparent;border-color:var(--ink);color:var(--ink)}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,248,239,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:66px;max-width:1180px;margin:0 auto;padding:0 26px}
+  .logo{font-family:'Fraunces';font-weight:700;font-size:22px;display:flex;align-items:center;gap:10px}
+  .logo .reel{width:40px;height:40px;border-radius:50%;display:block;flex-shrink:0;object-fit:cover}
+
+  main{padding:56px 0 90px}
+  .stepper{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:38px}
+  .stepper .sp{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--ink-soft)}
+  .stepper .n{width:26px;height:26px;border-radius:50%;background:var(--line);color:var(--ink-soft);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-family:'Fraunces';font-weight:700}
+  .stepper .sp.on .n,.stepper .sp.done .n{background:var(--coral);color:#fff}
+  .stepper .sp.on,.stepper .sp.done{color:var(--ink)}
+  .stepper .bar{width:36px;height:2px;background:var(--line)}
+
+  .head{text-align:center;margin-bottom:34px}
+  .head h1{font-size:clamp(28px,4vw,38px);letter-spacing:-.02em;margin-bottom:10px}
+  .head p{color:var(--ink-soft);font-size:16px}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:36px 34px;box-shadow:0 18px 44px var(--shadow);margin-bottom:20px}
+  .card h2{font-size:19px;margin-bottom:18px}
+
+  .rline{display:flex;justify-content:space-between;gap:16px;font-size:14.5px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .rline:last-child{border-bottom:none}
+  .rline span:first-child{color:var(--ink-soft)}
+  .rline span:last-child{font-weight:600;text-align:right}
+
+  .filerecap{display:flex;flex-direction:column;gap:9px;margin-top:6px}
+  .fitem{display:flex;align-items:center;gap:12px;background:var(--cream);border:1px solid var(--line);border-radius:13px;padding:10px 14px;font-size:13.5px}
+  .fitem .ic{width:30px;height:30px;border-radius:8px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+  .fitem .nm{flex:1;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .fitem .du{color:var(--ink-soft);white-space:nowrap}
+
+  .totalcard{background:linear-gradient(160deg,#2a2320,#1c1714);color:#f0e6da;border-radius:24px;padding:30px 34px;margin-bottom:24px}
+  .totalcard .lbl{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#a99883;margin-bottom:8px;font-weight:600}
+  .totalcard .amt{font-family:'Fraunces';font-size:46px;font-weight:700;color:#fff;line-height:1}
+  .totalcard .amt small{font-size:22px;color:#cbb8a8}
+  .totalcard .sub{font-size:13.5px;color:#cbb8a8;margin-top:8px}
+
+  .payBtn{width:100%}
+  .fine{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:14px}
+
+  .okpanel{display:none;text-align:center;padding:20px 6px}
+  .okpanel.show{display:block}
+  .okpanel .ch{width:64px;height:64px;border-radius:50%;background:#e5f5f2;color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px}
+  .okpanel h2{font-size:26px;margin-bottom:10px}
+  .okpanel p{color:var(--ink-soft);font-size:15px;margin-bottom:6px}
+  .okpanel .ordnum{font-family:'Fraunces';font-weight:700;color:var(--coral-deep);font-size:18px;margin:14px 0 22px}
+
+  .empty{text-align:center;padding:60px 20px}
+  .empty .e{font-size:40px;margin-bottom:16px}
+
+  .back{display:block;text-align:center;margin-top:22px;font-size:14px;color:var(--ink-soft)}
+  .back:hover{color:var(--coral-deep)}
+
+  @media(max-width:600px){.card{padding:26px 22px}.totalcard{padding:24px 22px}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="" class="reel" width="40" height="40">Studio Bobine</a>
+    <a href="index.html" class="btn btn-out" style="padding:10px 18px;font-size:14px">Accueil</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap" id="app">
+    <!-- rempli par script -->
+  </div>
+</main>
+
+<script>
+  // Formspree : remplacez VOTRE_ID_COMMANDE par l'ID de votre formulaire (formspree.io),
+  // même principe que FORMSPREE_CONTACT sur la page d'accueil.
+  // Tant que ce n'est pas fait, le parcours fonctionne quand même en mode démo
+  // (la commande n'est simplement pas enregistrée quelque part).
+  const FORMSPREE_COMMANDE = "https://formspree.io/f/VOTRE_ID_COMMANDE";
+
+  const raw = sessionStorage.getItem('sb_commande');
+  const app = document.getElementById('app');
+
+  function fmtDuration(sec){
+    sec = Math.round(sec);
+    const m = Math.floor(sec/60), s = sec%60;
+    return m + ':' + String(s).padStart(2,'0');
+  }
+
+  if(!raw){
+    app.innerHTML = `
+      <div class="empty">
+        <div class="e">🎬</div>
+        <h1>Aucune commande en cours</h1>
+        <p style="color:var(--ink-soft);margin-top:10px">Choisissez d'abord une formule pour commencer.</p>
+        <a href="index.html#offres" class="btn btn-main" style="margin-top:24px">Voir les formules →</a>
+      </div>`;
+  } else {
+    const c = JSON.parse(raw);
+    const orderNum = 'SB-' + new Date(c.creeLe).getTime().toString().slice(-8);
+
+    app.innerHTML = `
+      <div class="stepper">
+        <div class="sp done"><span class="n">✓</span> Envoi des rushs</div>
+        <div class="bar"></div>
+        <div class="sp on"><span class="n">2</span> Confirmation</div>
+        <div class="bar"></div>
+        <div class="sp"><span class="n">3</span> Paiement</div>
+      </div>
+
+      <div class="head">
+        <span class="eyebrow">Récapitulatif</span>
+        <h1>Vérifiez votre commande.</h1>
+        <p>Tout est bon ? Il ne reste plus qu'à régler pour lancer le montage.</p>
+      </div>
+
+      <div class="card">
+        <h2>Votre formule</h2>
+        <div class="rline"><span>Formule</span><span>${c.tier}</span></div>
+        <div class="rline"><span>Inclus</span><span>${c.dureeFinale}</span></div>
+        <div class="rline"><span>Nom</span><span>${c.nom}</span></div>
+        <div class="rline"><span>Email</span><span>${c.email}</span></div>
+        ${c.tel ? `<div class="rline"><span>Téléphone</span><span>${c.tel}</span></div>` : ''}
+      </div>
+
+      <div class="card">
+        <h2>Fichiers envoyés (${c.fichiers.length})</h2>
+        <div class="filerecap">
+          ${c.fichiers.map(f => `
+            <div class="fitem">
+              <div class="ic">🎞️</div>
+              <div class="nm">${f.name}</div>
+              <div class="du">${fmtDuration(f.dureeSec)} · ${f.sizeMo} Mo</div>
+            </div>`).join('')}
+        </div>
+        <div class="rline" style="margin-top:8px"><span>Durée totale</span><span>${fmtDuration(c.dureeTotaleSec)}</span></div>
+      </div>
+
+      <div class="totalcard">
+        <div class="lbl">Total à régler</div>
+        <div class="amt">${c.prix}<small>€</small></div>
+        <div class="sub">Paiement sécurisé. Le montage démarre dès confirmation du paiement.</div>
+      </div>
+
+      <div id="payArea">
+        <button class="btn btn-main payBtn" id="payBtn">Payer ${c.prix}€ maintenant →</button>
+        <p class="fine">En payant, vous acceptez que votre montage démarre selon la formule ${c.tier}.</p>
+      </div>
+
+      <div class="okpanel" id="okPanel">
+        <div class="ch">✓</div>
+        <h2>Commande confirmée !</h2>
+        <p>Merci ${c.nom.split(' ')[0]}, votre paiement a bien été reçu.</p>
+        <p>On démarre le montage de vos rushs — livraison estimée sous quelques jours.</p>
+        <div class="ordnum">N° de commande : ${orderNum}</div>
+        <a href="index.html" class="btn btn-out">Retour à l'accueil</a>
+      </div>
+
+      <a href="commande-upload.html?formule=${c.formuleKey}" class="back" id="backLink">← Modifier mes fichiers</a>
+    `;
+
+    document.getElementById('payBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('payBtn');
+      const original = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Paiement en cours…';
+
+      // NOTE démo : paiement simulé, aucun encaissement réel n'a lieu ici.
+      // Avant mise en production, remplacer ce bloc par une redirection vers
+      // Stripe Checkout (ou équivalent) et ne créer la commande qu'après
+      // confirmation du paiement via webhook côté serveur.
+      await new Promise(r => setTimeout(r, 1400));
+
+      const formspreeConfigured = !FORMSPREE_COMMANDE.includes('VOTRE_ID_COMMANDE');
+
+      try{
+        if(formspreeConfigured){
+          const fd = new FormData();
+          fd.append('numero_commande', orderNum);
+          fd.append('formule', c.tier);
+          fd.append('prix', c.prix + '€');
+          fd.append('nom', c.nom);
+          fd.append('email', c.email);
+          fd.append('telephone', c.tel || '—');
+          fd.append('duree_totale_rushs', fmtDuration(c.dureeTotaleSec));
+          fd.append('fichiers', c.fichiers.map(f => `${f.name} (${fmtDuration(f.dureeSec)}, ${f.sizeMo} Mo)`).join(' | '));
+          fd.append('_subject', 'Nouvelle commande ' + orderNum + ' — ' + c.tier);
+
+          const res = await fetch(FORMSPREE_COMMANDE, { method:'POST', headers:{'Accept':'application/json'}, body: fd });
+          if(!res.ok) throw new Error('Formspree non OK');
+        } else {
+          // Formspree pas encore configuré (VOTRE_ID_COMMANDE non remplacé) : on ne bloque
+          // pas la démo, mais la commande n'est pas réellement enregistrée nulle part.
+          console.warn('FORMSPREE_COMMANDE non configuré — commande non enregistrée (mode démo) :', orderNum, c);
+        }
+
+        sessionStorage.removeItem('sb_commande');
+        document.getElementById('payArea').style.display = 'none';
+        document.getElementById('backLink').style.display = 'none';
+        document.getElementById('okPanel').classList.add('show');
+        document.getElementById('okPanel').scrollIntoView({behavior:'smooth', block:'start'});
+      }catch(e){
+        btn.disabled = false;
+        btn.textContent = original;
+        alert("Le paiement a été validé mais l'enregistrement de la commande a échoué. Écrivez-nous à hello@studiobobine.fr en précisant la formule " + c.tier + " — on s'en occupe immédiatement.");
+      }
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio Bobine — Style éditorial coloré</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf4ea;         /* crème chaud */
+    --ink:#181410;           /* encre presque noire */
+    --coral:#f0502e;         /* rouge-corail éditorial */
+    --grape:#5b3fb5;         /* violet raisin */
+    --forest:#1f7a54;        /* vert forêt */
+    --gold:#e8a020;          /* jaune moutarde/or */
+    --blush:#f7d9d0;         /* rose poudré */
+    --sky:#2f6df0;           /* bleu vif */
+    --line:#181410;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1220px;margin:0 auto;padding:0 32px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:2px solid var(--ink)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px;max-width:1220px;margin:0 auto;padding:0 32px}
+  .logo{font-family:'Playfair Display';font-weight:800;font-size:25px;letter-spacing:-.01em}
+  .logo .co{color:var(--coral)}
+  .nav-links{display:flex;gap:30px;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+  .nav-links a{position:relative;padding:4px 0;transition:color .2s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--coral);transition:width .25s}
+  .nav-links a:hover{color:var(--coral)}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:13px 22px}
+  .nav-cta:hover{background:var(--coral)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
+  .burger span{width:26px;height:2px;background:var(--ink)}
+  @media(max-width:900px){.nav-links,.nav-cta{display:none}.burger{display:flex}}
+
+  /* HERO */
+  .hero{padding:20px 0 0}
+  .hero-top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding:16px 0 14px}
+  .hero-top .k-left{color:var(--coral)}
+  .hero-top .k-right{color:var(--grape)}
+  .hero-main{padding:44px 0 30px}
+  .hero-main h1{font-size:clamp(52px,9vw,132px);line-height:.9;font-weight:800;letter-spacing:-.025em;margin-bottom:8px}
+  .hero-main h1 .grape{color:var(--grape)}
+  .hero-main h1 .coral{color:var(--coral)}
+  .hero-main h1 em{font-style:italic;font-weight:600;color:var(--forest)}
+  .hero-row{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end;border-top:2px solid var(--ink);padding-top:24px}
+  .hero-row p.lead{font-size:19px;line-height:1.5;max-width:520px}
+  .hero-row p.lead .drop{float:left;font-family:'Playfair Display';font-size:62px;line-height:.7;font-weight:800;color:var(--coral);padding:6px 10px 0 0}
+  .hero-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:16px 28px;cursor:pointer;transition:.2s;white-space:nowrap}
+  .btn-fill{background:var(--coral);color:#fff}
+  .btn-fill:hover{background:var(--ink)}
+  .btn-line{border:2px solid var(--ink);color:var(--ink)}
+  .btn-line:hover{background:var(--ink);color:var(--paper)}
+
+  /* colored feature bar */
+  .hero-strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:40px;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+  .hero-strip .cell{padding:22px 20px;border-right:2px solid var(--ink)}
+  .hero-strip .cell:last-child{border-right:none}
+  .hero-strip .cell:nth-child(1){background:var(--blush)}
+  .hero-strip .cell:nth-child(2){background:var(--gold);color:var(--ink)}
+  .hero-strip .cell:nth-child(3){background:var(--forest);color:#fff}
+  .hero-strip .cell:nth-child(4){background:var(--grape);color:#fff}
+  .hero-strip .cell b{font-family:'Playfair Display';font-size:34px;font-weight:800;display:block;line-height:1}
+  .hero-strip .cell span{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-top:4px;display:block}
+
+  /* MARQUEE */
+  .marq{background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;padding:12px 0}
+  .marq .t{display:inline-block;animation:sx 22s linear infinite;font-family:'Playfair Display';font-style:italic;font-size:22px}
+  .marq .t span{padding:0 20px}
+  .marq .t .s{color:var(--gold)}
+  @keyframes sx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  section{padding:82px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:44px;flex-wrap:wrap}
+  .sec-head .st-l{max-width:640px}
+  .sec-head h2{font-size:clamp(34px,5vw,58px);font-weight:800;line-height:.98;letter-spacing:-.02em;margin-top:12px}
+  .sec-head h2 em{font-style:italic;color:var(--coral)}
+  .sec-head .num{font-family:'Playfair Display';font-size:20px;color:var(--grape)}
+
+  /* ICP editorial cards */
+  .icp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-left:2px solid var(--ink)}
+  .icp{border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);border-top:2px solid var(--ink);padding:26px 22px;transition:background .25s}
+  .icp:hover{background:var(--blush)}
+  .icp .idx{font-family:'Playfair Display';font-size:16px;font-weight:700;margin-bottom:20px}
+  .icp:nth-child(1) .idx{color:var(--coral)}
+  .icp:nth-child(2) .idx{color:var(--forest)}
+  .icp:nth-child(3) .idx{color:var(--grape)}
+  .icp:nth-child(4) .idx{color:var(--gold)}
+  .icp .em{font-size:30px;margin-bottom:14px}
+  .icp h3{font-size:22px;font-weight:700;margin-bottom:9px;line-height:1.05}
+  .icp p{font-size:14px;color:#413b33;line-height:1.5}
+
+  /* PRICING */
+  .pricing{background:var(--ink);color:var(--paper)}
+  .pricing .sec-head{border-color:var(--paper)}
+  .pricing .sec-head h2{color:var(--paper)}
+  .pricing .sec-head h2 em{color:var(--gold)}
+  .pricing .sec-head .num{color:var(--gold)}
+  .pricing .sec-head p{color:#c9bfae;font-size:15px;margin-top:8px}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+  .plan{border:2px solid var(--paper);padding:30px 26px;position:relative;transition:.25s}
+  .plan.feat{background:var(--coral);border-color:var(--coral)}
+  .plan .tier{font-family:'Playfair Display';font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px}
+  .plan .price{font-family:'Playfair Display';font-size:52px;font-weight:800;line-height:1;margin-bottom:6px}
+  .plan .price small{font-size:15px;font-family:'Inter';font-weight:500}
+  .plan .flag{position:absolute;top:-13px;left:26px;background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 12px}
+  .plan ul{list-style:none;margin:20px 0 24px;border-top:1px solid rgba(250,244,234,.3);padding-top:18px;display:flex;flex-direction:column;gap:11px}
+  .plan.feat ul{border-color:rgba(255,255,255,.4)}
+  .plan li{font-size:14px;display:flex;gap:10px}
+  .plan li::before{content:"—";opacity:.6}
+  .plan .pbtn{display:block;text-align:center;border:2px solid var(--paper);color:var(--paper);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:13px;transition:.2s}
+  .plan .pbtn:hover{background:var(--paper);color:var(--ink)}
+  .plan.feat .pbtn{background:var(--ink);border-color:var(--ink);color:#fff}
+  .plan.feat .pbtn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+
+  /* EDITORIAL quote block */
+  .quote-sec{background:var(--forest);color:var(--paper)}
+  .quote-sec .q{max-width:900px;margin:0 auto;text-align:center}
+  .quote-sec .q .mark{font-family:'Playfair Display';font-size:90px;line-height:.5;color:var(--gold)}
+  .quote-sec blockquote{font-family:'Playfair Display';font-size:clamp(26px,3.6vw,40px);font-weight:600;font-style:italic;line-height:1.25;margin:10px 0 24px}
+  .quote-sec .who{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#bfe6d3}
+
+  /* CTA */
+  .cta-sec{padding:90px 0}
+  .cta-box{border:2px solid var(--ink);padding:0;overflow:hidden;display:grid;grid-template-columns:1.3fr 1fr}
+  .cta-box .l{padding:52px 44px;background:var(--gold)}
+  .cta-box .l h2{font-size:clamp(30px,4vw,48px);font-weight:800;line-height:1;letter-spacing:-.02em;margin-bottom:14px}
+  .cta-box .l p{font-size:16px;font-weight:500;max-width:360px}
+  .cta-box .r{background:var(--grape);color:#fff;padding:52px 40px;display:flex;flex-direction:column;justify-content:center;gap:16px}
+  .cta-box .r .btn-fill{background:#fff;color:var(--grape)}
+  .cta-box .r .btn-fill:hover{background:var(--ink);color:#fff}
+  .cta-box .r small{font-size:13px;opacity:.85}
+
+  footer{border-top:2px solid var(--ink);padding:44px 0 30px}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .foot-top .logo{font-size:22px}
+  .foot-links{display:flex;gap:40px;flex-wrap:wrap}
+  .foot-links .col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--coral);margin-bottom:12px}
+  .foot-links .col a{display:block;font-size:14px;margin-bottom:8px;color:#413b33}
+  .foot-links .col a:hover{color:var(--coral)}
+  .foot-bar{margin-top:34px;padding-top:20px;border-top:1px solid rgba(24,20,16,.2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:#6b6357}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .hero-row{grid-template-columns:1fr}
+    .hero-strip{grid-template-columns:1fr 1fr}
+    .hero-strip .cell:nth-child(2){border-right:none}
+    .icp-grid{grid-template-columns:1fr 1fr}
+    .price-grid{grid-template-columns:1fr}
+    .cta-box{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){
+    .hero-strip{grid-template-columns:1fr}
+    .hero-strip .cell{border-right:none}
+    .icp-grid{grid-template-columns:1fr}
+    .sec-head{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Studio <span class="co">Bobine</span></div>
+    <div class="nav-links">
+      <a href="#pour-qui">Pour qui</a>
+      <a href="#offres">Tarifs</a>
+      <a href="#">Réalisations</a>
+      <a href="#">Journal</a>
+    </div>
+    <a href="#contact" class="nav-cta">Demander un devis</a>
+    <button class="burger"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="kicker k-left">Studio de montage vidéo</span>
+      <span class="kicker k-right">Est. 2026 — France</span>
+    </div>
+    <div class="hero-main">
+      <h1>Vos <span class="grape">voyages</span>,<br>montés comme<br>un <em>film</em>.</h1>
+    </div>
+    <div class="hero-row">
+      <p class="lead"><span class="drop">V</span>ous filmez, on façonne vos rushs bruts en récits qui donnent des frissons. Montage, rythme, colorimétrie et sound design pour créateurs, couples et familles — sans jamais toucher un logiciel.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-fill">Demander un devis →</a>
+        <a href="#offres" class="btn btn-line">Voir les formules</a>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="cell"><b>48h</b><span>Délai moyen</span></div>
+      <div class="cell"><b>300+</b><span>Vidéos livrées</span></div>
+      <div class="cell"><b>4.9/5</b><span>Satisfaction</span></div>
+      <div class="cell"><b>2</b><span>Retouches incluses</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marq">
+  <div class="t"><span>Vlogs de voyage</span><span class="s">✦</span><span>Souvenirs de famille</span><span class="s">✦</span><span>Reels &amp; Shorts</span><span class="s">✦</span><span>Mariages</span><span class="s">✦</span><span>Aftermovies</span><span class="s">✦</span><span>Vlogs de voyage</span><span class="s">✦</span><span>Souvenirs de famille</span><span class="s">✦</span><span>Reels &amp; Shorts</span><span class="s">✦</span><span>Mariages</span><span class="s">✦</span><span>Aftermovies</span><span class="s">✦</span></div>
+</div>
+
+<!-- ICP -->
+<section id="pour-qui">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="st-l">
+        <span class="kicker" style="color:var(--coral)">Pour qui</span>
+        <h2>On monte l'histoire,<br>vous vivez le <em>moment</em>.</h2>
+      </div>
+      <span class="num">01 — 04</span>
+    </div>
+    <div class="icp-grid">
+      <div class="icp reveal"><div class="idx">01</div><div class="em">🎬</div><h3>Créateurs de contenu</h3><p>Montage dynamique, hooks et sous-titres calibrés pour YouTube, TikTok et Reels.</p></div>
+      <div class="icp reveal"><div class="idx">02</div><div class="em">💞</div><h3>Vlogs en couple</h3><p>Vos voyages à deux transformés en récit fluide, fidèle à votre complicité.</p></div>
+      <div class="icp reveal"><div class="idx">03</div><div class="em">👨‍👩‍👧</div><h3>Moments de famille</h3><p>Vacances, anniversaires, premières fois : des souvenirs montés avec soin.</p></div>
+      <div class="icp reveal"><div class="idx">04</div><div class="em">🌍</div><h3>Aventures perso</h3><p>Un road-trip, un projet, un cadeau à immortaliser ? On met votre idée en images.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="offres" class="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="st-l">
+        <span class="kicker" style="color:var(--gold)">Tarifs</span>
+        <h2>Des formules claires,<br>sans <em>surprise</em>.</h2>
+        <p>Tarifs indicatifs par vidéo. On ajuste toujours au projet — le devis reste gratuit.</p>
+      </div>
+      <span class="num">Formules</span>
+    </div>
+    <div class="price-grid">
+      <div class="plan reveal">
+        <div class="tier">Essentiel</div>
+        <div class="price">89€ <small>/ vidéo</small></div>
+        <ul><li>Jusqu'à 3 min de vidéo</li><li>Découpage &amp; rythme</li><li>Musique libre de droits</li><li>Sous-titres automatiques</li><li>Livraison en 72 h</li></ul>
+        <a href="#contact" class="pbtn">Choisir</a>
+      </div>
+      <div class="plan feat reveal">
+        <span class="flag">★ Le plus choisi</span>
+        <div class="tier">Standard</div>
+        <div class="price">189€ <small>/ vidéo</small></div>
+        <ul><li>Jusqu'à 10 min de vidéo</li><li>Montage dynamique</li><li>Étalonnage des couleurs</li><li>Sound design &amp; mixage</li><li>2 retouches incluses</li><li>Livraison en 48 h</li></ul>
+        <a href="#contact" class="pbtn">Choisir</a>
+      </div>
+      <div class="plan reveal">
+        <div class="tier">Premium</div>
+        <div class="price serif" style="font-size:40px">Sur devis</div>
+        <ul><li>Durée sur mesure</li><li>Motion design &amp; habillage</li><li>Monteur dédié attitré</li><li>Direction artistique</li><li>Retouches illimitées</li></ul>
+        <a href="#contact" class="pbtn">Parler du projet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-sec">
+  <div class="wrap">
+    <div class="q reveal">
+      <div class="mark">“</div>
+      <blockquote>On leur a envoyé 3 h de rushs de notre voyage au Japon. Ils en ont fait un petit film qu'on a regardé en pleurant. Exactement notre histoire.</blockquote>
+      <div class="who">Camille &amp; Théo — Vlog en couple</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div class="l">
+        <span class="kicker" style="color:var(--ink)">Contact</span>
+        <h2 style="margin-top:12px">Racontez-nous votre projet.</h2>
+        <p>Une minute suffit. On revient vers vous sous 24 h avec un devis clair et quelques idées.</p>
+      </div>
+      <div class="r">
+        <a href="#" class="btn btn-fill">Demander mon devis →</a>
+        <small>Réponse sous 24 h · Sans engagement · Devis 100% gratuit</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="logo">Studio <span class="co">Bobine</span></div>
+        <p style="font-size:14px;color:#413b33;margin-top:12px;max-width:280px">Studio de montage vidéo pour créateurs, couples et familles qui aiment voyager.</p>
+      </div>
+      <div class="foot-links">
+        <div class="col"><h4>Navigation</h4><a href="#pour-qui">Pour qui</a><a href="#offres">Tarifs</a><a href="#">Réalisations</a><a href="#">Journal</a></div>
+        <div class="col"><h4>Suivez-nous</h4><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a></div>
+        <div class="col"><h4>Contact</h4><a href="#">Devis gratuit</a><a href="#">hello@studiobobine.fr</a></div>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <div>© 2026 Studio Bobine. Vos voyages, montés comme un film.</div>
+      <div>Mentions légales · Confidentialité</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+╔══════════════════════════════════════════════════════════════╗
+║   SITE STUDIO BOBINE — Dossier complet prêt à mettre en ligne  ║
+╚══════════════════════════════════════════════════════════════╝
+
+Ce dossier contient TOUT votre site. Gardez tous les fichiers
+ENSEMBLE dans le même dossier — c'est ce qui fait que les liens
+entre les pages fonctionnent.
+
+
+─────────────────────────────────────────────
+1. LES FICHIERS ET LEUR RÔLE
+─────────────────────────────────────────────
+
+  index.html ............... La page d'accueil (page principale)
+  evenements.html .......... La page Événements sur mesure
+  blog-filmer-vlog-voyage.html ... Article de blog
+  blog-erreurs-montage.html ...... Article de blog
+  blog-format-reseaux.html ....... Article de blog
+  blog-prix-montage-video.html ... Article de blog
+  blog-montage-mariage.html ...... Article de blog
+  blog-deleguer-montage.html ..... Article de blog
+  sitemap.xml .............. Plan du site (pour Google)
+  robots.txt ............... Instructions pour les moteurs de recherche
+
+
+─────────────────────────────────────────────
+2. POUR VOIR LE SITE SUR VOTRE ORDINATEUR
+─────────────────────────────────────────────
+
+  Double-cliquez sur "index.html".
+  Il s'ouvre dans votre navigateur. Tous les menus,
+  les articles et la page Événements fonctionnent
+  tant que les fichiers restent dans ce dossier.
+
+  NOTE : les liens du menu comme "Devis", "Réalisations"
+  ou "Conseils" ne sont pas des pages séparées — ce sont
+  des sections de la page d'accueil. Cliquer dessus fait
+  DÉFILER la page jusqu'à la bonne section. C'est normal.
+
+
+─────────────────────────────────────────────
+3. POUR METTRE LE SITE EN LIGNE (gratuit)
+─────────────────────────────────────────────
+
+  Option simple, sans compétence technique :
+
+  1. Allez sur https://app.netlify.com/drop
+     (ou Cloudflare Pages, ou GitHub Pages)
+  2. Glissez-déposez CE DOSSIER ENTIER sur la page.
+  3. Le site est en ligne en quelques secondes, avec
+     une adresse temporaire.
+  4. Reliez ensuite votre nom de domaine (ex.
+     studiobobine.fr) dans les réglages.
+
+  Comme la page d'accueil s'appelle "index.html",
+  elle s'affichera automatiquement à l'ouverture du site.
+
+
+─────────────────────────────────────────────
+4. AVANT LE LANCEMENT OFFICIEL — À FAIRE
+─────────────────────────────────────────────
+
+  [ ] Brancher les formulaires : dans index.html et
+      evenements.html, créez un compte gratuit sur
+      formspree.io et remplacez VOTRE_ID_CONTACT et
+      VOTRE_ID_LEADMAGNET par vos vrais identifiants.
+
+  [ ] Remplacer les coordonnées fictives :
+      - email hello@studiobobine.fr
+      - numéro WhatsApp 33600000000
+      - le domaine studiobobine.fr (dans les balises SEO,
+        le sitemap, les liens canoniques)
+
+  [ ] Vérifier les tarifs (ce sont des exemples).
+
+  [ ] Remplacer les textes d'exemple (témoignages, bio).
+
+  [ ] Ajouter vos mentions légales et votre politique de
+      confidentialité (obligatoire en France).
+
+  [ ] Remplacer les images SVG par de vraies photos.
+
+  (La checklist complète et détaillée vous a été fournie
+   à part : "checklist-lancement.html".)
+
+
+─────────────────────────────────────────────
+5. REMPLACER LES IMAGES PAR DE VRAIES PHOTOS
+─────────────────────────────────────────────
+
+  Chaque image du site porte un attribut "data-local"
+  qui indique le nom de fichier prévu (ex.
+  data-local="hero/couple-lac.jpg").
+
+  Pour mettre vos propres photos : créez un dossier
+  "images/" dans ce dossier, déposez-y vos photos avec
+  ces noms, puis remplacez dans le code le "src" en
+  base64 par le chemin, ex : src="images/hero/couple-lac.jpg".
+
+  (Un guide dédié vous a été fourni : "GUIDE-images.md".)
+
+
+Bonne mise en ligne !

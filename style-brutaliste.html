@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Studio Bobine — Style néo-brutaliste</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eceafe;            /* lavande très clair */
+    --ink:#14121f;           /* presque noir violet */
+    --paper:#fffdf7;
+    --coral:#ff5a5f;         /* corail vif */
+    --lime:#c6f24e;          /* lime */
+    --sky:#4d7cff;           /* bleu électrique */
+    --violet:#8b5cf6;        /* violet */
+    --peach:#ffd6a5;
+    --shadow:#14121f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.display{font-family:'Archivo Black',sans-serif;font-weight:400}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* generic brutalist button */
+  .nb{display:inline-flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-weight:700;font-size:15.5px;
+    padding:15px 26px;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--shadow);cursor:pointer;transition:transform .1s,box-shadow .1s;background:#fff;color:var(--ink)}
+  .nb:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
+  .nb-coral{background:var(--coral);color:#fff}
+  .nb-lime{background:var(--lime);color:var(--ink)}
+  .nb-sky{background:var(--sky);color:#fff}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:3px solid var(--ink)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:70px;max-width:1180px;margin:0 auto;padding:0 24px}
+  .logo{font-family:'Archivo Black';font-size:22px;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+  .logo .reel{width:26px;height:26px;border-radius:50%;background:var(--coral);border:3px solid var(--ink)}
+  .nav-links{display:flex;gap:8px}
+  .nav-links a{font-size:13.5px;font-weight:700;padding:8px 14px;border:2px solid transparent;transition:.15s}
+  .nav-links a:hover{border-color:var(--ink);background:#fff;box-shadow:3px 3px 0 var(--shadow)}
+  nav .nb{padding:11px 20px;font-size:14px}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+  .burger span{width:26px;height:3px;background:var(--ink)}
+  @media(max-width:900px){.nav-links,nav>.nb{display:none}.burger{display:flex}}
+
+  /* HERO */
+  .hero{padding:56px 0 40px;position:relative}
+  .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:var(--ink);font-weight:700;font-size:13px;
+    text-transform:uppercase;letter-spacing:.03em;border:3px solid var(--ink);padding:7px 15px;box-shadow:4px 4px 0 var(--shadow);margin-bottom:26px}
+  .hero h1{font-size:clamp(42px,6.6vw,80px);line-height:.94;text-transform:uppercase;margin-bottom:26px;letter-spacing:-.01em}
+  .hero h1 .hl{background:var(--coral);color:#fff;padding:0 10px;border:3px solid var(--ink);display:inline-block;transform:rotate(-2deg);box-shadow:5px 5px 0 var(--shadow)}
+  .hero h1 .hl2{background:var(--sky);color:#fff;padding:0 10px;border:3px solid var(--ink);display:inline-block;transform:rotate(1.5deg);box-shadow:5px 5px 0 var(--shadow)}
+  .hero p.lead{font-size:19px;font-weight:500;max-width:480px;margin-bottom:30px;line-height:1.5}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:0;margin-top:40px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--shadow);background:#fff}
+  .hero-stats .st{flex:1;padding:18px 16px;text-align:center}
+  .hero-stats .st:not(:last-child){border-right:3px solid var(--ink)}
+  .hero-stats .st b{font-family:'Archivo Black';font-size:28px;display:block;line-height:1}
+  .hero-stats .st span{font-size:12.5px;font-weight:600;color:#5a5668}
+  .hero-stats .st:nth-child(1) b{color:var(--coral)}
+  .hero-stats .st:nth-child(2) b{color:var(--sky)}
+  .hero-stats .st:nth-child(3) b{color:var(--violet)}
+
+  /* hero visual — stacked window cards */
+  .hero-visual{position:relative;height:440px}
+  .win{position:absolute;border:3px solid var(--ink);box-shadow:7px 7px 0 var(--shadow);background:#fff;overflow:hidden}
+  .win .titlebar{height:30px;display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:3px solid var(--ink)}
+  .win .titlebar i{width:11px;height:11px;border-radius:50%;border:2px solid var(--ink);display:block}
+  .win .titlebar i:nth-child(1){background:var(--coral)}
+  .win .titlebar i:nth-child(2){background:var(--lime)}
+  .win .titlebar i:nth-child(3){background:var(--sky)}
+  .win .screen{height:calc(100% - 30px);display:flex;align-items:center;justify-content:center;position:relative}
+  .w1{width:70%;height:56%;top:0;right:0;z-index:2;transform:rotate(2deg)}
+  .w1 .screen{background:repeating-linear-gradient(135deg,#ffe1e2,#ffe1e2 14px,#ffd0d1 14px,#ffd0d1 28px)}
+  .w2{width:56%;height:50%;bottom:0;left:0;z-index:3;transform:rotate(-3deg)}
+  .w2 .screen{background:repeating-linear-gradient(135deg,#e5edff,#e5edff 14px,#d3e0ff 14px,#d3e0ff 28px)}
+  .w3{width:38%;height:30%;top:34%;left:2%;z-index:1;transform:rotate(-8deg)}
+  .w3 .screen{background:var(--lime)}
+  .play{width:56px;height:56px;border-radius:50%;background:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--shadow);display:flex;align-items:center;justify-content:center}
+  .play::after{content:"";border-left:16px solid var(--ink);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+  .sticker{position:absolute;z-index:5;background:var(--violet);color:#fff;font-family:'Archivo Black';font-size:13px;
+    text-transform:uppercase;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--shadow);padding:8px 13px;transform:rotate(-6deg);bottom:8%;right:-2%}
+
+  /* MARQUEE */
+  .strip{background:var(--ink);color:var(--bg);padding:14px 0;overflow:hidden;white-space:nowrap;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);margin-top:20px}
+  .strip .track{display:inline-block;animation:sx 20s linear infinite;font-family:'Archivo Black';font-size:18px;text-transform:uppercase}
+  .strip .track span{padding:0 12px}
+  .strip .track .dot{color:var(--lime)}
+  @keyframes sx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* SECTION */
+  section{padding:76px 0}
+  .head{max-width:640px;margin-bottom:44px}
+  .head .badge{margin-bottom:18px}
+  .head h2{font-size:clamp(30px,4.6vw,52px);text-transform:uppercase;line-height:.98;margin-bottom:14px}
+  .head p{font-size:17px;font-weight:500;color:#413d52}
+
+  /* ICP cards */
+  .icp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .icp{background:#fff;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--shadow);padding:24px 20px;transition:transform .12s,box-shadow .12s}
+  .icp:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--shadow)}
+  .icp .em{width:52px;height:52px;border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+  .icp:nth-child(1) .em{background:var(--coral)}
+  .icp:nth-child(2) .em{background:var(--lime)}
+  .icp:nth-child(3) .em{background:var(--sky)}
+  .icp:nth-child(4) .em{background:var(--peach)}
+  .icp h3{font-size:17px;text-transform:uppercase;margin-bottom:8px;line-height:1.1}
+  .icp p{font-size:14px;font-weight:500;color:#413d52}
+
+  /* PRICING */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+  .plan{background:#fff;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--shadow);padding:28px 24px;transition:transform .12s,box-shadow .12s}
+  .plan:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--shadow)}
+  .plan.feat{background:var(--lime)}
+  .plan .tier{font-family:'Archivo Black';font-size:19px;text-transform:uppercase;margin-bottom:6px}
+  .plan .price{font-family:'Archivo Black';font-size:40px;line-height:1;margin:10px 0}
+  .plan .price small{font-family:'Space Grotesk';font-size:14px;font-weight:600}
+  .plan .flag{display:inline-block;background:var(--coral);color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;border:2px solid var(--ink);padding:3px 10px;margin-bottom:12px}
+  .plan ul{list-style:none;margin:16px 0 22px;display:flex;flex-direction:column;gap:10px}
+  .plan li{font-size:14px;font-weight:500;display:flex;gap:9px;align-items:flex-start}
+  .plan li::before{content:"→";font-weight:700}
+  .plan .nb{width:100%;justify-content:center}
+
+  footer{background:var(--ink);color:var(--bg);border-top:3px solid var(--ink);padding:44px 0 30px;margin-top:20px}
+  footer .logo{color:var(--bg)}
+  footer .logo .reel{background:var(--lime)}
+  .foot-bar{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:28px;padding-top:22px;border-top:2px solid #33304a;font-size:13px;font-weight:500;color:#9a95b5}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr}
+    .hero-visual{order:-1;height:340px}
+    .icp-grid,.price-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:560px){
+    .icp-grid,.price-grid{grid-template-columns:1fr}
+    .hero-stats{flex-direction:column}
+    .hero-stats .st:not(:last-child){border-right:none;border-bottom:3px solid var(--ink)}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="reel"></span>Studio Bobine</div>
+    <div class="nav-links">
+      <a href="#pour-qui">Pour qui</a>
+      <a href="#offres">Tarifs</a>
+      <a href="#">Réalisations</a>
+      <a href="#">Conseils</a>
+    </div>
+    <a href="#contact" class="nb nb-coral">Devis gratuit</a>
+    <button class="burger"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="badge">🎬 Studio de montage vidéo</span>
+      <h1>Vos rushs,<br>montés en<br><span class="hl">vrai film</span> <span class="hl2">48h</span></h1>
+      <p class="lead">Vous filmez, on s'occupe du reste. Montage, rythme, couleurs et son — par un vrai monteur, pas un robot.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="nb nb-coral">Demander un devis →</a>
+        <a href="#" class="nb">Voir les exemples</a>
+      </div>
+      <div class="hero-stats">
+        <div class="st"><b>48h</b><span>Délai moyen</span></div>
+        <div class="st"><b>300+</b><span>Vidéos livrées</span></div>
+        <div class="st"><b>4.9</b><span>Note moyenne</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="win w1"><div class="titlebar"><i></i><i></i><i></i></div><div class="screen"><div class="play"></div></div></div>
+      <div class="win w2"><div class="titlebar"><i></i><i></i><i></i></div><div class="screen"><div class="play"></div></div></div>
+      <div class="win w3"><div class="titlebar"><i></i><i></i><i></i></div><div class="screen" style="font-family:'Archivo Black';font-size:13px;text-transform:uppercase">REC ●</div></div>
+      <div class="sticker">Montage en cours</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="strip">
+  <div class="track">
+    <span>Vlogs de voyage</span><span class="dot">✦</span><span>Souvenirs de famille</span><span class="dot">✦</span><span>Reels &amp; Shorts</span><span class="dot">✦</span><span>Mariages</span><span class="dot">✦</span><span>Aftermovies</span><span class="dot">✦</span><span>Vlogs de voyage</span><span class="dot">✦</span><span>Souvenirs de famille</span><span class="dot">✦</span><span>Reels &amp; Shorts</span><span class="dot">✦</span><span>Mariages</span><span class="dot">✦</span><span>Aftermovies</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ICP -->
+<section id="pour-qui">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="badge">Pour qui</span>
+      <h2>On monte l'histoire,<br>vous vivez le moment.</h2>
+      <p>Chaque univers a son rythme. On adapte le style, la musique et l'émotion à ce que vous racontez.</p>
+    </div>
+    <div class="icp-grid">
+      <div class="icp reveal"><div class="em">🎬</div><h3>Créateurs de contenu</h3><p>Montage dynamique, hooks et sous-titres calibrés pour YouTube, TikTok et Reels.</p></div>
+      <div class="icp reveal"><div class="em">💞</div><h3>Vlogs en couple</h3><p>Vos voyages à deux transformés en récit fluide, fidèle à votre complicité.</p></div>
+      <div class="icp reveal"><div class="em">👨‍👩‍👧</div><h3>Moments de famille</h3><p>Vacances, anniversaires, premières fois : des souvenirs montés avec soin.</p></div>
+      <div class="icp reveal"><div class="em">🌍</div><h3>Aventures perso</h3><p>Un road-trip, un projet, un cadeau à immortaliser ? On met votre idée en images.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="offres" style="background:var(--sky);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)">
+  <div class="wrap">
+    <div class="head reveal" style="max-width:640px">
+      <span class="badge" style="background:var(--lime)">Tarifs</span>
+      <h2 style="color:#fff">Des formules claires,<br>sans surprise.</h2>
+      <p style="color:#e6ecff">Tarifs indicatifs par vidéo. On ajuste toujours au projet — le devis reste gratuit.</p>
+    </div>
+    <div class="price-grid">
+      <div class="plan reveal">
+        <div class="tier">Essentiel</div>
+        <div class="price">89€ <small>/ vidéo</small></div>
+        <ul><li>Jusqu'à 3 min</li><li>Découpage &amp; rythme</li><li>Musique libre de droits</li><li>Sous-titres auto</li><li>Livraison 72h</li></ul>
+        <a href="#contact" class="nb">Choisir</a>
+      </div>
+      <div class="plan feat reveal">
+        <span class="flag">★ Le plus choisi</span>
+        <div class="tier">Standard</div>
+        <div class="price">189€ <small>/ vidéo</small></div>
+        <ul><li>Jusqu'à 10 min</li><li>Montage dynamique</li><li>Étalonnage couleurs</li><li>Sound design</li><li>2 retouches</li><li>Livraison 48h</li></ul>
+        <a href="#contact" class="nb nb-coral">Choisir</a>
+      </div>
+      <div class="plan reveal">
+        <div class="tier">Premium</div>
+        <div class="price">Sur devis</div>
+        <ul><li>Durée sur mesure</li><li>Motion design</li><li>Monteur dédié</li><li>Direction artistique</li><li>Retouches illimitées</li></ul>
+        <a href="#contact" class="nb">Parler du projet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div style="background:var(--coral);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--shadow);padding:52px 40px;text-align:center" class="reveal">
+      <h2 style="color:#fff;font-size:clamp(28px,4.4vw,46px);text-transform:uppercase;margin-bottom:14px;line-height:1">Prêt à voir vos<br>souvenirs prendre vie ?</h2>
+      <p style="color:#fff;font-weight:600;font-size:17px;margin-bottom:26px">Devis gratuit sous 24 h, sans engagement.</p>
+      <a href="#" class="nb nb-lime" style="font-size:16px;padding:16px 32px">Demander mon devis gratuit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><span class="reel"></span>Studio Bobine</div>
+    <div class="foot-bar">
+      <div>© 2026 Studio Bobine. Vos rushs, montés en vrai film.</div>
+      <div>Mentions légales · Confidentialité</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

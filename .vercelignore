@@ -1,0 +1,22 @@
+# Fichiers présents dans le dépôt mais NON publiés en ligne.
+# Ils restent sur GitHub (consultables par l'équipe), simplement pas servis par Vercel.
+
+# --- Documents de travail internes ---
+*.md
+*.docx
+LISEZ-MOI.txt
+
+# --- Page d'une autre marque (ATELIER CUT) : ne doit jamais être publique ---
+montage-video.html
+
+# --- Maquettes de style, non destinées au public ---
+style-brutaliste.html
+style-editorial-couleurs.html
+styles-comparateur.html
+
+# --- Documents de pilotage interne ---
+checklist-lancement.html
+feuille-de-route.html
+
+# --- Système ---
+.DS_Store

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Feuille de route — Améliorations recommandées · Studio Bobine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fff8ef;--paper:#fffdf9;--ink:#2a2320;--ink-soft:#6b5f57;
+    --coral:#ff6b4a;--coral-deep:#e8482a;--sun:#ffc043;--teal:#1f9e8f;--plum:#7c4dff;--line:#efe4d6;--shadow:rgba(90,60,40,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--cream);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.1;font-weight:600}
+  .wrap{max-width:920px;margin:0 auto;padding:0 26px}
+
+  .top{padding:64px 0 40px;text-align:center;position:relative;overflow:hidden}
+  .top::before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,#ffd9a8,transparent 70%);top:-120px;left:-80px;opacity:.5}
+  .eyebrow{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-deep);background:#ffe9df;padding:6px 14px;border-radius:100px;margin-bottom:18px;position:relative}
+  .top h1{font-size:clamp(32px,5vw,52px);letter-spacing:-.02em;margin-bottom:16px;position:relative}
+  .top p{font-size:18px;color:var(--ink-soft);max-width:600px;margin:0 auto;position:relative}
+
+  .legend{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:28px 0 10px}
+  .pill{font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:100px;display:inline-flex;align-items:center;gap:7px}
+  .pill .d{width:9px;height:9px;border-radius:50%}
+  .p-high{background:#ffe4dd;color:var(--coral-deep)} .p-high .d{background:var(--coral)}
+  .p-mid{background:#fff1d6;color:#a5730a} .p-mid .d{background:var(--sun)}
+  .p-low{background:#e5f5f2;color:#12776b} .p-low .d{background:var(--teal)}
+
+  section{padding:30px 0}
+  .block-title{display:flex;align-items:center;gap:12px;margin:26px 0 18px}
+  .block-title .n{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:19px;flex-shrink:0}
+  .block-title h2{font-size:26px}
+  .b1 .n{background:var(--coral)} .b2 .n{background:var(--sun);color:var(--ink)} .b3 .n{background:var(--teal)} .b4 .n{background:var(--plum)}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px 26px;margin-bottom:16px;transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 16px 34px var(--shadow)}
+  .card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:8px}
+  .card h3{font-size:20px}
+  .card .why{font-size:15.5px;color:var(--ink-soft);margin-bottom:12px}
+  .card .meta{display:flex;gap:8px;flex-wrap:wrap}
+  .tag{font-size:12px;font-weight:600;padding:4px 11px;border-radius:100px;background:#f4ece2;color:var(--ink-soft)}
+  .tag.free{background:#e5f5f2;color:#12776b}
+  .tag.effort{background:#eee6ff;color:#5a2fd0}
+
+  .quick{background:var(--ink);color:#f0e6da;border-radius:22px;padding:40px 36px;margin:40px 0}
+  .quick h2{color:#fff;font-size:26px;margin-bottom:20px}
+  .quick ol{margin:0;padding-left:22px}
+  .quick li{font-size:16.5px;margin-bottom:12px;padding-left:6px}
+  .quick li strong{color:var(--sun)}
+
+  footer{text-align:center;padding:40px 0 60px;color:var(--ink-soft);font-size:14px}
+
+  @media(max-width:600px){
+    .card-head{flex-direction:column;gap:8px}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap">
+    <span class="eyebrow">Recommandations pro</span>
+    <h1>Feuille de route des améliorations</h1>
+    <p>Les prochaines étapes pour transformer votre site en véritable outil d'acquisition, classées par impact business et par effort.</p>
+    <div class="legend">
+      <span class="pill p-high"><span class="d"></span>Priorité haute</span>
+      <span class="pill p-mid"><span class="d"></span>Priorité moyenne</span>
+      <span class="pill p-low"><span class="d"></span>Bonus / plus tard</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="b1">
+    <div class="block-title"><span class="n">1</span><h2>Conversion : transformer les visiteurs en clients</h2></div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Brancher les formulaires pour de vrai</h3>
+        <span class="pill p-high"><span class="d"></span>Haute</span>
+      </div>
+      <p class="why">C'est le maillon manquant n°1. Aujourd'hui, le formulaire de contact et l'aimant email affichent une confirmation mais n'envoient rien. Sans ça, aucune demande ne vous parvient — le site ne peut pas générer de client. À faire avant toute autre chose.</p>
+      <div class="meta"><span class="tag free">Gratuit (Formspree / Web3Forms)</span><span class="tag effort">Effort faible</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Calculateur de devis interactif</h3>
+        <span class="pill p-high"><span class="d"></span>Haute</span>
+      </div>
+      <p class="why">Le visiteur choisit durée, type de projet et options, et obtient une estimation immédiate. Très engageant, ça qualifie le prospect et lève l'objection du prix avant même l'échange. Fort différenciateur face aux concurrents.</p>
+      <div class="meta"><span class="tag free">Sans coût</span><span class="tag effort">Effort moyen</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Prise de rendez-vous en ligne</h3>
+        <span class="pill p-mid"><span class="d"></span>Moyenne</span>
+      </div>
+      <p class="why">Un bouton « Réserver un appel de 15 min » qui ouvre un créneau (type Calendly, gratuit). Pour les gros projets, parler de vive voix convertit bien mieux qu'un simple formulaire. Le bouton flottant RDV est déjà prêt à recevoir ce lien.</p>
+      <div class="meta"><span class="tag free">Gratuit (Calendly)</span><span class="tag effort">Effort faible</span></div>
+    </div>
+  </section>
+
+  <section class="b2">
+    <div class="block-title"><span class="n">2</span><h2>Confiance : rassurer et humaniser</h2></div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Section « Qui sommes-nous »</h3>
+        <span class="pill p-high"><span class="d"></span>Haute</span>
+      </div>
+      <p class="why">Une photo et l'histoire du monteur. Les gens confient leurs souvenirs les plus précieux : ils veulent savoir à qui. C'est ce qui justifie vos tarifs face à un logiciel d'IA ou un freelance anonyme. Fort levier de conversion, souvent sous-estimé.</p>
+      <div class="meta"><span class="tag free">Sans coût</span><span class="tag effort">Effort faible</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Vraies vidéos dans le portfolio</h3>
+        <span class="pill p-high"><span class="d"></span>Haute</span>
+      </div>
+      <p class="why">Rien ne vend votre travail mieux que votre travail. Remplacer les vignettes par de vrais lecteurs (YouTube/Vimeo intégrés, ou un aperçu vidéo au survol). C'est la preuve ultime pour un service de montage.</p>
+      <div class="meta"><span class="tag effort">Effort moyen</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Vraies photos à la place des placeholders</h3>
+        <span class="pill p-mid"><span class="d"></span>Moyenne</span>
+      </div>
+      <p class="why">Les illustrations SVG actuelles font le job, mais de vraies photos (ou vos réalisations) rendent le site nettement plus crédible et chaleureux. Idéal à confier à Claude Code, qui peut télécharger et intégrer les images automatiquement.</p>
+      <div class="meta"><span class="tag effort">Effort faible</span></div>
+    </div>
+  </section>
+
+  <section class="b3">
+    <div class="block-title"><span class="n">3</span><h2>Acquisition & SEO : être trouvé</h2></div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Compléter le blog (3 articles restants)</h3>
+        <span class="pill p-mid"><span class="d"></span>Moyenne</span>
+      </div>
+      <p class="why">Le calendrier prévoyait 6 sujets : prix du montage, montage de mariage, déléguer ou monter soi-même. Plus vous publiez, plus Google vous envoie de trafic gratuit et qualifié. Chaque article est une porte d'entrée supplémentaire.</p>
+      <div class="meta"><span class="tag free">Sans coût</span><span class="tag effort">Effort moyen</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Ajouter les articles au sitemap</h3>
+        <span class="pill p-mid"><span class="d"></span>Moyenne</span>
+      </div>
+      <p class="why">Les 3 nouvelles pages de blog ne sont pas encore dans le sitemap.xml. Les y ajouter aide Google à les découvrir et indexer plus vite. Petit geste technique, effet réel sur la visibilité.</p>
+      <div class="meta"><span class="tag free">Gratuit</span><span class="tag effort">Effort très faible</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Page « Avis clients » dédiée + collecte</h3>
+        <span class="pill p-low"><span class="d"></span>Bonus</span>
+      </div>
+      <p class="why">Une page regroupant tous les témoignages, avec les données structurées Review pour afficher les étoiles dans Google. Couplée à un lien de collecte d'avis Google à envoyer après chaque livraison.</p>
+      <div class="meta"><span class="tag free">Gratuit</span><span class="tag effort">Effort faible</span></div>
+    </div>
+  </section>
+
+  <section class="b4">
+    <div class="block-title"><span class="n">4</span><h2>Expérience & finitions</h2></div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Page de remerciement après envoi</h3>
+        <span class="pill p-mid"><span class="d"></span>Moyenne</span>
+      </div>
+      <p class="why">Une vraie page « Merci » après le formulaire, plutôt qu'un simple message. Elle permet de mesurer les conversions (indispensable pour la pub plus tard) et de proposer une étape suivante (suivre les réseaux, lire un article).</p>
+      <div class="meta"><span class="tag effort">Effort faible</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Version anglaise (FR/EN)</h3>
+        <span class="pill p-low"><span class="d"></span>Bonus</span>
+      </div>
+      <p class="why">Le montage vidéo pour créateurs est un marché international. Une version anglaise double votre audience potentielle, surtout auprès des créateurs de contenu. À envisager une fois le site FR rodé.</p>
+      <div class="meta"><span class="tag effort">Effort élevé</span></div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Micro-finitions UX</h3>
+        <span class="pill p-low"><span class="d"></span>Bonus</span>
+      </div>
+      <p class="why">Détails qui font pro : lien actif surligné dans la nav au scroll, bouton « retour en haut », légères animations au survol des tarifs, favicon personnalisé avec votre logo final. Rien d'urgent, mais ça soigne l'ensemble.</p>
+      <div class="meta"><span class="tag effort">Effort faible</span></div>
+    </div>
+  </section>
+
+  <div class="quick">
+    <h2>Si je devais choisir : l'ordre que je recommande</h2>
+    <ol>
+      <li><strong>Brancher les formulaires</strong> — sans ça, tout le reste ne sert à rien.</li>
+      <li><strong>Section « Qui sommes-nous »</strong> — le levier de confiance le plus rapide à poser.</li>
+      <li><strong>Calculateur de devis</strong> — votre différenciateur commercial.</li>
+      <li><strong>Vraies vidéos dans le portfolio</strong> — la preuve qui vend le service.</li>
+      <li><strong>Compléter le blog + sitemap</strong> — le carburant SEO sur la durée.</li>
+    </ol>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">Feuille de route — Studio Bobine · Document de travail, à prioriser selon vos objectifs.</div>
+</footer>
+
+</body>
+</html>
