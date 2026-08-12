@@ -8,14 +8,14 @@
 <meta name="keywords" content="vidéaste mariage, film événement, vidéaste anniversaire, bar mitsvah vidéo, captation événement, montage mariage, film souvenir événement">
 <meta name="author" content="Studio Bobine">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://www.studiobobine.fr/evenements.html">
+<link rel="canonical" href="https://www.studiobobine.fr/evenements">
 <link rel="icon" type="image/png" href="images/favicon-32.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Studio Bobine">
 <meta property="og:title" content="Vidéaste & montage pour vos événements sur mesure">
 <meta property="og:description" content="Un vidéaste le jour J + un film monté de votre mariage, anniversaire ou bar mitsvah. Souvenirs pour la vie.">
-<meta property="og:url" content="https://www.studiobobine.fr/evenements.html">
+<meta property="og:url" content="https://www.studiobobine.fr/evenements">
 <meta property="og:image" content="https://www.studiobobine.fr/images/ev/mariage.jpg">
 <meta property="og:image:width" content="1400">
 <meta property="og:image:height" content="933">
@@ -35,7 +35,7 @@
   "provider":{"@type":"Organization","name":"Studio Bobine"},
   "areaServed":{"@type":"Country","name":"France"},
   "serviceType":"Vidéaste et montage d'événement",
-  "url":"https://www.studiobobine.fr/evenements.html",
+  "url":"https://www.studiobobine.fr/evenements",
   "hasOfferCatalog":{
     "@type":"OfferCatalog","name":"Formules événement",
     "itemListElement":[
@@ -109,7 +109,7 @@
       "@type": "ListItem",
       "position": 2,
       "name": "Événements sur mesure",
-      "item": "https://www.studiobobine.fr/evenements.html"
+      "item": "https://www.studiobobine.fr/evenements"
     }
   ]
 }
@@ -124,7 +124,7 @@
     --coral:#ff6b4a;--coral-deep:#e8482a;--sun:#ffc043;--teal:#1f9e8f;--plum:#7c4dff;--rose:#ff8fab;--line:#efe4d6;--shadow:rgba(90,60,40,.14);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;overflow-x:hidden}
   body{background:var(--cream);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.08;font-weight:600}
   a{color:inherit;text-decoration:none}
@@ -145,7 +145,8 @@
   .logo{font-family:'Fraunces';font-weight:700;font-size:22px;display:flex;align-items:center;gap:10px}
   .logo .reel{width:30px;height:36px;display:block;flex-shrink:0}
   .nav-links{display:flex;gap:30px;font-size:15px;font-weight:500;color:var(--ink-soft)}
-  .nav-links a{transition:color .2s}.nav-links a:hover{color:var(--coral-deep)}
+  .nav-links a{transition:color .2s}.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--coral-deep)}
+  .nav-links a[aria-current="page"]{font-weight:700}
   nav .btn{padding:11px 22px;font-size:14.5px}
   @media(max-width:820px){.nav-links{display:none}}
 
@@ -314,13 +315,13 @@
 
 <header>
   <nav>
-    <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="" class="reel" width="30" height="36">Studio Bobine</a>
+    <a href="/" class="logo"><img src="images/logo-mark.png" alt="" class="reel" width="30" height="36">Studio Bobine</a>
     <div class="nav-links">
-      <a href="#evenements">Événements</a>
-      <a href="#formule">La formule</a>
-      <a href="#deroule">Déroulé</a>
-      <a href="#tarifs">Formules</a>
-      <a href="#faq">FAQ</a>
+      <a href="/services">Services</a>
+      <a href="/tarifs">Tarifs</a>
+      <a href="/realisations">Réalisations</a>
+      <a href="/evenements" aria-current="page">Événements</a>
+      <a href="/conseils">Conseils</a>
     </div>
     <a href="#contact" class="btn btn-main">Demander un devis</a>
   </nav>
@@ -410,7 +411,7 @@
         </div>
       </div>
     </div>
-    <p class="price-note reveal" style="margin-top:26px">À lire avant votre mariage : notre <a href="blog-montage-mariage.html" style="color:var(--coral-deep);font-weight:600">guide du montage vidéo de mariage</a>. Baptême, fiançailles, fête de famille, événement d'entreprise… Un projet différent ? On s'adapte. <a href="#contact" style="color:var(--coral-deep);font-weight:600">Parlons-en →</a></p>
+    <p class="price-note reveal" style="margin-top:26px">À lire avant votre mariage : notre <a href="/blog-montage-mariage" style="color:var(--coral-deep);font-weight:600">guide du montage vidéo de mariage</a>. Baptême, fiançailles, fête de famille, événement d'entreprise… Un projet différent ? On s'adapte. <a href="#contact" style="color:var(--coral-deep);font-weight:600">Parlons-en →</a></p>
   </div>
 </section>
 
@@ -572,7 +573,7 @@
       <div class="c">
         <h2>Racontez-nous votre événement</h2>
         <p>Date, lieu, type d'événement, vos envies… Écrivez-nous quelques mots. On revient vers vous sous 24 h avec un devis clair et des idées.</p>
-        <a href="index.html#contact" class="btn">Demander mon devis gratuit →</a>
+        <a href="/contact" class="btn">Demander mon devis gratuit →</a>
       </div>
     </div>
   </div>
@@ -590,10 +591,10 @@
           <a href="#evenements">Types d'événements</a><a href="#formule">La formule</a><a href="#tarifs">Formules &amp; tarifs</a><a href="#faq">Questions</a>
         </div>
         <div class="foot-col"><h4>Studio Bobine</h4>
-          <a href="index.html">Accueil</a><a href="index.html#realisations">Réalisations</a><a href="index.html#blog">Conseils</a>
+          <a href="/">Accueil</a><a href="/realisations">Réalisations</a><a href="/conseils">Conseils</a>
         </div>
         <div class="foot-col"><h4>Contact</h4>
-          <a href="index.html#contact">Devis gratuit</a><a href="mailto:hello@studiobobine.fr">hello@studiobobine.fr</a>
+          <a href="/contact">Devis gratuit</a><a href="mailto:hello@studiobobine.fr">hello@studiobobine.fr</a>
         </div>
       </div>
     </div>

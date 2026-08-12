@@ -90,8 +90,8 @@
 
 <header>
   <nav>
-    <a href="index.html" class="logo"><img src="images/logo-mark.png" alt="" class="reel" width="30" height="36">Studio Bobine</a>
-    <a href="index.html" class="btn btn-out" style="padding:10px 18px;font-size:14px">Accueil</a>
+    <a href="/" class="logo"><img src="images/logo-mark.png" alt="" class="reel" width="30" height="36">Studio Bobine</a>
+    <a href="/" class="btn btn-out" style="padding:10px 18px;font-size:14px">Accueil</a>
   </nav>
 </header>
 
@@ -123,7 +123,7 @@
         <div class="e">🎬</div>
         <h1>Aucune commande en cours</h1>
         <p style="color:var(--ink-soft);margin-top:10px">Choisissez d'abord une formule pour commencer.</p>
-        <a href="index.html#offres" class="btn btn-main" style="margin-top:24px">Voir les formules →</a>
+        <a href="/tarifs" class="btn btn-main" style="margin-top:24px">Voir les formules →</a>
       </div>`;
   } else {
     const c = JSON.parse(raw);
@@ -183,10 +183,10 @@
         <p>Merci ${c.nom.split(' ')[0]}, votre paiement a bien été reçu.</p>
         <p>On démarre le montage de vos rushs — livraison estimée sous quelques jours.</p>
         <div class="ordnum">N° de commande : ${orderNum}</div>
-        <a href="index.html" class="btn btn-out">Retour à l'accueil</a>
+        <a href="/" class="btn btn-out">Retour à l'accueil</a>
       </div>
 
-      <a href="commande-upload.html?formule=${c.formuleKey}" class="back" id="backLink">← Modifier mes fichiers</a>
+      <a href="/commande-upload?formule=${c.formuleKey}" class="back" id="backLink">← Modifier mes fichiers</a>
     `;
 
     document.getElementById('payBtn').addEventListener('click', async () => {
