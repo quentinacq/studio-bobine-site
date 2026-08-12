@@ -5,14 +5,14 @@ Allow: /
 
 # --- Pages non publiques : documents de travail, maquettes de style,
 # --- tunnel de commande. Elles portent aussi une balise noindex.
-Disallow: /checklist-lancement.html
-Disallow: /feuille-de-route.html
-Disallow: /styles-comparateur.html
-Disallow: /style-brutaliste.html
-Disallow: /style-editorial-couleurs.html
-Disallow: /montage-video.html
-Disallow: /commande-upload.html
-Disallow: /commande-confirmation.html
+Disallow: /checklist-lancement
+Disallow: /feuille-de-route
+Disallow: /styles-comparateur
+Disallow: /style-brutaliste
+Disallow: /style-editorial-couleurs
+Disallow: /montage-video
+Disallow: /commande-upload
+Disallow: /commande-confirmation
 
 # Emplacement du plan du site
 Sitemap: https://www.studiobobine.fr/sitemap.xml
