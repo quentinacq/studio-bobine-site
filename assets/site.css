@@ -76,6 +76,14 @@
   .head{max-width:660px;margin:0 auto 54px;text-align:center}
   .head h1,.head h2{font-size:clamp(32px,4.4vw,50px);letter-spacing:-.02em;margin:0 0 14px}
   .head p{font-size:18px;color:var(--ink-soft)}
+  /* Colonne de lecture éditoriale (page « Notre concept ») */
+  .hero .head{margin-bottom:0}
+  .prose{max-width:680px;margin:0 auto}
+  .prose p{font-size:17.5px;color:var(--ink-soft);margin-bottom:20px}
+  .prose p:last-child{margin-bottom:0}
+  .prose strong{color:var(--ink);font-weight:600}
+  .why .prose p{color:#cbb8a8}
+  .why .prose strong{color:var(--cream)}
 
   .icp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
   .icp{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .3s,box-shadow .3s}
@@ -233,14 +241,6 @@
   .overlay{position:fixed;inset:0;background:rgba(30,20,15,.4);z-index:98;opacity:0;pointer-events:none;transition:opacity .35s}
   .overlay.open{opacity:1;pointer-events:auto}
 
-  /* LOGO STRIP / SOCIAL PROOF */
-  .proof{padding:44px 0 20px}
-  .proof .lbl{text-align:center;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:26px}
-  .logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px}
-  .logos .lg{font-family:'Fraunces';font-weight:600;font-size:22px;color:var(--ink);opacity:.5;
-    display:flex;align-items:center;gap:8px;transition:opacity .2s;padding:8px 14px}
-  .logos .lg:hover{opacity:.9}
-  .logos .lg .ic{font-size:20px}
 
   /* STATS BAND */
   .stats{background:linear-gradient(120deg,var(--sun),#ffb020);padding:60px 0}
