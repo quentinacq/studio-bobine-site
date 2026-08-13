@@ -38,7 +38,7 @@
       btn.textContent=original;
       btn.style.pointerEvents='';
       btn.style.opacity='';
-      alert("Oups, l'envoi n'a pas fonctionné. Réessayez, ou écrivez-nous directement à hello@studiobobine.fr.");
+      alert("Oups, l'envoi n'a pas fonctionné. Réessayez, ou écrivez-nous directement à hello.studiobobine@gmail.com.");
     }
   }
 
