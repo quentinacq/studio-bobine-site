@@ -109,7 +109,7 @@ automatisée · Google Ads · Logo professionnel · Tunnel de commande automatis
 
 | Objectif | Rendre le site honnête et préparer les actifs existants |
 |---|---|
-| **Actions** | 1. **Sélectionner les 3 meilleurs montages** existants. Critères : visuel, émotion, représentatif de ce qu'on veut vendre.<br>2. **Vérifier les droits** : si le contenu a été fait pour quelqu'un, obtenir un accord écrit (un SMS suffit). Vérifier aussi la musique.<br>3. Supprimer du site : « +300 vidéos », « 4,9/5 », les 3 faux témoignages, les faux chiffres.<br>4. Remplacer l'email `hello@studiobobine.fr` et le WhatsApp `33600000000` par les vrais.<br>5. Réserver les identifiants : Instagram, TikTok, YouTube, Gmail pro. |
+| **Actions** | 1. **Sélectionner les 3 meilleurs montages** existants. Critères : visuel, émotion, représentatif de ce qu'on veut vendre.<br>2. **Vérifier les droits** : si le contenu a été fait pour quelqu'un, obtenir un accord écrit (un SMS suffit). Vérifier aussi la musique.<br>3. Supprimer du site : « +300 vidéos », « 4,9/5 », les 3 faux témoignages, les faux chiffres.<br>4. Remplacer le WhatsApp `33600000000` par le vrai (l'email `hello.studiobobine@gmail.com` est déjà en place).<br>5. Réserver les identifiants : Instagram, TikTok, YouTube, Gmail pro. |
 | **Outils** | Vos montages, Claude Code pour le nettoyage du site |
 | **Livrables** | 3 montages validés et libres de droits · site sans fausse promesse · 4 comptes réservés |
 | **Temps** | 2 h 30 |

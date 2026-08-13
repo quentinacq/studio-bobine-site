@@ -184,7 +184,7 @@ Ordre d'enrichissement conseillé (par valeur commerciale) :
 | **Google Search Console** | Nécessite votre compte Google et une validation de propriété | Créez-le, soumettez `sitemap.xml`, surveillez « Pages » et « Améliorations » |
 | **Témoignages et chiffres** | « +300 vidéos livrées », « 4,9/5 », « sept ans d'expérience », témoignages Lucas/Sarah/Emma sont des exemples. Publier de faux avis est **sanctionnable** (Google et DGCCRF) | Remplacez par du réel, ou retirez les chiffres |
 | **Mentions légales / confidentialité** | Obligation légale en France, et signal de confiance pour Google | À rédiger |
-| **Coordonnées** | `hello@studiobobine.fr` et le WhatsApp `33600000000` sont fictifs | À remplacer |
+| **Coordonnées** | Le WhatsApp `33600000000` est fictif — l'email `hello.studiobobine@gmail.com` est en place | À remplacer |
 | **Google Business Profile** | Nécessite votre identité et une validation postale | Gratuit, très rentable si vous ciblez « vidéaste mariage + ville » |
 | **Backlinks** | Ne se génèrent pas depuis le code | Annuaires mariage, partenaires (photographes, lieux de réception), presse locale |
 
