@@ -66,10 +66,11 @@ entre les pages fonctionnent.
       VOTRE_ID_LEADMAGNET par vos vrais identifiants.
 
   [ ] Remplacer les coordonnées fictives :
-      - email hello@studiobobine.fr
       - numéro WhatsApp 33600000000
       - le domaine studiobobine.fr (dans les balises SEO,
         le sitemap, les liens canoniques)
+      (l'adresse email est déjà la bonne :
+       hello.studiobobine@gmail.com)
 
   [ ] Vérifier les tarifs (ce sont des exemples).
 
