@@ -79,10 +79,17 @@ nav>.btn{display:none}
 .burger.open span:nth-child(2){opacity:0}
 .burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 
-.mobile-menu{position:fixed;inset:0 0 0 auto;width:min(85%,320px);background:var(--paper);z-index:99;
-  transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:-10px 0 40px var(--shadow);
-  padding:100px 28px 40px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;overscroll-behavior:contain}
-.mobile-menu.open{transform:translateX(0)}
+/* Ce panneau est lui aussi un <nav> : sans hauteur explicite il hériterait du
+   height:66px de la barre d'en-tête, qui, avec 140px de marges intérieures et
+   overflow-y:auto, découperait la liste après le premier lien. */
+.mobile-menu{position:fixed;inset:0 0 0 auto;height:auto;width:min(85%,320px);background:var(--paper);z-index:99;
+  transform:translateX(100%);box-shadow:-10px 0 40px var(--shadow);
+  padding:100px 28px 40px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;overscroll-behavior:contain;
+  /* Fermé, le panneau est hors écran mais son ombre débordait sur la page et
+     ses liens restaient atteignables au clavier : on le retire vraiment. */
+  visibility:hidden;transition:transform .35s cubic-bezier(.4,0,.2,1),visibility 0s linear .35s}
+.mobile-menu.open{transform:translateX(0);visibility:visible;
+  transition:transform .35s cubic-bezier(.4,0,.2,1),visibility 0s}
 .mobile-menu a{font-family:'Fraunces';font-size:21px;font-weight:600;padding:13px 0;border-bottom:1px solid var(--line);
   display:flex;align-items:center;min-height:var(--tap)}
 .mobile-menu a[aria-current="page"]{color:var(--coral-deep)}
