@@ -289,7 +289,8 @@
   .foot-brand{max-width:290px}.foot-brand p{color:var(--ink-soft);font-size:14.5px;margin-top:14px}
   .foot-cols{display:flex;gap:56px;flex-wrap:wrap}
   .foot-col h4{font-family:'DM Sans';font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:15px;font-weight:700}
-  .foot-col a{display:block;font-size:14.5px;color:var(--ink);margin-bottom:11px;transition:color .2s}
+  .foot-col a{display:flex;align-items:center;min-height:44px;font-size:15px;color:var(--ink);transition:color .2s}
+  @media(min-width:601px){.foot-col a{display:block;min-height:0;font-size:14.5px;margin-bottom:11px}}
   .foot-col a:hover{color:var(--coral-deep)}
   .foot-bar{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-top:24px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-soft)}
 
