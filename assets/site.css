@@ -74,7 +74,7 @@ header .logo .logo-nom{display:none}
 nav .btn{padding:11px 22px;font-size:14.5px}
 /* Le bouton devis reste dans la barre sur mobile, juste à gauche du burger.
    Libellé court ici, complet dès qu'il y a la place. */
-nav>.btn{display:inline-flex;padding:10px 15px;font-size:13.5px;margin-left:auto;flex-shrink:0}
+header nav>.btn{display:inline-flex;padding:10px 15px;font-size:13.5px;margin-left:auto;flex-shrink:0}
 .lbl-long{display:none}
 
 /* Burger : les trois barres gardent leur taille, la zone tactile fait 44px */
@@ -410,7 +410,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .logo .reel{width:30px;height:36px}
   /* Menu replié : le CTA se range à droite, contre le burger,
      au lieu de flotter au centre de la barre. Le libellé complet reprend. */
-  nav>.btn{display:inline-flex;margin-left:auto;margin-right:6px;padding:11px 22px;font-size:14.5px}
+  header nav>.btn{display:inline-flex;margin-left:auto;margin-right:6px;padding:11px 22px;font-size:14.5px}
   .lbl-court{display:none}
   .lbl-long{display:inline}
   .icp-grid,.steps{grid-template-columns:1fr 1fr}
@@ -478,7 +478,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(min-width:1081px){
   .nav-links{display:flex}
   .burger{display:none}
-  nav>.btn{margin-left:0;margin-right:0}
+  header nav>.btn{margin-left:0;margin-right:0}
 }
 
 /* ---------- 4. Préférences utilisateur ---------- */
