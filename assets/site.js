@@ -54,6 +54,7 @@
     burger.setAttribute('aria-expanded',open?'true':'false');
     menu.classList.toggle('open',open);
     overlay.classList.toggle('open',open);
+    document.body.classList.toggle('menu-open',open);
     document.body.style.overflow=open?'hidden':'';
   }
   if(burger&&menu&&overlay){
@@ -61,6 +62,8 @@
     overlay.addEventListener('click',()=>toggleMenu(false));
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
     document.addEventListener('keydown',e=>{if(e.key==='Escape')toggleMenu(false);});
+    const fermer=document.getElementById('menuClose');
+    if(fermer)fermer.addEventListener('click',()=>toggleMenu(false));
   }
 
   // Accordéon FAQ
