@@ -1,0 +1,354 @@
+/* =========================================================================
+   Studio Bobine — page d'accueil.
+
+   Parti pris : la page est mise en scène comme une projection. Elle s'ouvre
+   dans le noir de la salle, la lumière revient au fil du récit, et elle se
+   referme dans le noir sur l'invitation à se parler. La pellicule du logo
+   sert de motif structurant : perforations, ruban de rushs, disques de bobine.
+
+   Feuille autonome : elle ne partage rien avec assets/site.css, qui reste
+   utilisée par les six autres pages.
+
+   Structure : 1. jetons  2. socle  3. sections dans l'ordre du récit
+               4. paliers min-width (620 / 900 / 1100)  5. préférences
+   ========================================================================= */
+
+/* ---------- 1. Jetons ---------- */
+:root{
+  /* La salle */
+  --nuit:#16110e;
+  --nuit-2:#211913;
+  --craie:#efe2d2;
+  --craie-doux:#b3a394;
+  /* Le jour */
+  --jour:#fbf3e9;
+  --papier:#fffaf3;
+  --encre:#221a15;
+  --encre-doux:#6b5b4c;
+  --trait:#e8dccd;
+  /* Le faisceau — teinte du logo et ses dérivés */
+  --orange:#ee7a3f;
+  --orange-vif:#ff8c4b;
+  --orange-sombre:#d4622a;
+  --ambre:#f3c07a;
+  /* Divers */
+  --ombre:rgba(60,38,22,.16);
+  --tap:44px;
+  --rayon:20px;
+}
+
+/* ---------- 2. Socle ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--jour);color:var(--encre);font-family:'DM Sans',system-ui,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.02;letter-spacing:-.025em}
+h1,h2,h3,p,li,blockquote{overflow-wrap:break-word}
+ul,ol{list-style:none}
+
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(20px,5.5vw,32px)}
+section{padding:clamp(64px,11vw,120px) 0}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--orange);color:#fff;
+  padding:12px 20px;border-radius:0 0 12px 0;font-weight:600}
+.skip:focus{left:0}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ambre);outline-offset:3px;border-radius:4px}
+
+/* Boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'DM Sans';font-weight:600;font-size:15px;line-height:1;
+  min-height:var(--tap);padding:14px 24px;border-radius:100px;border:1.5px solid transparent;
+  cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s,color .25s,border-color .25s}
+.btn-lg{font-size:16px;padding:17px 30px}
+.btn-plein{background:var(--orange);color:#fff;box-shadow:0 10px 26px rgba(238,122,63,.34)}
+.btn-plein:hover{background:var(--orange-vif);transform:translateY(-2px);box-shadow:0 14px 34px rgba(238,122,63,.44)}
+.btn-fantome{background:transparent;color:var(--craie);border-color:rgba(239,226,210,.42)}
+.btn-fantome:hover{border-color:var(--craie);background:rgba(239,226,210,.09)}
+
+/* Titre de section, commun */
+.titre-bloc{max-width:660px;margin-bottom:clamp(38px,6vw,58px)}
+.surtitre{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--orange-sombre);margin-bottom:16px}
+.surtitre::before{content:"";width:22px;height:2px;background:var(--orange);border-radius:2px}
+.surtitre.clair{color:var(--ambre)}
+.surtitre.clair::before{background:var(--ambre)}
+.titre-bloc h2{font-size:clamp(30px,7vw,52px)}
+.titre-bloc .intro{margin-top:16px;font-size:clamp(16px,4vw,18px);color:var(--encre-doux);max-width:52ch}
+
+/* Apparition au défilement */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.vu{opacity:1;transform:none}
+
+/* ---------- En-tête ---------- */
+header{position:fixed;inset:0 0 auto;z-index:100;padding:10px 0;
+  transition:background .35s,box-shadow .35s,backdrop-filter .35s}
+header.pose{background:rgba(22,17,14,.9);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(239,226,210,.12)}
+header nav{display:flex;align-items:center;gap:12px;height:60px}
+.logo{display:flex;align-items:center;gap:9px;min-height:var(--tap);flex-shrink:0;
+  font-family:'Fraunces';font-weight:700;font-size:18px;color:var(--craie);white-space:nowrap}
+.logo img{width:26px;height:31px}
+.logo-nom{display:none}
+.nav-liens{display:none}
+header .btn-plein{margin-left:auto;padding:11px 16px;font-size:13.5px;flex-shrink:0}
+.lbl-long{display:none}
+
+.burger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  background:none;border:none;cursor:pointer;min-width:var(--tap);min-height:var(--tap);padding:8px;flex-shrink:0}
+.burger span{display:block;width:23px;height:2.5px;background:var(--craie);border-radius:2px;transition:transform .3s,opacity .3s}
+.burger.ouvert span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.ouvert span:nth-child(2){opacity:0}
+.burger.ouvert span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* Panneau mobile. Hauteur explicite : c'est un <nav>, il ne doit pas hériter
+   de la hauteur de la barre. Masqué pour de bon quand il est fermé, sinon son
+   ombre déborde et ses liens restent atteignables au clavier. */
+.menu-mobile{position:fixed;inset:0 0 0 auto;height:auto;width:min(86%,330px);z-index:99;
+  background:var(--papier);box-shadow:-12px 0 44px rgba(22,17,14,.28);
+  padding:92px 26px 40px;display:flex;flex-direction:column;gap:4px;
+  overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);visibility:hidden;
+  transition:transform .38s cubic-bezier(.4,0,.2,1),visibility 0s linear .38s}
+.menu-mobile.ouvert{transform:translateX(0);visibility:visible;
+  transition:transform .38s cubic-bezier(.4,0,.2,1),visibility 0s}
+.menu-mobile a{display:flex;align-items:center;justify-content:center;min-height:var(--tap);
+  font-family:'Fraunces';font-size:20px;font-weight:600;color:var(--encre);
+  padding:13px 0;border-bottom:1px solid var(--trait)}
+.menu-mobile a[aria-current="page"]{color:var(--orange-sombre)}
+.menu-mobile .btn{margin-top:20px;border-bottom:none;align-self:center;font-size:16px;padding:15px 26px;color:#fff}
+.menu-fermer{position:absolute;top:18px;right:18px;width:var(--tap);height:var(--tap);padding:0;
+  border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.menu-fermer span{position:absolute;width:21px;height:2.5px;background:var(--encre);border-radius:2px}
+.menu-fermer span:first-child{transform:rotate(45deg)}
+.menu-fermer span:last-child{transform:rotate(-45deg)}
+.voile{position:fixed;inset:0;z-index:98;background:rgba(22,17,14,.55);
+  opacity:0;pointer-events:none;transition:opacity .38s}
+.voile.ouvert{opacity:1;pointer-events:auto}
+/* Menu ouvert, la barre passe derrière le voile : le logo reste à sa place
+   mais en arrière-plan au lieu de flotter sur le panneau. */
+body.menu-ouvert header{z-index:97}
+
+/* ---------- 3.1 L'ouverture, dans le noir ---------- */
+.ouverture{position:relative;background:var(--nuit);color:var(--craie);overflow:hidden;
+  padding:calc(70px + clamp(48px,12vw,96px)) 0 0}
+/* Le faisceau du projecteur : la seule source de lumière de la salle */
+.faisceau{position:absolute;top:-24%;left:50%;width:min(150%,1100px);aspect-ratio:1;transform:translateX(-50%);
+  background:radial-gradient(circle at 50% 40%,rgba(243,192,122,.22),rgba(238,122,63,.10) 42%,transparent 68%);
+  pointer-events:none;z-index:0}
+.ouverture-in{position:relative;z-index:2;text-align:center;padding-bottom:clamp(46px,9vw,74px)}
+.amorce{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--craie-doux);margin-bottom:24px}
+.amorce .point{width:7px;height:7px;border-radius:50%;background:var(--orange);
+  box-shadow:0 0 0 4px rgba(238,122,63,.22)}
+.ouverture h1{font-size:clamp(38px,11vw,92px);letter-spacing:-.035em;margin-bottom:26px}
+.ouverture h1 span{display:block}
+.ouverture h1 .l2{color:var(--craie-doux)}
+.ouverture h1 .l3 em{font-style:italic;color:var(--orange);font-weight:600}
+.chapo{max-width:56ch;margin:0 auto 32px;font-size:clamp(16px,4.2vw,19px);color:var(--craie-doux)}
+.ouverture-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.sous-cta{margin-top:20px;font-size:14px;color:var(--craie-doux);opacity:.85}
+
+/* La pellicule : les rushs bruts qui défilent, encadrés de perforations */
+.pellicule{position:relative;z-index:2;background:var(--nuit-2);border-top:1px solid rgba(239,226,210,.1);
+  border-bottom:1px solid rgba(239,226,210,.1);padding:9px 0}
+.perfos{height:11px;background-image:repeating-linear-gradient(90deg,
+  rgba(239,226,210,.24) 0 11px,transparent 11px 26px);
+  background-size:26px 11px;border-radius:2px;opacity:.55}
+.defile{display:flex;width:max-content;padding:9px 0;animation:deroule 46s linear infinite}
+.ruban{display:flex;gap:10px;padding-right:10px}
+.photo{display:block;width:clamp(112px,30vw,188px);aspect-ratio:3/2;border-radius:6px;overflow:hidden;
+  flex-shrink:0;filter:grayscale(.34) contrast(1.04)}
+.photo img{width:100%;height:100%;object-fit:cover}
+@keyframes deroule{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- 3.2 Le constat, la lumière revient ---------- */
+/* La lumière revient sur une bande courte et nette, pour que le texte repose
+   toujours sur le fond clair : sur le dégradé lui-même, le contraste tombait
+   à 1,7:1, très en dessous du seuil lisible. */
+.constat{background:var(--jour) linear-gradient(180deg,var(--nuit-2),var(--jour)) no-repeat top center;
+  background-size:100% 180px;padding-top:clamp(96px,16vw,190px);padding-bottom:clamp(48px,8vw,84px)}
+.constat .wrap{text-align:center}
+.constat-l1,.constat-l2{font-family:'Fraunces';font-weight:700;letter-spacing:-.03em;line-height:1.02;
+  font-size:clamp(34px,9.5vw,72px)}
+.constat-l1{color:var(--encre-doux)}
+.constat-l2{color:var(--orange);margin-bottom:clamp(28px,5vw,42px)}
+.constat-tx{max-width:60ch;margin:0 auto;text-align:left}
+.constat-tx p{color:var(--encre-doux);margin-bottom:16px;font-size:clamp(16px,4vw,17.5px)}
+.constat-tx p:last-child{margin-bottom:0}
+.constat-tx strong{color:var(--encre);font-weight:600}
+
+/* ---------- 3.3 La transformation ---------- */
+.transfo{background:var(--jour)}
+.bascule{display:grid;gap:26px;align-items:center}
+.cote{background:var(--papier);border:1px solid var(--trait);border-radius:var(--rayon);
+  padding:24px 20px 26px}
+.cote.apres{border-color:rgba(238,122,63,.4);background:linear-gradient(170deg,#fff5ee,var(--papier));
+  box-shadow:0 22px 50px rgba(238,122,63,.12)}
+.etiq{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--encre-doux);background:#f0e6d9;padding:6px 13px;border-radius:100px;margin-bottom:18px}
+.etiq-vif{background:var(--orange);color:#fff}
+
+/* Le vrac : des plans en désordre, légèrement de travers */
+.vrac{position:relative;height:158px;margin-bottom:20px}
+.vrac .clip{position:absolute;width:52%;aspect-ratio:3/2;border-radius:8px;overflow:hidden;
+  border:3px solid var(--papier);box-shadow:0 8px 20px var(--ombre);filter:grayscale(.42)}
+.vrac .clip img{width:100%;height:100%;object-fit:cover}
+.vrac .c1{top:2%;left:0;transform:rotate(-6deg)}
+.vrac .c2{top:12%;right:2%;transform:rotate(5deg)}
+.vrac .c3{bottom:0;left:16%;transform:rotate(2deg)}
+.vrac .c4{bottom:8%;right:12%;transform:rotate(-3deg);width:44%}
+
+/* L'écran : un seul plan, net, avec sa durée */
+.ecran{position:relative;border-radius:12px;overflow:hidden;margin-bottom:20px;
+  box-shadow:0 16px 38px var(--ombre)}
+.ecran img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.ecran::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 52%,rgba(22,17,14,.6))}
+.lecture{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+  width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.94);
+  display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(22,17,14,.32)}
+.lecture .tri{border-left:15px solid var(--orange);border-top:10px solid transparent;
+  border-bottom:10px solid transparent;margin-left:4px}
+.duree{position:absolute;right:12px;bottom:11px;z-index:2;font-size:12.5px;font-weight:600;
+  color:#fff;background:rgba(22,17,14,.6);padding:4px 10px;border-radius:100px}
+
+.menu-liste li{position:relative;padding-left:22px;margin-bottom:10px;font-size:15px;color:var(--encre-doux)}
+.menu-liste li:last-child{margin-bottom:0}
+.menu-liste li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:1.5px;
+  background:var(--craie-doux);border-radius:2px}
+.menu-liste.vif li{color:var(--encre)}
+.menu-liste.vif li::before{background:var(--orange);width:11px;height:2px}
+
+.fleche{display:flex;align-items:center;justify-content:center;color:var(--orange);transform:rotate(90deg)}
+.fleche svg{width:44px;height:22px}
+
+/* ---------- 3.4 La méthode ---------- */
+.methode{background:var(--papier);border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)}
+.etapes{display:grid;gap:14px}
+.etape{position:relative;background:var(--jour);border:1px solid var(--trait);border-radius:var(--rayon);
+  padding:26px 22px 24px}
+.etape .num{display:block;font-family:'Fraunces';font-size:15px;font-weight:700;letter-spacing:.06em;
+  color:var(--orange);margin-bottom:12px}
+.etape h3{font-size:21px;margin-bottom:9px}
+.etape p{font-size:15.5px;color:var(--encre-doux)}
+
+/* ---------- 3.5 L'émotion ---------- */
+.emotion{background:var(--jour)}
+.citation{background:linear-gradient(140deg,var(--orange),var(--orange-sombre));border-radius:26px;
+  padding:clamp(30px,6vw,54px) clamp(24px,5vw,48px);color:#fff;box-shadow:0 26px 60px rgba(212,98,42,.24)}
+.citation blockquote{font-family:'Fraunces';font-style:italic;font-weight:500;
+  font-size:clamp(20px,5.4vw,32px);line-height:1.28;letter-spacing:-.015em}
+.citation figcaption{display:flex;align-items:center;gap:14px;margin-top:26px}
+.citation figcaption img{width:52px;height:52px;border-radius:50%;object-fit:cover;
+  border:3px solid rgba(255,255,255,.42);flex-shrink:0}
+.citation figcaption span{display:flex;flex-direction:column;font-size:14px;color:rgba(255,255,255,.88)}
+.citation figcaption b{font-size:15.5px;color:#fff;font-weight:700}
+.emotion-fin{max-width:56ch;margin:clamp(34px,6vw,52px) auto 0;text-align:center;
+  font-family:'Fraunces';font-size:clamp(18px,4.6vw,24px);line-height:1.35;color:var(--encre)}
+
+/* ---------- 3.6 Les formats ---------- */
+.formats{background:var(--papier);border-top:1px solid var(--trait)}
+.bobines{display:grid;gap:16px;margin-bottom:clamp(34px,6vw,50px)}
+.bobine{background:var(--jour);border:1px solid var(--trait);border-radius:var(--rayon);
+  padding:26px 22px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.bobine:hover{transform:translateY(-4px);box-shadow:0 20px 42px var(--ombre);border-color:rgba(238,122,63,.4)}
+/* Le disque évoque la bobine : plus le film est long, plus la galette est épaisse */
+.disque{display:block;width:46px;height:46px;border-radius:50%;margin-bottom:16px;
+  border:6px solid var(--orange);background:
+    radial-gradient(circle,var(--papier) 0 22%,transparent 22%),
+    repeating-radial-gradient(circle,rgba(238,122,63,.28) 0 3px,transparent 3px 6px)}
+.disque.grand{border-width:11px}
+.bobine h3{font-size:23px;margin-bottom:9px}
+.bobine .pour{font-size:15px;color:var(--encre-doux)}
+
+.reperes{display:grid;gap:2px;border:1px solid var(--trait);border-radius:var(--rayon);
+  overflow:hidden;background:var(--trait)}
+.repere{background:var(--jour);padding:22px 22px}
+.repere .cle{display:block;font-family:'Fraunces';font-size:26px;font-weight:700;
+  color:var(--orange-sombre);margin-bottom:5px}
+.repere .val{font-size:14.5px;color:var(--encre-doux)}
+.repere-note{margin-top:20px;font-size:15px;color:var(--encre-doux)}
+.repere-note a{color:var(--orange-sombre);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- 3.7 Le rendez-vous, retour au noir ---------- */
+.rdv{position:relative;background:var(--nuit);color:var(--craie);overflow:hidden;text-align:center}
+.faisceau.bas{top:auto;bottom:-40%;
+  background:radial-gradient(circle at 50% 60%,rgba(243,192,122,.2),rgba(238,122,63,.09) 44%,transparent 70%)}
+.rdv-in{position:relative;z-index:2}
+.rdv h2{font-size:clamp(30px,7.5vw,56px);margin:14px 0 18px}
+.rdv>.wrap>p{max-width:56ch;margin:0 auto 30px;color:var(--craie-doux);font-size:clamp(16px,4vw,18px)}
+.rdv-note{margin-top:22px;font-size:14px;color:var(--craie-doux)}
+.rdv-note a{color:var(--ambre);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Pied de page ---------- */
+footer{background:var(--nuit-2);color:var(--craie);padding:56px 0 30px;
+  border-top:1px solid rgba(239,226,210,.1)}
+.pied-haut{display:flex;flex-direction:column;gap:34px;margin-bottom:34px}
+.pied-marque{max-width:300px}
+.pied-marque .logo{margin-bottom:12px}
+.pied-marque .logo-nom{display:inline}
+.pied-marque p{font-size:14.5px;color:var(--craie-doux)}
+.pied-cols{display:flex;flex-wrap:wrap;gap:30px}
+.pied-col h4{font-family:'DM Sans';font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--craie-doux);margin-bottom:10px}
+.pied-col a{display:flex;align-items:center;min-height:var(--tap);font-size:15px;color:var(--craie);
+  transition:color .2s}
+.pied-col a:hover{color:var(--orange-vif)}
+.pied-bas{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:22px;
+  border-top:1px solid rgba(239,226,210,.12);font-size:13.5px;color:var(--craie-doux)}
+
+/* =========================================================================
+   4. Paliers — la mise en page s'élargit à mesure qu'il y a de la place
+   ========================================================================= */
+
+@media(min-width:360px){
+  .logo-nom{display:inline}
+}
+
+@media(min-width:620px){
+  body{font-size:17.5px}
+  .logo{font-size:21px;gap:11px}
+  .logo img{width:30px;height:36px}
+  header .btn-plein{padding:12px 22px;font-size:14.5px}
+  .lbl-court{display:none}
+  .lbl-long{display:inline}
+  .etapes{grid-template-columns:1fr 1fr}
+  .bobines{grid-template-columns:1fr 1fr}
+  .reperes{grid-template-columns:1fr 1fr 1fr}
+  .vrac{height:190px}
+  .pied-haut{flex-direction:row;justify-content:space-between;gap:48px}
+  .pied-cols{gap:56px}
+  .pied-col a{display:block;min-height:0;margin-bottom:11px}
+}
+
+@media(min-width:900px){
+  .bascule{grid-template-columns:1fr auto 1fr;gap:20px}
+  .cote{padding:30px 28px 32px}
+  .fleche{transform:none}
+  .fleche svg{width:52px;height:26px}
+  .vrac{height:224px}
+  .etapes{grid-template-columns:repeat(3,1fr);gap:18px}
+  .etape{padding:32px 26px 30px}
+  .bobines{grid-template-columns:repeat(3,1fr);gap:20px}
+  .bobine{padding:32px 28px}
+  .repere{padding:26px 26px}
+  .citation figcaption{margin-top:32px}
+}
+
+@media(min-width:1100px){
+  .nav-liens{display:flex;gap:26px;margin-left:38px;font-size:15px;font-weight:500;color:var(--craie-doux)}
+  .nav-liens a{transition:color .2s}
+  .nav-liens a:hover{color:var(--craie)}
+  .burger{display:none}
+  header .btn-plein{margin-left:auto}
+  .ouverture h1{letter-spacing:-.04em}
+}
+
+/* =========================================================================
+   5. Préférences utilisateur
+   ========================================================================= */
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+  .defile{animation:none}
+}
