@@ -1,0 +1,289 @@
+/* =========================================================================
+   Studio Bobine — page d'accueil, proposition 2.
+
+   Parti pris : la page est une timeline de montage. Chaque section est un
+   plan, repéré par un timecode, et le lecteur avance dans le film en
+   défilant. La jauge en haut de l'écran est la tête de lecture.
+
+   Feuille autonome. assets/site.css n'est pas touchée : elle sert les six
+   autres pages.
+
+   Structure : 1. jetons  2. socle  3. l'ossature timeline  4. les plans,
+               dans l'ordre  5. paliers min-width (560 / 900 / 1180)
+   ========================================================================= */
+
+/* ---------- 1. Jetons ---------- */
+:root{
+  --papier:#f5f1ea;
+  --blanc:#fffdfa;
+  --sombre:#17130f;
+  --encre:#14110d;
+  --encre-2:#574d43;
+  --craie:#e8ddcd;
+  --craie-2:#a2968a;
+  --orange:#ee7a3f;
+  --orange-fonce:#cf5f1f;
+  --trait:#ded4c5;
+  --tap:44px;
+  --barre-h:64px;   /* hauteur de la bande d'en-tête */
+}
+
+/* ---------- 2. Socle ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--papier);color:var(--encre);
+  font-family:'DM Sans',system-ui,sans-serif;font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul,ol,dl{list-style:none}
+h1,h2,h3{font-family:'Bricolage Grotesque','DM Sans',sans-serif;font-weight:800;
+  line-height:.94;letter-spacing:-.035em}
+h1,h2,h3,p,li,dd,blockquote{overflow-wrap:break-word}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--orange);color:#fff;
+  padding:12px 20px;font-weight:600}
+.skip:focus{left:0}
+a:focus-visible,button:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Space Mono',ui-monospace,monospace;font-weight:700;font-size:13px;
+  letter-spacing:.08em;text-transform:uppercase;line-height:1;
+  min-height:var(--tap);padding:14px 20px;border:2px solid var(--encre);
+  cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.btn-gd{font-size:14px;padding:18px 28px}
+.btn-plein{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn-plein:hover{background:var(--orange-fonce);border-color:var(--orange-fonce);transform:translate(-2px,-2px)}
+.btn-nu{background:transparent;color:var(--encre)}
+.btn-nu:hover{background:var(--encre);color:var(--papier)}
+
+/* ---------- 3. L'ossature timeline ---------- */
+header{position:fixed;inset:0 0 auto;z-index:100;background:var(--papier);
+  border-bottom:2px solid var(--encre)}
+.bande{display:flex;align-items:center;gap:10px;height:var(--barre-h);
+  padding:0 clamp(14px,4vw,26px);max-width:1440px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:8px;min-height:var(--tap);flex-shrink:0;
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em}
+.logo img{width:22px;height:26px}
+.logo span{display:none}
+/* Le timecode courant : la page se lit comme un film qui défile */
+.tc-tete{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;
+  color:var(--orange-fonce);margin-left:auto;letter-spacing:.04em}
+header .btn-plein{padding:11px 14px;font-size:11.5px;flex-shrink:0}
+.long{display:none}
+/* La jauge est la tête de lecture */
+.jauge{height:3px;background:var(--orange);width:0;transition:width .12s linear}
+
+.burger{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  background:none;border:none;cursor:pointer;min-width:var(--tap);min-height:var(--tap);flex-shrink:0}
+.burger span{display:block;width:22px;height:2.5px;background:var(--encre);transition:transform .3s,opacity .3s}
+.burger.ouvert span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.ouvert span:nth-child(2){opacity:0}
+.burger.ouvert span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* Panneau mobile. Hauteur explicite : c'est un <nav>, il ne doit pas hériter
+   de celle de la bande. Réellement masqué quand il est fermé. */
+.menu-mobile{position:fixed;inset:0 0 0 auto;height:auto;width:min(86%,320px);z-index:99;
+  background:var(--blanc);border-left:2px solid var(--encre);
+  padding:88px 24px 36px;display:flex;flex-direction:column;
+  overflow-y:auto;overscroll-behavior:contain;transform:translateX(100%);visibility:hidden;
+  transition:transform .34s cubic-bezier(.4,0,.2,1),visibility 0s linear .34s}
+.menu-mobile.ouvert{transform:translateX(0);visibility:visible;
+  transition:transform .34s cubic-bezier(.4,0,.2,1),visibility 0s}
+.menu-mobile a{display:flex;align-items:center;min-height:var(--tap);padding:14px 0;
+  border-bottom:1px solid var(--trait);
+  font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;letter-spacing:-.02em}
+.menu-mobile a[aria-current="page"]{color:var(--orange-fonce)}
+.menu-mobile .btn{margin-top:22px;border-bottom:none;justify-content:center;color:#fff}
+.menu-fermer{position:absolute;top:16px;right:16px;width:var(--tap);height:var(--tap);padding:0;
+  border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.menu-fermer span{position:absolute;width:20px;height:2.5px;background:var(--encre)}
+.menu-fermer span:first-child{transform:rotate(45deg)}
+.menu-fermer span:last-child{transform:rotate(-45deg)}
+.voile{position:fixed;inset:0;z-index:98;background:rgba(20,17,13,.5);
+  opacity:0;pointer-events:none;transition:opacity .34s}
+.voile.ouvert{opacity:1;pointer-events:auto}
+body.menu-ouvert header{z-index:97}
+
+/* Un plan = une section. La marque porte le timecode. */
+.plan{position:relative;padding:clamp(52px,10vw,92px) clamp(18px,5vw,40px);
+  border-bottom:2px solid var(--encre);max-width:1440px;margin:0 auto}
+.marque{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.tc{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.06em;
+  color:#fff;background:var(--orange);padding:5px 9px}
+.lbl{font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--encre-2)}
+/* min-width:0 : sans lui, un contenu large force la colonne à déborder de la grille */
+.plan-corps{min-width:0}
+.ouverture-bas{max-width:64ch}
+.plan h2{font-size:clamp(32px,9vw,68px);margin-bottom:18px}
+.plan .intro{font-size:clamp(16.5px,4.2vw,19px);color:var(--encre-2);max-width:56ch;margin-bottom:34px}
+
+/* ---------- 4.1 Ouverture ---------- */
+.plan-ouverture{padding-top:calc(var(--barre-h) + clamp(40px,10vw,78px))}
+.plan-ouverture h1{font-size:clamp(34px,10vw,86px);letter-spacing:-.045em;margin-bottom:34px}
+.plan-ouverture h1 span{display:block}
+.plan-ouverture h1 .gros{font-size:1.34em;line-height:.9}
+.plan-ouverture h1 .souligne{color:var(--orange)}
+.plan-ouverture h1 .fin{margin-top:.24em;font-size:.62em;font-weight:600;color:var(--encre-2);letter-spacing:-.02em}
+.chapo{font-size:clamp(16.5px,4.2vw,19px);color:var(--encre-2);max-width:54ch;margin-bottom:26px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+
+/* Le rapport 3 h → 6 min, en barres : la démonstration remplace l'argument */
+.ratio{margin-top:44px;border-top:2px solid var(--encre);padding-top:18px}
+.ratio-brut,.ratio-garde{position:relative;height:34px;display:flex;align-items:center;padding:0 10px}
+.ratio-brut{background:repeating-linear-gradient(90deg,var(--trait) 0 6px,var(--papier) 6px 12px);
+  border:2px solid var(--encre);margin-bottom:8px}
+.ratio-garde{width:12%;min-width:74px;background:var(--orange);border:2px solid var(--encre)}
+.ratio-etiq{font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.ratio-garde .ratio-etiq{color:#fff}
+
+/* ---------- 4.2 La matière ---------- */
+.cas{display:grid;gap:2px;background:var(--encre);border:2px solid var(--encre)}
+.cas-item{display:block;background:var(--blanc);transition:background .2s}
+.cas-item:hover{background:var(--orange)}
+.cas-item img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:grayscale(.3)}
+.cas-item:hover img{filter:none}
+.cas-tx{display:block;padding:16px 18px 18px;font-size:14.5px;color:var(--encre-2)}
+.cas-tx b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:19px;letter-spacing:-.02em;color:var(--encre);margin-bottom:4px}
+.cas-item:hover .cas-tx,.cas-item:hover .cas-tx b{color:#fff}
+
+/* ---------- 4.3 Le travail (le seul plan sombre) ---------- */
+.plan-sombre{background:var(--sombre);color:var(--craie)}
+.plan-sombre .lbl{color:var(--craie-2)}
+.plan-sombre .intro{color:var(--craie-2)}
+.gestes{display:grid;gap:2px;background:rgba(232,221,205,.16);border:2px solid rgba(232,221,205,.16)}
+.gestes li{background:var(--sombre);padding:26px 22px 28px}
+.geste-num{display:block;font-family:'Space Mono',monospace;font-weight:700;font-size:12.5px;
+  letter-spacing:.1em;color:var(--orange);margin-bottom:14px}
+.gestes h3{font-size:23px;margin-bottom:9px;color:var(--craie)}
+.gestes p{font-size:15.5px;color:var(--craie-2)}
+.note-sombre{margin-top:26px;font-size:15px;color:var(--craie-2);max-width:56ch;
+  border-left:3px solid var(--orange);padding-left:16px}
+
+/* ---------- 4.4 Les durées ---------- */
+.regle{display:grid;gap:2px;background:var(--encre);border:2px solid var(--encre);margin-bottom:34px}
+.duree{background:var(--blanc);padding:24px 22px 26px}
+.duree-phare{background:#fff6ef}
+.duree-tete{display:flex;align-items:baseline;gap:8px;margin-bottom:14px}
+.duree-n{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:52px;
+  line-height:.8;letter-spacing:-.05em}
+.duree-n i{font-style:normal;font-size:.5em;color:var(--orange)}
+.duree-u{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--encre-2)}
+.barre{height:9px;background:var(--trait);border:2px solid var(--encre);margin-bottom:14px}
+.barre span{display:block;height:100%;background:var(--orange)}
+.duree p{font-size:15.5px;color:var(--encre-2);margin-bottom:12px}
+.duree-meta{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:var(--encre-2)}
+
+.chiffres{display:grid;gap:2px;background:var(--encre);border:2px solid var(--encre)}
+.chiffres>div{background:var(--papier);padding:20px 22px}
+.chiffres dt{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:27px;
+  letter-spacing:-.03em;margin-bottom:4px}
+.chiffres dd{font-size:14.5px;color:var(--encre-2)}
+.lien-plus{margin-top:20px}
+.lien-plus a{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;
+  letter-spacing:.06em;color:var(--orange-fonce);border-bottom:2px solid var(--orange)}
+
+/* ---------- 4.5 La projection ---------- */
+.bande-films{display:grid;gap:2px;background:var(--encre);border:2px solid var(--encre);margin-bottom:34px}
+.film{display:block;position:relative;background:var(--blanc)}
+.film img{width:100%;aspect-ratio:3/2;object-fit:cover;transition:filter .3s}
+.film:hover img{filter:contrast(1.06) saturate(1.08)}
+.film-tx{display:block;padding:14px 16px 16px;font-family:'Space Mono',monospace;
+  font-size:11.5px;letter-spacing:.06em;color:var(--encre-2)}
+.film-tx b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;
+  font-size:17px;letter-spacing:-.02em;color:var(--encre);margin-bottom:3px}
+.mot{border:2px solid var(--encre);background:var(--orange);color:#fff;padding:26px 22px}
+.mot p{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;
+  font-size:clamp(19px,5vw,28px);line-height:1.16;letter-spacing:-.025em;margin-bottom:20px}
+.mot cite{display:flex;align-items:center;gap:12px;font-style:normal}
+.mot cite img{width:46px;height:46px;object-fit:cover;border:2px solid #fff;flex-shrink:0}
+.mot cite span{display:flex;flex-direction:column;font-family:'Space Mono',monospace;
+  font-size:11.5px;letter-spacing:.05em;color:rgba(255,255,255,.88)}
+.mot cite b{font-family:'DM Sans';font-size:15px;font-weight:600;color:#fff;letter-spacing:0}
+
+/* ---------- 4.6 Les questions ---------- */
+.qr{display:grid;gap:2px;background:var(--encre);border:2px solid var(--encre)}
+.q{background:var(--blanc);padding:24px 22px}
+.q h3{font-size:19px;margin-bottom:9px}
+.q p{font-size:15.5px;color:var(--encre-2)}
+
+/* ---------- 4.7 Générique ---------- */
+.plan-fin{background:var(--encre);color:var(--craie);border-bottom:none}
+.plan-fin .lbl{color:var(--craie-2)}
+.plan-fin h2{font-size:clamp(30px,8vw,60px)}
+.plan-fin .intro{color:var(--craie-2)}
+.fin-note{margin-top:20px;font-family:'Space Mono',monospace;font-size:12px;
+  letter-spacing:.05em;color:var(--craie-2)}
+.fin-note a{color:var(--orange);border-bottom:1px solid var(--orange)}
+
+/* ---------- Pied de page ---------- */
+footer{background:var(--encre);color:var(--craie);border-top:2px solid var(--orange)}
+.pied{display:flex;flex-direction:column;gap:28px;
+  padding:44px clamp(18px,5vw,40px) 30px;max-width:1440px;margin:0 auto}
+.pied-marque .logo{color:var(--craie);margin-bottom:12px}
+.pied-marque .logo span{display:inline}
+.pied-marque p{font-size:14.5px;color:var(--craie-2);max-width:40ch}
+.pied-liens{display:flex;flex-direction:column}
+.pied-liens a{display:flex;align-items:center;min-height:var(--tap);font-size:15px;
+  border-bottom:1px solid rgba(232,221,205,.14);transition:color .2s}
+.pied-liens a:hover{color:var(--orange)}
+.pied-bas{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
+  padding:16px clamp(18px,5vw,40px);border-top:1px solid rgba(232,221,205,.16);
+  font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.05em;color:var(--craie-2);
+  max-width:1440px;margin:0 auto}
+
+/* =========================================================================
+   5. Paliers
+   ========================================================================= */
+
+@media(min-width:400px){
+  .logo span{display:inline}
+  .logo{font-size:18px}
+}
+
+@media(min-width:560px){
+  .cas,.regle,.chiffres,.qr,.bande-films,.gestes{grid-template-columns:1fr 1fr}
+  .chiffres{grid-template-columns:1fr 1fr 1fr}
+  header .btn-plein{padding:12px 18px;font-size:12.5px}
+  .court{display:none}
+  .long{display:inline}
+  .mot{padding:32px 30px}
+}
+
+@media(min-width:900px){
+  body{font-size:17.5px}
+  /* La marque du plan passe en colonne latérale, comme une piste de timeline */
+  .plan{display:grid;grid-template-columns:132px 1fr;gap:clamp(24px,4vw,56px);
+    padding-left:clamp(24px,5vw,56px);padding-right:clamp(24px,5vw,56px)}
+  .marque{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:0;
+    position:sticky;top:calc(var(--barre-h) + 26px);align-self:start}
+  .lbl{writing-mode:horizontal-tb}
+  .plan-ouverture{grid-template-columns:132px 1fr}
+  .ratio{grid-column:2}
+  .regle{grid-template-columns:repeat(3,1fr)}
+  .gestes{grid-template-columns:1fr 1fr}
+  .gestes li{padding:32px 28px 34px}
+  .bande-films{grid-template-columns:repeat(4,1fr)}
+  .qr{grid-template-columns:1fr 1fr}
+  .q{padding:30px 28px}
+  .cas{grid-template-columns:repeat(4,1fr)}
+  .duree{padding:30px 26px 32px}
+  .pied{flex-direction:row;justify-content:space-between;gap:60px}
+  .pied-liens{display:grid;grid-template-columns:1fr 1fr;gap:0 44px}
+  .pied-liens a{min-height:0;padding:7px 0;border-bottom:none}
+}
+
+@media(min-width:1180px){
+  .plan-ouverture h1{letter-spacing:-.05em}
+  .ratio{margin-top:56px}
+}
+
+/* ---------- Préférences ---------- */
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
