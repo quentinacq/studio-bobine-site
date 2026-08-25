@@ -489,3 +489,32 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .reveal{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+/* MODULE « APRÈS VOTRE MESSAGE » (accueil) — ce qui se passe une fois le
+   message envoyé. Complète .why sans le répéter : .why dit pourquoi nous,
+   ce bloc dit ce qui suit. Règles purement additives : aucune autre page
+   n'utilise ces classes. */
+.apres{background:var(--paper);border-top:1px solid var(--line)}
+.apres-bloc{display:grid;gap:clamp(24px,5vw,44px);max-width:960px;margin:0 auto;
+  background:var(--cream);border:1px solid var(--line);border-radius:26px;padding:clamp(24px,5vw,40px)}
+.apres-qui{text-align:center}
+.apres-qui img{width:112px;height:112px;border-radius:50%;object-fit:cover;margin:0 auto 16px;
+  border:5px solid var(--paper);box-shadow:0 12px 30px var(--shadow)}
+.apres-sig{font-family:'Fraunces';font-style:italic;font-size:clamp(17px,4.4vw,19.5px);
+  line-height:1.34;color:var(--ink);max-width:34ch;margin:0 auto 8px}
+.apres-nom{font-size:13.5px;color:var(--ink-soft);font-weight:600}
+.apres-etapes{list-style:none;display:flex;flex-direction:column;gap:20px}
+.apres-etapes li{display:flex;gap:14px;align-items:flex-start}
+.apres-n{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--coral);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-weight:700;font-size:16px}
+.apres-etapes h3{font-size:18px;margin-bottom:5px}
+.apres-etapes p{font-size:15px;color:var(--ink-soft)}
+.apres-fin{text-align:center;margin-top:clamp(26px,5vw,40px)}
+.apres-fin p{margin:14px auto 0;font-size:14.5px;color:var(--ink-soft);max-width:54ch}
+
+@media(min-width:761px){
+  .apres-bloc{grid-template-columns:1fr 1.35fr;align-items:center}
+  .apres-qui{text-align:left}
+  .apres-qui img{margin:0 0 16px}
+  .apres-sig{margin:0 0 8px}
+}
