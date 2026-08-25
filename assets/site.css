@@ -211,16 +211,20 @@ body.menu-open header{z-index:97}
 .plan .btn{width:100%}
 
 .folio{display:grid;grid-template-columns:1fr;grid-auto-rows:190px;gap:16px}
-.folio .cell{border-radius:20px;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 8px 22px var(--shadow)}
+/* Vignettes du portfolio : aucune lecture vidéo n'est proposée, d'où l'absence
+   de curseur « cliquable » et le repère « Privé » à la place de l'ancien bouton
+   de lecture décoratif. */
+.folio .cell{border-radius:20px;overflow:hidden;position:relative;box-shadow:0 8px 22px var(--shadow)}
 .folio .cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .folio .cell:hover img{transform:scale(1.08)}
 .folio .cell::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(30,20,15,.72))}
 .folio .cell .meta{position:absolute;left:16px;bottom:14px;z-index:2;color:#fff}
 .folio .cell .meta .t{font-family:'Fraunces';font-size:17px;font-weight:600}
 .folio .cell .meta .s{font-size:13px;opacity:.85}
-.folio .cell .pl{position:absolute;top:14px;right:14px;z-index:2;width:34px;height:34px;border-radius:50%;
-  background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center}
-.folio .cell .pl::after{content:"";border-left:11px solid var(--coral);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.folio .cell .priv{position:absolute;top:12px;right:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.94);border-radius:100px;padding:6px 12px 6px 10px;
+  font-size:12px;font-weight:600;color:var(--ink);box-shadow:0 4px 12px rgba(30,20,15,.2)}
+.folio .cell .priv svg{width:13px;height:13px;flex-shrink:0;color:var(--coral-deep)}
 .a,.b,.c,.d,.e,.f{grid-column:span 1}
 
 .why{background:var(--ink);color:var(--cream)}
@@ -517,4 +521,59 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .apres-qui{text-align:left}
   .apres-qui img{margin:0 0 16px}
   .apres-sig{margin:0 0 8px}
+}
+
+/* BLOC CONFIDENTIALITÉ (page Réalisations) — l'absence de lecture vidéo est
+   un engagement envers les clients, pas une limite technique du site. Le
+   texte porte seul l'explication : rien n'est confié à la seule icône. */
+.confid{background:var(--paper);border-top:1px solid var(--line)}
+.confid-box{max-width:820px;margin:0 auto;background:var(--cream);border:1px solid var(--line);
+  border-radius:26px;padding:clamp(26px,5vw,44px);text-align:center}
+.confid-ic{width:56px;height:56px;border-radius:50%;background:var(--coral);color:#fff;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.confid-ic svg{width:26px;height:26px}
+.confid-box h2{font-size:clamp(24px,5.6vw,36px);letter-spacing:-.02em;margin:12px 0 16px}
+.confid-box p{font-size:clamp(15.5px,4.2vw,17px);color:var(--ink-soft);margin-bottom:16px}
+.confid-box p:last-of-type{margin-bottom:0}
+.confid-box strong{color:var(--ink);font-weight:600}
+.confid-pts{list-style:none;display:flex;flex-direction:column;gap:13px;
+  margin:clamp(24px,4vw,32px) 0 0;padding-top:clamp(22px,4vw,28px);
+  border-top:1px solid var(--line);text-align:left}
+.confid-pts li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--ink-soft)}
+.confid-pts .ck{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#e5f5f2;color:var(--teal);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-top:1px}
+.confid-pts strong{color:var(--ink);font-weight:600}
+
+/* PAGE NOTRE CONCEPT — bandeau d'ouverture et blocs texte/visuel alternés,
+   pour remplacer les longs pavés de texte par une respiration régulière. */
+.nc-band{max-width:1000px;margin:clamp(30px,6vw,46px) auto 0;border-radius:26px;overflow:hidden;
+  aspect-ratio:16/9;box-shadow:0 22px 50px var(--shadow);position:relative;z-index:2}
+.nc-band img{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block}
+.nc-duo{display:grid;gap:clamp(24px,5vw,46px);align-items:center;max-width:1040px;margin:0 auto}
+.nc-duo .im{border-radius:24px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 18px 44px var(--shadow)}
+.nc-duo .im img{width:100%;height:100%;object-fit:cover;display:block}
+.nc-tx h2{font-size:clamp(25px,5.6vw,38px);letter-spacing:-.02em;margin:0 0 16px}
+.nc-tx .eyebrow+h2{margin-top:12px}
+.nc-tx p{font-size:clamp(16px,4.2vw,17.5px);color:var(--ink-soft);margin-bottom:18px}
+.nc-tx p:last-child{margin-bottom:0}
+.nc-tx strong{color:var(--ink);font-weight:600}
+
+/* Le style global des liens (color:inherit, sans soulignement) convient aux
+   menus et aux cartes, mais rendrait ces liens-ci invisibles au milieu d'un
+   paragraphe : on les redécore explicitement. Le texte reste en encre
+   (14,6:1 sur le crème) ; le corail, à 3,7:1, passe sous le minimum AA pour
+   du texte courant — il ne sert donc qu'au trait de soulignement. */
+.nc-tx a,.confid-box a,.head p a{color:var(--ink);font-weight:600;
+  text-decoration:underline;text-decoration-color:var(--coral);
+  text-underline-offset:3px;text-decoration-thickness:2px}
+.nc-tx a:hover,.confid-box a:hover,.head p a:hover{text-decoration-color:var(--ink)}
+
+@media(min-width:761px){
+  /* Alternance : sur .rev l'image passe à droite. Sur mobile elle reste
+     toujours au-dessus du texte, l'ordre du HTML faisant foi. */
+  .nc-duo{grid-template-columns:1fr 1fr;align-items:stretch}
+  .nc-duo.rev .im{order:2}
+  /* Le visuel épouse la hauteur du texte au lieu de flotter au centre de la
+     colonne en laissant du vide au-dessus et en dessous. */
+  .nc-duo .im{aspect-ratio:auto;min-height:320px}
 }

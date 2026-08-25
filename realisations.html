@@ -44,7 +44,7 @@
         <a href="/evenements">Événements</a>
         <a href="/conseils">Conseils</a>
       </div>
-      <a href="/contact" class="btn btn-main"><span class="lbl-court">Devis gratuit</span><span class="lbl-long">Mon devis gratuit</span></a>
+      <a href="/contact" class="btn btn-main"><span class="lbl-court">Parlons-en</span><span class="lbl-long">Parlons de votre projet</span></a>
       <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -62,7 +62,7 @@
   <a href="/realisations" aria-current="page">Réalisations</a>
   <a href="/evenements">Événements</a>
   <a href="/conseils">Conseils</a>
-  <a href="/contact" class="btn btn-main">Mon devis gratuit</a>
+  <a href="/contact" class="btn btn-main">Parlons de votre projet</a>
 </nav>
 
 <main id="contenu">
@@ -71,15 +71,39 @@
     <div class="head reveal">
       <span class="eyebrow">Réalisations</span>
       <h1>Un aperçu de ce qu'on aime faire.</h1>
-      <p>Quelques formats types. Remplacez ces vignettes par vos propres vidéos.</p>
+      <p>Six montages parmi ceux qu'on nous confie le plus souvent. Les films eux-mêmes ne sont pas en ligne&nbsp;: ils appartiennent aux familles et aux voyageurs qui les ont vécus — <a href="#confidentialite">on vous explique pourquoi juste en dessous</a>.</p>
     </div>
+    <!-- Vignettes statiques : aucune lecture vidéo n'est proposée ici. Le
+         repère « Privé » remplace l'ancien bouton de lecture décoratif, qui
+         laissait croire qu'un clic lançait un film. -->
     <div class="folio">
-      <div class="cell a reveal"><img src="/images/portfolio/road-trip.jpg" data-local="portfolio/road-trip.jpg" alt="Montage vidéo d'un road-trip sur la côte ouest" loading="lazy" width="900" height="600"><span class="pl"></span><div class="meta"><div class="t">Road-trip côte ouest</div><div class="s">Vlog voyage · 6 min</div></div></div>
-      <div class="cell b reveal"><img src="/images/portfolio/reel-produit.jpg" data-local="portfolio/reel-produit.jpg" alt="Montage d'un Reel produit pour créateur de contenu" loading="lazy" width="600" height="400"><span class="pl"></span><div class="meta"><div class="t">Reel produit</div><div class="s">Short créateur · 30 s</div></div></div>
-      <div class="cell c reveal"><img src="/images/portfolio/ete-famille.jpg" data-local="portfolio/ete-famille.jpg" alt="Montage vidéo de souvenirs d'été en famille" loading="lazy" width="600" height="400"><span class="pl"></span><div class="meta"><div class="t">Été en famille</div><div class="s">Souvenirs · 4 min</div></div></div>
-      <div class="cell d reveal"><img src="/images/portfolio/vlog-quotidien.jpg" data-local="portfolio/vlog-quotidien.jpg" alt="Montage d'un vlog du quotidien pour YouTube" loading="lazy" width="600" height="400"><span class="pl"></span><div class="meta"><div class="t">Vlog du quotidien</div><div class="s">YouTube · 12 min</div></div></div>
-      <div class="cell e reveal"><img src="/images/portfolio/mariage.jpg" data-local="portfolio/mariage.jpg" alt="Montage vidéo d'une demande en mariage" loading="lazy" width="700" height="400"><span class="pl"></span><div class="meta"><div class="t">Demande en mariage</div><div class="s">Événement · 3 min</div></div></div>
-      <div class="cell f reveal"><img src="/images/portfolio/trek.jpg" data-local="portfolio/trek.jpg" alt="Aftermovie d'un trek en montagne" loading="lazy" width="700" height="400"><span class="pl"></span><div class="meta"><div class="t">Trek en montagne</div><div class="s">Aftermovie · 5 min</div></div></div>
+      <div class="cell a reveal"><img src="/images/portfolio/road-trip.jpg" data-local="portfolio/road-trip.jpg" alt="Image extraite du montage d'un road-trip sur la côte ouest" loading="lazy" width="900" height="600"><span class="priv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Privé</span><div class="meta"><div class="t">Road-trip côte ouest</div><div class="s">Vlog voyage · 6 min</div></div></div>
+      <div class="cell b reveal"><img src="/images/portfolio/reel-produit.jpg" data-local="portfolio/reel-produit.jpg" alt="Image extraite d'un Reel produit monté pour un créateur de contenu" loading="lazy" width="600" height="400"><span class="priv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Privé</span><div class="meta"><div class="t">Reel produit</div><div class="s">Short créateur · 30 s</div></div></div>
+      <div class="cell c reveal"><img src="/images/portfolio/ete-famille.jpg" data-local="portfolio/ete-famille.jpg" alt="Image extraite d'un montage de souvenirs d'été en famille" loading="lazy" width="600" height="400"><span class="priv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Privé</span><div class="meta"><div class="t">Été en famille</div><div class="s">Souvenirs · 4 min</div></div></div>
+      <div class="cell d reveal"><img src="/images/portfolio/vlog-quotidien.jpg" data-local="portfolio/vlog-quotidien.jpg" alt="Image extraite d'un vlog du quotidien monté pour YouTube" loading="lazy" width="600" height="400"><span class="priv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Privé</span><div class="meta"><div class="t">Vlog du quotidien</div><div class="s">YouTube · 12 min</div></div></div>
+      <div class="cell e reveal"><img src="/images/portfolio/mariage.jpg" data-local="portfolio/mariage.jpg" alt="Image extraite du montage d'une demande en mariage" loading="lazy" width="700" height="400"><span class="priv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Privé</span><div class="meta"><div class="t">Demande en mariage</div><div class="s">Événement · 3 min</div></div></div>
+      <div class="cell f reveal"><img src="/images/portfolio/trek.jpg" data-local="portfolio/trek.jpg" alt="Image extraite de l'aftermovie d'un trek en montagne" loading="lazy" width="700" height="400"><span class="priv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Privé</span><div class="meta"><div class="t">Trek en montagne</div><div class="s">Aftermovie · 5 min</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- La confidentialité présentée comme un engagement, pas comme une limite du
+     site. Le texte porte seul l'explication : rien n'est confié à une icône. -->
+<section class="confid" id="confidentialite">
+  <div class="wrap">
+    <div class="confid-box reveal">
+      <div class="confid-ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      </div>
+      <span class="eyebrow">Confidentialité</span>
+      <h2>Ces souvenirs ne sont pas une vitrine.</h2>
+      <p>Ce qu'on monte, ce sont des mariages, des naissances, des voyages en famille. Des moments intimes que des gens nous ont confiés parce qu'ils nous faisaient confiance — pas pour qu'ils finissent en démonstration commerciale sur une page d'accueil.</p>
+      <p>Alors nous ne les mettons pas en ligne. Les vignettes ci-dessus disent le format, la durée et l'esprit de chaque montage&nbsp;; le film, lui, reste chez ceux qui l'ont vécu. <strong>C'est exactement le traitement que recevra le vôtre.</strong></p>
+      <ul class="confid-pts">
+        <li><span class="ck" aria-hidden="true">✓</span><span>Les montages complets se regardent <strong>ensemble, après un premier échange</strong> — et uniquement avec l'accord des personnes filmées.</span></li>
+        <li><span class="ck" aria-hidden="true">✓</span><span>Vos rushs ne servent jamais d'exemple, de démo ou de publication sans votre feu vert écrit.</span></li>
+        <li><span class="ck" aria-hidden="true">✓</span><span>Vos fichiers sont supprimés de nos disques une fois le film livré et validé.</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -88,9 +112,9 @@
   <div class="wrap">
     <div class="fcta-box reveal">
       <div class="c">
-        <h2>Prêt à voir vos souvenirs prendre vie ?</h2>
-        <p>Envoyez-nous quelques mots sur votre projet. Devis gratuit sous 24 h, sans engagement.</p>
-        <a href="/contact" class="btn">Demander mon devis gratuit →</a>
+        <h2>Envie de voir ce qu'on ferait de vos images ?</h2>
+        <p>Écrivez-nous quelques lignes sur votre projet. On vous répond sous 24 h, et on vous montre des montages complets pendant l'échange.</p>
+        <a href="/contact" class="btn">Parlons de votre projet →</a>
       </div>
     </div>
   </div>
@@ -112,7 +136,7 @@
           <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a>
         </div>
         <div class="foot-col"><h4>Contact</h4>
-          <a href="/contact">Devis gratuit</a><a href="mailto:hello.studiobobine@gmail.com">hello.studiobobine@gmail.com</a>
+          <a href="/contact">Parlons de votre projet</a><a href="mailto:hello.studiobobine@gmail.com">hello.studiobobine@gmail.com</a>
         </div>
       </div>
     </div>
@@ -124,12 +148,12 @@
 </footer>
 
 <div class="float" id="float">
-  <a class="fbtn wa" href="https://wa.me/33600000000?text=Bonjour%20Studio%20Bobine%2C%20j%27ai%20un%20projet%20vid%C3%A9o" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
-    <span class="tip">Discuter sur WhatsApp</span>
+  <a class="fbtn wa" href="https://wa.me/33600000000?text=Bonjour%20Studio%20Bobine%2C%20j%27aimerais%20vous%20parler%20d%27un%20projet" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
+    <span class="tip">Nous écrire sur WhatsApp</span>
     <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 5 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
   </a>
-  <a class="fbtn rdv" href="/contact" aria-label="Prendre rendez-vous">
-    <span class="tip">Prendre rendez-vous</span>
+  <a class="fbtn rdv" href="/contact" aria-label="Parlons de votre projet">
+    <span class="tip">Parlons de votre projet</span>
     <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
   </a>
 </div>
