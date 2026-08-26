@@ -25,6 +25,11 @@
   /* Bleu d'encre, réservé à la note manuscrite du hero : un accent froid
      qui tranche avec la palette chaude sans la contredire. */
   --encre-bleue:#2b3a67;
+  /* Corail assombri, réservé aux usages où le contraste compte : texte de
+     bouton en blanc, astérisques et icônes sur fond clair. Le corail de la
+     marque plafonne à 3,7:1 sur le crème et échoue au seuil AA. */
+  --accent-fort:#c0431f;
+  --erreur:#b3261e;
   --line:#efe4d6;
   --shadow:rgba(90,60,40,.14);
   /* Cible tactile minimale (recommandation Apple / WCAG 2.5.5) */
@@ -616,3 +621,85 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
      colonne en laissant du vide au-dessus et en dessous. */
   .nc-duo .im{aspect-ratio:auto;min-height:320px}
 }
+
+/* =========================================================================
+   PAGE « DEMANDER UN DEVIS » (/contact)
+
+   Deux colonnes sur grand écran : la parole à gauche, le formulaire à
+   droite — et c'est le formulaire qui est la colonne la plus large, puisque
+   c'est l'objet principal de la page. Sur mobile, la parole passe devant :
+   on rassure avant de demander.
+
+   Rôles de couleur repris des jetons du site : surface-page = crème,
+   surface-carte = papier, surface-champ = crème (règles .field existantes),
+   encre = --ink, encre-douce = --ink-soft, accent = --accent-fort.
+   ========================================================================= */
+.devis{padding:clamp(88px,10vw,112px) 0 clamp(56px,9vw,90px)}
+.devis-grille{display:grid;grid-template-columns:1fr;gap:clamp(34px,6vw,56px);align-items:start}
+
+.devis-parole h1{font-size:clamp(32px,7vw,52px);letter-spacing:-.02em;margin-bottom:18px}
+.devis-intro{font-size:clamp(16px,4.2vw,18px);color:var(--ink-soft);margin-bottom:28px;max-width:44ch}
+.devis-points{list-style:none;display:flex;flex-direction:column;gap:14px}
+.devis-points li{display:flex;gap:12px;align-items:center;font-size:clamp(15px,4vw,16px)}
+.devis-points svg{width:20px;height:20px;flex-shrink:0;color:var(--accent-fort)}
+.devis-filet{border:0;border-top:1px solid var(--line);margin:clamp(28px,5vw,38px) 0}
+.devis-parole h2{font-size:clamp(19px,4.6vw,21px);margin-bottom:6px}
+.devis-sous{font-size:15px;color:var(--ink-soft);margin-bottom:18px}
+.devis-ailleurs{display:flex;flex-wrap:wrap;gap:12px}
+.devis-canal{display:inline-flex;align-items:center;gap:9px;background:var(--paper);
+  border:1px solid var(--line);border-radius:13px;padding:12px 18px;min-height:var(--tap);
+  font-weight:600;font-size:15px;color:var(--ink);transition:border-color .2s,transform .2s}
+.devis-canal:hover{border-color:var(--accent-fort);transform:translateY(-1px)}
+.devis-canal svg{width:18px;height:18px;flex-shrink:0;color:var(--accent-fort)}
+
+/* Ombre d'un cran plus marquée que le reste de la page : décalage ET flou,
+   jamais un halo à décalage nul. */
+.devis-carte{background:var(--paper);border:1px solid var(--line);border-radius:24px;
+  padding:clamp(24px,5vw,36px);box-shadow:0 26px 64px var(--shadow)}
+.devis-requis{font-size:14px;color:var(--ink-soft);margin-bottom:22px}
+.devis-carte abbr{color:var(--accent-fort);text-decoration:none;font-weight:700;cursor:help}
+.devis-facultatif{font-weight:400;color:var(--ink-soft)}
+.devis-aide{font-size:13.5px;color:var(--ink-soft);margin-top:8px;line-height:1.5}
+
+/* :user-invalid et non :invalid — ce dernier ferait virer au rouge tous les
+   champs requis dès le chargement, avant la moindre frappe. */
+.devis-erreur{display:none;font-size:13.5px;color:var(--erreur);margin-top:7px;font-weight:500}
+.devis-carte input:user-invalid{border-color:var(--erreur)}
+.devis-carte input:user-invalid ~ .devis-erreur{display:block}
+
+.devis-accord{display:flex;gap:11px;align-items:flex-start;margin:22px 0 24px}
+/* 24px : le minimum WCAG 2.5.8 pour une cible. Le label associé, lui,
+   dépasse 44px de haut et bascule aussi la case. */
+.devis-accord input{width:24px;height:24px;flex-shrink:0;margin-top:1px;accent-color:var(--accent-fort);cursor:pointer}
+.devis-accord label{cursor:pointer}
+.devis-accord label{font-size:14.5px;line-height:1.5;color:var(--ink)}
+
+.devis-envoi{width:100%;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  background:var(--accent-fort);color:#fff;border:none;border-radius:100px;
+  padding:16px 26px;min-height:var(--tap);font-family:inherit;font-size:16px;font-weight:600;
+  cursor:pointer;transition:transform .2s,box-shadow .2s}
+.devis-envoi:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(140,48,20,.32)}
+.devis-envoi:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.devis-note{font-size:13.5px;color:var(--ink-soft);text-align:center;margin-top:14px}
+
+/* Les paires email/téléphone et durée/volume se séparent sous 34rem. */
+.devis .row2{grid-template-columns:1fr}
+@media(min-width:34rem){
+  .devis .row2{grid-template-columns:1fr 1fr}
+}
+/* Deux colonnes à partir de 62rem, le formulaire étant le plus large. */
+@media(min-width:62rem){
+  .devis-grille{grid-template-columns:.95fr 1.05fr;gap:clamp(44px,5vw,72px)}
+}
+
+/* La règle .field input:focus{outline:none} l'emporte par spécificité sur le
+   :focus-visible global : sans ce rétablissement, les champs n'ont aucun
+   anneau au clavier. Réécrit ici avec une spécificité supérieure, portée
+   uniquement par cette page. */
+.devis .field input:focus-visible,
+.devis .field select:focus-visible,
+.devis .field textarea:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+/* Les placeholders sont du texte : la valeur par défaut du navigateur
+   (#757575) plafonne à 4,37:1 sur le crème et échoue au seuil AA. */
+.devis .field input::placeholder,
+.devis .field textarea::placeholder{color:var(--ink-soft);opacity:1}

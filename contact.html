@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact et devis gratuit — Studio Bobine</title>
-<meta name="description" content="Racontez-nous votre projet vidéo. Réponse et devis gratuit sous 24 h, sans engagement.">
+<title>Demander un devis gratuit — Studio Bobine</title>
+<meta name="description" content="Décrivez votre projet de montage : réponse sous 24h avec un devis gratuit et sans engagement. Montage à partir de 89 €, livré en 48h.">
 <meta name="author" content="Studio Bobine">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="format-detection" content="telephone=no">
@@ -13,14 +13,14 @@
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Studio Bobine">
-<meta property="og:title" content="Contact et devis gratuit — Studio Bobine">
-<meta property="og:description" content="Racontez-nous votre projet vidéo. Réponse et devis gratuit sous 24 h, sans engagement.">
+<meta property="og:title" content="Demander un devis gratuit — Studio Bobine">
+<meta property="og:description" content="Décrivez votre projet de montage : réponse sous 24h avec un devis gratuit et sans engagement. Montage à partir de 89 €, livré en 48h.">
 <meta property="og:url" content="https://www.studiobobine.fr/contact">
 <meta property="og:image" content="https://www.studiobobine.fr/images/og-cover.jpg">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contact et devis gratuit — Studio Bobine">
-<meta name="twitter:description" content="Racontez-nous votre projet vidéo. Réponse et devis gratuit sous 24 h, sans engagement.">
+<meta name="twitter:title" content="Demander un devis gratuit — Studio Bobine">
+<meta name="twitter:description" content="Décrivez votre projet de montage : réponse sous 24h avec un devis gratuit et sans engagement. Montage à partir de 89 €, livré en 48h.">
 <meta name="twitter:image" content="https://www.studiobobine.fr/images/og-cover.jpg">
 <meta name="theme-color" content="#ff6b4a">
 
@@ -64,49 +64,133 @@
 </nav>
 
 <main id="contenu">
-<section id="contact">
+<!-- Demande de devis. Aucune classe .reveal sur cette page : le contenu ne
+     doit pas dépendre de JavaScript, le formulaire encore moins. La
+     validation est entièrement native (required, type="email"). -->
+<section class="devis">
   <div class="wrap">
-    <div class="contact-inner reveal">
-      <div class="contact-l">
-        <div class="bg"><img src="/images/contact/fond.jpg" data-local="contact/fond.jpg" alt="Voyageur filmant un paysage" loading="lazy" width="800" height="900"></div>
-        <div class="c">
-          <span class="eyebrow">Parlons de votre projet</span>
-          <h1>Racontez-nous votre projet.</h1>
-          <p>Quelques lignes suffisent pour commencer. On lit tout, et on revient vers vous sous 24 h avec de vraies questions — le prix, on en parle après.</p>
-          <div class="pt"><span class="b">✉️</span> C'est le monteur qui vous répond, pas un robot</div>
-          <div class="pt"><span class="b">💬</span> Premier échange sans engagement</div>
-          <div class="pt"><span class="b">🎞️</span> Une proposition faite pour votre film, pas un tarif sur catalogue</div>
+    <div class="devis-grille">
+
+      <!-- COLONNE A — la parole. Sur mobile elle passe en premier :
+           on rassure avant de demander. -->
+      <div class="devis-parole">
+        <h1>Parlez-nous de vos images.</h1>
+        <p class="devis-intro">Quelques lignes suffisent. On vous répond sous 24h avec un devis gratuit et sans engagement — vous saurez le prix avant d'avoir à décider quoi que ce soit.</p>
+
+        <ul class="devis-points">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            <span>Réponse sous 24h, devis gratuit</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M7 5v14M17 5v14M2.5 9.5H7M2.5 14.5H7M17 9.5h4.5M17 14.5h4.5"/></svg>
+            <span>Montage dès 89 €, livré en 48h</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+            <span>Un monteur dédié vous répond directement</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg>
+            <span>Aucun engagement, aucun logiciel à installer</span>
+          </li>
+        </ul>
+
+        <hr class="devis-filet">
+
+        <h2>Vous préférez écrire ailleurs&nbsp;?</h2>
+        <p class="devis-sous">Les deux arrivent au même endroit, et donnent la même réponse.</p>
+        <div class="devis-ailleurs">
+          <a class="devis-canal" href="https://wa.me/33600000000?text=Bonjour%20Studio%20Bobine%2C%20j%27aimerais%20un%20devis%20pour%20un%20montage." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 5 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+            WhatsApp
+          </a>
+          <a class="devis-canal" href="mailto:hello.studiobobine@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+            hello.studiobobine@gmail.com
+          </a>
         </div>
       </div>
-      <div class="contact-r">
-        <div id="formArea">
-          <div class="field"><label for="nom">Comment on vous appelle&nbsp;?</label><input id="nom" type="text" placeholder="Votre prénom" autocomplete="given-name"></div>
-          <!-- Email et téléphone côte à côte : la règle « l'un ou l'autre »
-               n'est lisible que si les deux champs se répondent visuellement. -->
-          <div class="row2">
-            <div class="field"><label for="email">Où vous répondre&nbsp;?</label><input id="email" type="email" placeholder="vous@email.com" autocomplete="email"></div>
-            <div class="field"><label for="tel">Ou votre téléphone</label><input id="tel" type="tel" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel"></div>
+
+      <!-- COLONNE B — le formulaire, l'objet principal de la page.
+
+           DESTINATION : aucun service tiers n'est branché pour l'instant. On
+           retombe donc sur le pis-aller documenté — un envoi mailto, qui
+           fonctionne partout mais ouvre le client de messagerie du visiteur.
+           Pour brancher un vrai service (Formspree, Basin, Web3Forms…),
+           remplacer action par l'URL du service et supprimer enctype. -->
+      <form class="devis-carte" method="post" action="mailto:hello.studiobobine@gmail.com" enctype="text/plain">
+        <p class="devis-requis">Les champs marqués d'un <abbr title="obligatoire">*</abbr> sont nécessaires pour vous répondre.</p>
+
+        <div class="field">
+          <label for="prenom">Votre prénom <abbr title="obligatoire">*</abbr></label>
+          <input id="prenom" name="prenom" type="text" placeholder="Camille" autocomplete="given-name" required>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="email">Email <abbr title="obligatoire">*</abbr></label>
+            <input id="email" name="email" type="email" placeholder="camille@exemple.fr" autocomplete="email" required aria-describedby="email-erreur">
+            <p class="devis-erreur" id="email-erreur">Vérifiez cette adresse&nbsp;: c'est là qu'arrivera le devis.</p>
           </div>
-          <div class="field"><label for="type">C'est pour quelle occasion&nbsp;?</label>
-            <select id="type">
-              <option value="" disabled selected>Choisir…</option>
-              <option>Créateur de contenu</option>
-              <option>Vlog en couple</option>
-              <option>Moments de famille</option>
-              <option>Aventure perso</option>
-              <option>Autre</option>
+          <div class="field">
+            <label for="telephone">Téléphone <span class="devis-facultatif">(facultatif)</span></label>
+            <input id="telephone" name="telephone" type="tel" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="type_de_projet">Quel type de projet&nbsp;?</label>
+          <select id="type_de_projet" name="type_de_projet">
+            <option>Vlogs de voyage</option>
+            <option>Souvenirs de famille</option>
+            <option>Reels &amp; Shorts</option>
+            <option>Road-trips</option>
+            <option>Demandes en mariage</option>
+            <option>Aftermovies</option>
+            <option>Autre, ou je ne sais pas encore</option>
+          </select>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="duree_souhaitee">Durée du film souhaitée</label>
+            <select id="duree_souhaitee" name="duree_souhaitee">
+              <option>Moins d'une minute</option>
+              <option>1 à 3 minutes</option>
+              <option>3 à 6 minutes</option>
+              <option>6 à 10 minutes</option>
+              <option>Plus de 10 minutes</option>
+              <option>Je ne sais pas encore</option>
             </select>
           </div>
-          <div class="field"><label for="msg">Racontez-nous</label><textarea id="msg" placeholder="Ce que vous avez filmé, pour qui, ce que vous aimeriez ressentir en le revoyant. Même en désordre, ça nous va."></textarea></div>
-          <button class="btn btn-main" id="btnContact">Envoyer mon message →</button>
-          <p class="form-note">Un email ou un téléphone suffit, comme vous préférez. Gratuit et sans engagement&nbsp;: vos images et vos informations restent entre nous.</p>
+          <div class="field">
+            <label for="volume_de_rushs">Combien de rushs&nbsp;?</label>
+            <select id="volume_de_rushs" name="volume_de_rushs">
+              <option>Moins d'une heure</option>
+              <option>1 à 5 heures</option>
+              <option>5 à 10 heures</option>
+              <option>Plus de 10 heures</option>
+              <option>Je ne sais pas</option>
+            </select>
+          </div>
         </div>
-        <div class="ok" id="okBox">
-          <div class="ch">✓</div>
-          <h3 style="font-size:24px;margin-bottom:8px">Message bien reçu&nbsp;!</h3>
-          <p style="color:var(--ink-soft);font-size:15px">Merci de nous avoir écrit. On lit votre message et on revient vers vous sous 24 h — avec des questions, et des idées.</p>
+
+        <div class="field">
+          <label for="message">Racontez-nous ce que vous avez filmé <abbr title="obligatoire">*</abbr></label>
+          <textarea id="message" name="message" rows="5" placeholder="Trois semaines au Japon en janvier, filmées au téléphone et avec une petite caméra. J'aimerais un film qu'on puisse montrer à la famille." required aria-describedby="message-aide"></textarea>
+          <p class="devis-aide" id="message-aide">Le ton que vous voulez, l'occasion, une date de livraison si vous en avez une&nbsp;: tout ce que vous ajoutez rend le devis plus juste.</p>
         </div>
-      </div>
+
+        <div class="devis-accord">
+          <input id="accord" name="accord" type="checkbox" required>
+          <label for="accord">J'accepte que Studio Bobine utilise ces informations pour me répondre. <abbr title="obligatoire">*</abbr></label>
+        </div>
+
+        <button type="submit" class="devis-envoi">Envoyer ma demande <span aria-hidden="true">→</span></button>
+        <p class="devis-note">Gratuit, sans engagement. Réponse sous 24h.</p>
+      </form>
+
     </div>
   </div>
 </section>
