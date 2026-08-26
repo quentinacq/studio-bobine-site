@@ -8,3 +8,11 @@
 
 # Vercel
 .vercel
+
+# Compétences d'agent installées via « npx skills add ». Ce sont des
+# dépendances externes, propres au poste : elles n'ont pas à être versionnées
+# ni publiées. Retirer ces lignes pour les partager entre machines — dans ce
+# cas, les ajouter aussi à .vercelignore.
+.agents/
+.claude/
+skills-lock.json
