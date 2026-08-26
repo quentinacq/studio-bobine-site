@@ -14,9 +14,21 @@
   async function submitForm(){
     const nom=document.getElementById('nom').value.trim();
     const email=document.getElementById('email').value.trim();
+    const telChamp=document.getElementById('tel');
+    const tel=telChamp?telChamp.value.trim():'';
     const type=document.getElementById('type').value;
     const msg=document.getElementById('msg').value.trim();
-    if(!nom||!email||!type){alert('Merci de renseigner votre nom, votre email et le type de projet.');return;}
+    if(!nom||!type){alert('Merci de nous dire votre prénom et pour quelle occasion vous nous écrivez.');return;}
+    // Un seul moyen de contact suffit : on n'exige ni l'un ni l'autre en
+    // particulier, seulement qu'il en reste un pour vous répondre.
+    if(!email&&!tel){alert("Laissez-nous au moins un moyen de vous répondre : un email ou un téléphone, au choix.");return;}
+    // Les contrôles de format ne s'appliquent qu'au champ effectivement
+    // rempli — sans quoi laisser l'autre vide déclencherait une erreur.
+    if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){alert("Cet email a l'air incomplet. Vérifiez-le, ou laissez-nous plutôt un téléphone.");return;}
+    // Volontairement tolérant : espaces, points, tirets et parenthèses sont
+    // acceptés, l'indicatif international aussi. On vérifie seulement qu'il
+    // reste un nombre de chiffres plausible.
+    if(tel&&!/^\+?\d{8,15}$/.test(tel.replace(/[\s.\-()]/g,''))){alert("Ce numéro a l'air incomplet. Vérifiez-le, ou laissez-nous plutôt un email.");return;}
     const btn=document.querySelector('#formArea .btn');
     const original=btn.textContent;
     btn.textContent='Envoi en cours…';
@@ -26,7 +38,10 @@
       const res=await fetch(FORMSPREE_CONTACT,{
         method:'POST',
         headers:{'Accept':'application/json'},
-        body:(()=>{const d=new FormData();d.append('nom',nom);d.append('email',email);d.append('type_projet',type);d.append('message',msg);d.append('_subject','Nouvelle demande de devis — '+nom);return d;})()
+        body:(()=>{const d=new FormData();d.append('nom',nom);d.append('email',email);d.append('telephone',tel);d.append('type_projet',type);d.append('message',msg);d.append('_subject','Nouveau message — '+nom);
+          // Sans email, Formspree n'a pas d'adresse de réponse : on indique
+          // explicitement par quel moyen ce visiteur souhaite être recontacté.
+          d.append('_replyto',email||'(pas d\'email — rappeler au '+tel+')');return d;})()
       });
       if(res.ok){
         document.getElementById('formArea').style.display='none';

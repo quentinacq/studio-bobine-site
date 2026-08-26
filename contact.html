@@ -81,22 +81,25 @@
       <div class="contact-r">
         <div id="formArea">
           <div class="field"><label for="nom">Comment on vous appelle&nbsp;?</label><input id="nom" type="text" placeholder="Votre prénom" autocomplete="given-name"></div>
+          <!-- Email et téléphone côte à côte : la règle « l'un ou l'autre »
+               n'est lisible que si les deux champs se répondent visuellement. -->
           <div class="row2">
             <div class="field"><label for="email">Où vous répondre&nbsp;?</label><input id="email" type="email" placeholder="vous@email.com" autocomplete="email"></div>
-            <div class="field"><label for="type">C'est pour quelle occasion&nbsp;?</label>
-              <select id="type">
-                <option value="" disabled selected>Choisir…</option>
-                <option>Créateur de contenu</option>
-                <option>Vlog en couple</option>
-                <option>Moments de famille</option>
-                <option>Aventure perso</option>
-                <option>Autre</option>
-              </select>
-            </div>
+            <div class="field"><label for="tel">Ou votre téléphone</label><input id="tel" type="tel" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel"></div>
+          </div>
+          <div class="field"><label for="type">C'est pour quelle occasion&nbsp;?</label>
+            <select id="type">
+              <option value="" disabled selected>Choisir…</option>
+              <option>Créateur de contenu</option>
+              <option>Vlog en couple</option>
+              <option>Moments de famille</option>
+              <option>Aventure perso</option>
+              <option>Autre</option>
+            </select>
           </div>
           <div class="field"><label for="msg">Racontez-nous</label><textarea id="msg" placeholder="Ce que vous avez filmé, pour qui, ce que vous aimeriez ressentir en le revoyant. Même en désordre, ça nous va."></textarea></div>
           <button class="btn btn-main" id="btnContact">Envoyer mon message →</button>
-          <p class="form-note">Gratuit et sans engagement. Vos images et vos informations restent entre nous.</p>
+          <p class="form-note">Un email ou un téléphone suffit, comme vous préférez. Gratuit et sans engagement&nbsp;: vos images et vos informations restent entre nous.</p>
         </div>
         <div class="ok" id="okBox">
           <div class="ch">✓</div>
