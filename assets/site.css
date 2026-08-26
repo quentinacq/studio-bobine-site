@@ -22,6 +22,9 @@
   --sun:#ffc043;
   --teal:#1f9e8f;
   --plum:#7c4dff;
+  /* Bleu d'encre, réservé à la note manuscrite du hero : un accent froid
+     qui tranche avec la palette chaude sans la contredire. */
+  --encre-bleue:#2b3a67;
   --line:#efe4d6;
   --shadow:rgba(90,60,40,.14);
   /* Cible tactile minimale (recommandation Apple / WCAG 2.5.5) */
@@ -129,6 +132,16 @@ body.menu-open header{z-index:97}
 .hero h1 .u{background:linear-gradient(transparent 62%,var(--sun) 62%,var(--sun) 92%,transparent 92%)}
 .hero p.lead{font-size:clamp(17px,4.4vw,19.5px);color:var(--ink-soft);max-width:500px;margin-bottom:32px}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+/* Réassurance manuscrite sous le CTA du hero. Volontairement discrète :
+   la flèche est un corail atténué, le texte reste plus petit que les
+   boutons pour ne pas leur disputer l'attention. */
+.reassur{display:flex;align-items:center;gap:8px;margin-top:14px}
+.reassur-fleche{width:clamp(54px,13vw,78px);height:auto;flex-shrink:0;color:var(--coral);opacity:.6}
+/* La graisse 600 est celle effectivement demandée à Google Fonts : la
+   déclarer ici évite de rendre le texte dans une graisse non chargée. */
+.reassur span{font-family:'Caveat','Segoe Script','Bradley Hand',cursive;
+  font-weight:600;font-size:clamp(19px,4.6vw,23px);line-height:1.15;
+  color:var(--encre-bleue);transform:rotate(-1.5deg);transform-origin:left center}
 .trust{display:flex;align-items:center;gap:14px;margin-top:34px;flex-wrap:wrap}
 .stars{display:flex;flex-direction:column}
 .stars .s{color:var(--sun);font-size:16px;letter-spacing:2px}
