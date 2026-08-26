@@ -1,6 +1,18 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/evenements",
+      "destination": "/services",
+      "statusCode": 301
+    },
+    {
+      "source": "/evenements.html",
+      "destination": "/services",
+      "statusCode": 301
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
