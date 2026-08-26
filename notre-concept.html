@@ -44,7 +44,7 @@
         <a href="/evenements">Événements</a>
         <a href="/conseils">Conseils</a>
       </div>
-      <a href="/contact" class="btn btn-main"><span class="lbl-court">Devis gratuit</span><span class="lbl-long">Mon devis gratuit</span></a>
+      <a href="/contact" class="btn btn-main"><span class="lbl-court">Parlons-en</span><span class="lbl-long">Parlons de votre projet</span></a>
       <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -62,7 +62,7 @@
   <a href="/realisations">Réalisations</a>
   <a href="/evenements">Événements</a>
   <a href="/conseils">Conseils</a>
-  <a href="/contact" class="btn btn-main">Mon devis gratuit</a>
+  <a href="/contact" class="btn btn-main">Parlons de votre projet</a>
 </nav>
 
 <main id="contenu">
@@ -75,18 +75,22 @@
       <h1>Certains souvenirs méritent mieux qu'un fichier oublié.</h1>
       <p>On filme tous beaucoup. On regarde très peu. Studio Bobine est né de cet écart-là.</p>
     </div>
+    <div class="nc-band reveal">
+      <img src="/images/contact/fond.jpg" data-local="contact/fond.jpg" alt="Voyageur filmant un paysage au coucher du soleil" width="800" height="900" loading="eager" decoding="async">
+    </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="head reveal">
-      <h2>Un dossier plein de vidéos que personne ne rouvre.</h2>
-    </div>
-    <div class="prose reveal">
-      <p>Au départ, il y a un constat banal, presque gênant : nos téléphones débordent de moments qu'on a tenu à filmer, et qu'on ne revoit jamais. Le voyage préparé pendant un an. Les premiers pas. Le mariage d'un ami. Des heures d'images précieuses, rangées quelque part, jamais rouvertes.</p>
-      <p>Le problème n'est pas le manque d'envie. C'est que trier, couper, choisir une musique et raconter demande du temps, un peu de métier, et surtout un regard capable de prendre du recul sur ses propres souvenirs. La plupart d'entre nous n'ont ni l'un ni l'autre — et c'est parfaitement normal.</p>
-      <p><strong>Studio Bobine est né de là.</strong> Pas d'une envie de monter des vidéos, mais d'une envie de rendre leurs souvenirs à ceux qui les ont vécus.</p>
+    <div class="nc-duo reveal">
+      <div class="im"><img src="/images/hero/montagne.jpg" data-local="hero/montagne.jpg" alt="Voyageur face à un paysage de montagne" width="1600" height="1067" loading="lazy" decoding="async"></div>
+      <div class="nc-tx">
+        <h2>Un dossier plein de vidéos que personne ne rouvre.</h2>
+        <p>Au départ, il y a un constat banal, presque gênant : nos téléphones débordent de moments qu'on a tenu à filmer, et qu'on ne revoit jamais. Le voyage préparé pendant un an. Les premiers pas. Le mariage d'un ami. Des heures d'images précieuses, rangées quelque part, jamais rouvertes.</p>
+        <p>Le problème n'est pas le manque d'envie. C'est que trier, couper, choisir une musique et raconter demande du temps, un peu de métier, et surtout un regard capable de prendre du recul sur ses propres souvenirs. La plupart d'entre nous n'ont ni l'un ni l'autre — et c'est parfaitement normal.</p>
+        <p><strong>Studio Bobine est né de là.</strong> Pas d'une envie de monter des vidéos, mais d'une envie de rendre leurs souvenirs à ceux qui les ont vécus.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -112,16 +116,48 @@
   </div>
 </section>
 
+<!-- Bloc « ce que vous recevez » : les trois paragraphes d'origine deviennent
+     trois cartes, avec le composant sombre déjà utilisé sur l'accueil. -->
 <section class="why">
   <div class="wrap">
     <div class="head reveal">
       <span class="eyebrow">Ce que nous apportons</span>
       <h2>Ce que vous recevez vraiment.</h2>
+      <p>Trois choses, au fond. Aucune ne s'achète en logiciel.</p>
     </div>
-    <div class="prose reveal">
-      <p><strong>D'abord un regard extérieur.</strong> Vous connaissez vos souvenirs par cœur, et c'est justement ce qui rend le tri impossible : tout compte. Nous arrivons sans ce poids, et nous voyons ce qui tient debout tout seul.</p>
-      <p><strong>Ensuite une histoire.</strong> Un début, une respiration, une fin. Pas une succession de beaux plans, mais un récit qui se suit sans effort, avec un rythme et une émotion qui vous ressemblent plutôt qu'à un modèle.</p>
-      <p><strong>Enfin quelque chose qui dure.</strong> Un film qu'on partage sans s'excuser de sa longueur, qu'on envoie à ses parents, qu'on retrouve dans cinq ans avec la même émotion. Et, tout du long, quelqu'un à qui parler simplement.</p>
+    <div class="why-grid">
+      <div class="wcard reveal">
+        <div class="big">01</div>
+        <h3>Un regard extérieur</h3>
+        <p>Vous connaissez vos souvenirs par cœur, et c'est justement ce qui rend le tri impossible : tout compte. Nous arrivons sans ce poids, et nous voyons ce qui tient debout tout seul.</p>
+      </div>
+      <div class="wcard reveal">
+        <div class="big">02</div>
+        <h3>Une histoire, pas un empilement de plans</h3>
+        <p>Un début, une respiration, une fin. Un récit qui se suit sans effort, avec un rythme et une émotion qui vous ressemblent plutôt qu'à un modèle.</p>
+      </div>
+      <div class="wcard reveal">
+        <div class="big">03</div>
+        <h3>Quelque chose qui dure</h3>
+        <p>Un film qu'on partage sans s'excuser de sa longueur, qu'on envoie à ses parents, qu'on retrouve dans cinq ans avec la même émotion. Et quelqu'un à qui parler simplement, tout du long.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Confidentialité : même engagement que sur la page Réalisations, raconté
+     ici du point de vue du client plutôt que du portfolio. -->
+<section>
+  <div class="wrap">
+    <div class="nc-duo rev reveal">
+      <div class="im"><img src="/images/hero/famille-rando.jpg" data-local="hero/famille-rando.jpg" alt="Famille en randonnée filmée pendant ses vacances" width="1600" height="939" loading="lazy" decoding="async"></div>
+      <div class="nc-tx">
+        <span class="eyebrow">Ce qui nous distingue</span>
+        <h2>Vos images restent les vôtres.</h2>
+        <p>Vous ne verrez aucun film de client sur ce site, et c'est volontaire. Un mariage, une naissance, un voyage en famille ne sont pas des arguments de vente : ce sont des moments intimes que des gens nous ont confiés.</p>
+        <p>Concrètement : vos rushs ne servent jamais d'exemple sans votre accord écrit, ils sont supprimés de nos disques une fois le film livré, et les montages complets se regardent <a href="/realisations#confidentialite">de vive voix, pendant notre échange</a>.</p>
+        <p><strong>Le jour où ce sera votre film, vous serez content qu'on travaille comme ça.</strong></p>
+      </div>
     </div>
   </div>
 </section>
@@ -131,13 +167,13 @@
     <div class="head reveal">
       <span class="eyebrow">Notre façon de travailler</span>
       <h2>Vous n'avez rien à savoir faire.</h2>
-      <p>Aucun logiciel, aucun vocabulaire technique. Vous nous confiez vos images, on s'occupe du reste.</p>
+      <p>Aucun logiciel, aucun vocabulaire technique. De l'envoi de vos rushs au film prêt à partager, voilà tout ce qu'on vous demande.</p>
     </div>
     <div class="steps">
       <div class="step reveal"><div class="n">1</div><h3>Vous nous racontez</h3><p>Deux ou trois phrases suffisent : l'occasion, les gens, ce que vous aimeriez ressentir en le revoyant.</p></div>
       <div class="step reveal"><div class="n">2</div><h3>Vous envoyez vos images</h3><p>Un lien, un glisser-déposer depuis votre téléphone. Même en vrac, même trop nombreuses : trier, c'est notre travail.</p></div>
       <div class="step reveal"><div class="n">3</div><h3>On construit l'histoire</h3><p>On regarde tout, on cherche le fil, on monte. Vous n'avez rien à faire pendant ce temps-là.</p></div>
-      <div class="step reveal"><div class="n">4</div><h3>On ajuste ensemble</h3><p>Vous nous dites ce qui vous touche et ce qui vous gêne. On retouche jusqu'à ce que ce soit juste.</p></div>
+      <div class="step reveal"><div class="n">4</div><h3>On ajuste, puis on livre</h3><p>Vous dites ce qui vous touche et ce qui vous gêne, on retouche. Vous recevez ensuite votre film prêt à partager, dans les formats dont vous avez besoin.</p></div>
     </div>
   </div>
 </section>
@@ -158,9 +194,9 @@
   <div class="wrap">
     <div class="fcta-box reveal">
       <div class="c">
-        <h2>Prêt à voir vos souvenirs prendre vie ?</h2>
-        <p>Envoyez-nous quelques mots sur votre projet. Devis gratuit sous 24 h, sans engagement.</p>
-        <a href="/contact" class="btn">Demander mon devis gratuit →</a>
+        <h2>Dites-nous ce que vous avez filmé.</h2>
+        <p>On prend le temps de comprendre votre histoire avant de parler chiffres. Réponse sous 24 h, gratuite et sans engagement.</p>
+        <a href="/contact" class="btn">Parlons de votre projet →</a>
       </div>
     </div>
   </div>
@@ -182,7 +218,7 @@
           <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a>
         </div>
         <div class="foot-col"><h4>Contact</h4>
-          <a href="/contact">Devis gratuit</a><a href="mailto:hello.studiobobine@gmail.com">hello.studiobobine@gmail.com</a>
+          <a href="/contact">Parlons de votre projet</a><a href="mailto:hello.studiobobine@gmail.com">hello.studiobobine@gmail.com</a>
         </div>
       </div>
     </div>
@@ -194,12 +230,12 @@
 </footer>
 
 <div class="float" id="float">
-  <a class="fbtn wa" href="https://wa.me/33600000000?text=Bonjour%20Studio%20Bobine%2C%20j%27ai%20un%20projet%20vid%C3%A9o" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
-    <span class="tip">Discuter sur WhatsApp</span>
+  <a class="fbtn wa" href="https://wa.me/33600000000?text=Bonjour%20Studio%20Bobine%2C%20j%27aimerais%20vous%20parler%20d%27un%20projet" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
+    <span class="tip">Nous écrire sur WhatsApp</span>
     <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 5 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
   </a>
-  <a class="fbtn rdv" href="/contact" aria-label="Prendre rendez-vous">
-    <span class="tip">Prendre rendez-vous</span>
+  <a class="fbtn rdv" href="/contact" aria-label="Parlons de votre projet">
+    <span class="tip">Parlons de votre projet</span>
     <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
   </a>
 </div>
