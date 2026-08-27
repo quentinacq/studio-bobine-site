@@ -703,3 +703,44 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
    (#757575) plafonne à 4,37:1 sur le crème et échoue au seuil AA. */
 .devis .field input::placeholder,
 .devis .field textarea::placeholder{color:var(--ink-soft);opacity:1}
+
+/* =========================================================================
+   TIMELINE « COMMENT ÇA MARCHE » (/services)
+
+   Deux colonnes sur grand écran : le titre et son introduction tiennent la
+   gauche, les étapes défilent à droite le long d'un trait pointillé. Sur
+   mobile la colonne de texte passe au-dessus et la timeline s'étire.
+
+   Namespace propre : l'ancien composant .steps reste utilisé tel quel par
+   /notre-concept et n'est pas touché.
+   ========================================================================= */
+.proc-duo{display:grid;grid-template-columns:1fr;gap:clamp(32px,6vw,52px);align-items:start}
+.proc-intro h2{font-size:clamp(28px,6.4vw,44px);letter-spacing:-.02em;margin-bottom:14px}
+.proc-intro p{font-size:clamp(16px,4.2vw,17.5px);color:var(--ink-soft);max-width:40ch}
+.proc-lien{display:inline-flex;align-items:center;gap:9px;margin-top:22px;min-height:var(--tap);
+  font-weight:600;font-size:15px;color:var(--accent-fort);
+  border-bottom:1.5px solid var(--line);padding-bottom:5px;transition:border-color .2s,gap .2s}
+.proc-lien:hover{border-bottom-color:var(--accent-fort);gap:14px}
+
+.tl{--puce:clamp(48px,9vw,58px);list-style:none;display:flex;flex-direction:column}
+.tl-etape{display:grid;grid-template-columns:var(--puce) 1fr;gap:clamp(16px,3.4vw,26px);
+  position:relative;padding-bottom:clamp(26px,4.4vw,38px)}
+.tl-etape:last-child{padding-bottom:0}
+/* Le trait relie le bas d'une pastille au haut de la suivante. Il part du
+   centre horizontal de la pastille, d'où le décalage d'une demi-largeur. */
+.tl-etape:not(:last-child)::before{content:"";position:absolute;z-index:1;
+  left:calc(var(--puce) / 2 - 1px);top:var(--puce);bottom:0;
+  border-left:2px dashed rgba(232,72,42,.28)}
+.tl-puce{width:var(--puce);height:var(--puce);border-radius:50%;background:var(--cream);
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;position:relative;z-index:2;box-shadow:0 6px 18px var(--shadow)}
+.tl-puce svg{width:clamp(20px,4vw,23px);height:clamp(20px,4vw,23px);color:var(--accent-fort)}
+.tl-txt{padding-top:clamp(4px,1vw,8px)}
+.tl-num{display:block;font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:600;
+  font-size:14px;color:var(--accent-fort);line-height:1;margin-bottom:7px}
+.tl-txt h3{font-size:clamp(19px,4.6vw,23px);margin-bottom:8px}
+.tl-txt p{font-size:clamp(15px,4vw,16px);color:var(--ink-soft);max-width:46ch}
+
+@media(min-width:901px){
+  .proc-duo{grid-template-columns:.8fr 1.2fr;gap:clamp(48px,6vw,86px)}
+}
