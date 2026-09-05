@@ -218,15 +218,23 @@ body.menu-open header{z-index:97}
 .plan.feat{border-color:var(--coral);background:linear-gradient(180deg,#fff6f2,var(--paper));position:relative;box-shadow:0 20px 50px rgba(255,107,74,.18)}
 .plan.feat::before{content:"⭐ Le plus demandé";position:absolute;top:-15px;left:50%;transform:translateX(-50%);
   background:var(--coral);color:#fff;font-size:13px;font-weight:700;font-family:'DM Sans';padding:6px 18px;border-radius:100px;white-space:nowrap}
-.plan .tier{font-family:'Fraunces';font-size:23px;font-weight:600;margin-bottom:6px}
-.plan .price{font-family:'Fraunces';font-size:46px;font-weight:700;color:var(--coral-deep);line-height:1;margin:8px 0}
+/* Le rythme vertical des cartes est porté par le padding des enfants, jamais
+   par un gap : c'est ce qui permet à la grille en subgrid (>= 921px) d'aligner
+   ligne à ligne les trois colonnes sans décaler l'espacement. */
+.plan .tier{font-family:'Fraunces';font-size:23px;font-weight:600;padding-bottom:6px}
+.plan .price{font-family:'Fraunces';font-size:46px;font-weight:700;color:var(--coral-deep);line-height:1;padding:8px 0}
 .plan .price small{font-size:16px;color:var(--ink-soft);font-weight:400;font-family:'DM Sans'}
 .plan .desc{font-size:15px;color:var(--ink-soft);margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid var(--line)}
-.plan ul{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:26px;flex:1}
-.plan li{font-size:15px;display:flex;gap:11px;align-items:flex-start}
+.plan ul{list-style:none;display:flex;flex-direction:column;flex:1}
+.plan li{font-size:15px;display:flex;gap:11px;align-items:flex-start;padding-bottom:13px}
 .plan li .ck{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#e5f5f2;color:var(--teal);
   display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-top:2px}
-.plan .btn{width:100%}
+.plan .btn{width:100%;align-self:end;margin-top:13px}
+
+/* Mention des options payantes, sous la grille des formules */
+.plans-note{margin:28px auto 0;max-width:680px;text-align:center;font-size:15.5px;color:var(--ink-soft)}
+.plans-note a{color:var(--coral-deep);font-weight:600}
+.plans-note a:hover{color:var(--coral)}
 
 .folio{display:grid;grid-template-columns:1fr;grid-auto-rows:190px;gap:16px}
 /* Vignettes du portfolio : aucune lecture vidéo n'est proposée, d'où l'absence
@@ -420,14 +428,21 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:56px 0 3
   background:var(--cream);transition:border-color .2s,background .2s,color .2s;user-select:none}
 .opt:hover{border-color:var(--coral)}
 .opt.active{border-color:var(--coral);background:var(--coral);color:#fff}
-.opt-check{display:flex;align-items:center;gap:10px;border:2px solid var(--line);border-radius:13px;padding:12px 15px;cursor:pointer;
-  font-size:14.5px;min-height:var(--tap);background:var(--cream);transition:border-color .2s,background .2s;flex:1 1 100%}
+/* Les options se lisent en une seule colonne : le libellé occupe la place
+   restante, le prix reste dans une colonne fixe alignée à droite. */
+.opts-check{display:grid;gap:8px}
+.opt-check{display:flex;align-items:center;gap:12px;border:2px solid var(--line);border-radius:13px;padding:11px 14px;cursor:pointer;
+  font-size:14.5px;min-height:var(--tap);background:var(--cream);transition:border-color .2s,background .2s}
 .opt-check:hover{border-color:var(--teal)}
 .opt-check.active{border-color:var(--teal);background:#e5f5f2}
 .opt-check .box{width:20px;height:20px;border-radius:6px;border:2px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;transition:background .2s,border-color .2s}
 .opt-check.active .box{background:var(--teal);border-color:var(--teal)}
-.opt-check .lbl{font-weight:500}
-.opt-check .pr{margin-left:auto;font-size:13.5px;color:var(--ink-soft);font-weight:600}
+/* Pas de césure sur les libellés : ils tiennent sur une ligne ou passent à la
+   ligne entre deux mots, jamais au milieu d'un mot. */
+.opt-check .lbl{flex:1;min-width:0;font-weight:500;overflow-wrap:normal;word-break:keep-all;hyphens:none}
+.opt-check .pr{flex-shrink:0;min-width:62px;text-align:right;white-space:nowrap;
+  font-size:13.5px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink-soft);transition:color .2s}
+.opt-check.active .pr{color:var(--teal)}
 .calc-result{background:linear-gradient(160deg,#2a2320,#1c1714);color:#f0e6da;padding:clamp(28px,5vw,38px) clamp(22px,5vw,34px);display:flex;flex-direction:column;justify-content:center}
 .calc-result .rlabel{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#a99883;margin-bottom:8px;font-weight:600}
 .calc-result .ramount{font-family:'Fraunces';font-size:clamp(42px,10vw,52px);font-weight:700;color:#fff;line-height:1;margin-bottom:6px}
@@ -441,6 +456,7 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:56px 0 3
 .calc-result .rnote{font-size:13px;color:#a99883;text-align:center;margin-top:12px}
 
 /* Accessibilité */
+#estimation{scroll-margin-top:96px}
 .skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--coral);color:#fff;padding:12px 20px;border-radius:0 0 12px 0;font-weight:600;font-size:14px}
 .skip:focus{left:0}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.opt:focus-visible,.opt-check:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
@@ -470,7 +486,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .contact-l{padding:46px 40px}
   .contact-r{padding:44px 40px}
   .quote{padding:40px 44px}
-  .opt-check{flex:1 1 calc(50% - 5px);min-width:180px}
   .fbtn{width:56px;height:56px}
   .fbtn .tip{display:block}
   .float{right:22px;bottom:22px}
@@ -485,7 +500,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .plan li .ck,.ba-tag,.ba-card li .mk,.opt-check .box,.calc-result .rnote{font-size:12px}
   .post .cat{font-size:12px}
   .folio .cell .meta .s,.post .meta-r{font-size:12.5px}
-  .tcard .person .rl,.opt-check .pr{font-size:13px}
+  .tcard .person .rl{font-size:13px}
   .post .rd{font-size:14px}
   .stat .l{font-size:15px}
   .stars small,.calc-result .rline{font-size:13.5px}
@@ -510,7 +525,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .collage{height:520px;order:0}
   .icp-grid,.steps{grid-template-columns:repeat(4,1fr)}
   .step:not(:last-child)::after{display:block}
-  .price-grid{grid-template-columns:repeat(3,1fr)}
+  /* Les trois formules passent en colonnes. Le rythme vertical vient du padding
+     des enfants : on annule donc l'espace entre les lignes de la grille, que le
+     subgrid ci-dessous reprend tel quel. */
+  .price-grid{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px;row-gap:0}
   .folio{grid-template-columns:repeat(6,1fr)}
   .a{grid-column:span 4;grid-row:span 2}
   .b,.c,.d{grid-column:span 2;grid-row:span 1}
@@ -522,6 +540,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .tgrid{grid-template-columns:repeat(3,1fr)}
   .blog-grid{grid-template-columns:repeat(3,1fr)}
   .trust{flex-wrap:nowrap}
+}
+
+/* Alignement ligne à ligne des trois formules (>= 921px).
+   Chaque carte devient un subgrid de la grille des formules : titre, prix,
+   description, puces 1 à 6 et bouton occupent les mêmes dix pistes d'une
+   colonne à l'autre, même quand un libellé passe sur deux lignes.
+   Les navigateurs sans subgrid gardent la mise en page en colonne flex. */
+@supports (grid-template-rows:subgrid){
+  @media(min-width:921px){
+    .price-grid{grid-template-rows:repeat(10,auto)}
+    .price-grid>.plan{grid-row:1/-1;display:grid;grid-template-rows:subgrid;row-gap:0}
+    .price-grid>.plan>ul{display:grid;grid-template-rows:subgrid;grid-row:span 6;row-gap:0}
+  }
 }
 
 /* Ordinateur : le menu complet tient enfin dans la barre */

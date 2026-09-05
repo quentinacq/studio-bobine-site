@@ -142,7 +142,7 @@
 
   // Calculateur de devis
   (function(){
-    const calc=document.getElementById('devis');
+    const calc=document.getElementById('estimation')||document.getElementById('devis');
     if(!calc)return;
     // Groupes à choix unique
     calc.querySelectorAll('.opts[data-group]').forEach(group=>{
