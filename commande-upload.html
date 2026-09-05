@@ -158,12 +158,15 @@
 
 <script>
   const FORMULES = {
-    essentiel: { tier:'Essentiel', prix:89, dureeFinale:'jusqu\'à 3 min de vidéo finale', maxRushSec:15*60, maxRushLabel:'15 min' },
-    standard:  { tier:'Standard',  prix:189, dureeFinale:'jusqu\'à 10 min de vidéo finale', maxRushSec:60*60, maxRushLabel:'1 h' }
+    standard: { tier:'Standard', prix:89,  dureeFinale:'jusqu\'à 3 min de vidéo finale', maxRushSec:60*60,   maxRushLabel:'1 h' },
+    avance:   { tier:'Avancé',   prix:189, dureeFinale:'jusqu\'à 7 min de vidéo finale', maxRushSec:3*60*60, maxRushLabel:'3 h' }
   };
+  // Anciens liens (avant le renommage Essentiel/Standard → Standard/Avancé)
+  const ALIAS = { essentiel:'standard' };
 
   const params = new URLSearchParams(location.search);
-  const formuleKey = FORMULES[params.get('formule')] ? params.get('formule') : 'essentiel';
+  const demande = ALIAS[params.get('formule')] || params.get('formule');
+  const formuleKey = FORMULES[demande] ? demande : 'standard';
   const formule = FORMULES[formuleKey];
 
   document.getElementById('planTier').textContent = 'Formule ' + formule.tier;
