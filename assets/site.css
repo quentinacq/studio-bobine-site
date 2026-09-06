@@ -44,6 +44,14 @@ img{display:block;max-width:100%}
 /* Les mots longs ne débordent jamais sur un écran étroit */
 h1,h2,h3,h4,p,li,blockquote,a{overflow-wrap:break-word}
 
+/* Révélation au défilement. Volontairement déclarée ici, dans la couche de
+   base : à spécificité égale, la dernière règle gagne. Placée après les
+   composants, .reveal.in{transform:none} écrasait tous les .xxx:hover qui
+   soulèvent une carte, et le survol restait sans effet une fois l'élément
+   révélé. La classe .in est posée par site.js. */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
 /* Gouttières et rythme vertical fluides : resserrés sur mobile, amples sur grand écran */
 .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,26px)}
 section{padding:clamp(56px,9vw,88px) 0}
@@ -235,6 +243,40 @@ body.menu-open header{z-index:97}
 .plans-note{margin:28px auto 0;max-width:680px;text-align:center;font-size:15.5px;color:var(--ink-soft)}
 .plans-note a{color:var(--coral-deep);font-weight:600}
 .plans-note a:hover{color:var(--coral)}
+
+/* Aperçu du portfolio sur l'accueil.
+   Composant distinct de la mosaïque .folio de /realisations : cellules à ratio
+   fixe (16/9 en pleine largeur, 4/5 en colonne simple), badge de durée et titre
+   en surimpression. Le nombre de colonnes est fixé par palier plutôt que par
+   auto-fit : avec deux cellules « span 2 » à la suite, un palier à trois
+   colonnes laisserait un trou en fin de grille. */
+.pf-head{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-end;justify-content:space-between;
+  margin-bottom:clamp(28px,5vw,40px)}
+.pf-head .head{margin:0;text-align:left;max-width:600px}
+.pf-head .head h2{margin-bottom:0}
+.pf-all{display:inline-flex;align-items:center;gap:6px;font-size:15.5px;font-weight:600;
+  min-height:var(--tap);transition:gap .2s}
+.pf-all:hover{gap:10px;color:var(--coral-deep)}
+
+.pf-grid{display:grid;grid-template-columns:1fr;gap:22px}
+.pf-cell{position:relative;display:block;border-radius:20px;overflow:hidden;aspect-ratio:4/5;
+  box-shadow:0 8px 22px var(--shadow);transition:transform .3s,box-shadow .3s}
+.pf-cell.wide{aspect-ratio:16/9}
+.pf-cell:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(90,60,40,.2)}
+.pf-cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.pf-cell:hover img{transform:scale(1.07)}
+.pf-scrim{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(30,20,15,.72))}
+.pf-duration{position:absolute;left:16px;top:16px;z-index:2;display:flex;align-items:center;gap:8px;
+  background:#fff;border-radius:100px;padding:8px 14px 8px 10px;font-size:13px;font-weight:600;color:var(--ink)}
+/* Triangle « lecture » en pur CSS, comme la pastille du hero : aucune icône. */
+.pf-duration .tri{flex-shrink:0;width:0;height:0;border-left:8px solid var(--coral);
+  border-top:5px solid transparent;border-bottom:5px solid transparent}
+.pf-meta{position:absolute;left:20px;right:20px;bottom:20px;z-index:2;color:#fff}
+.pf-meta .t{display:block;font-family:'Fraunces';font-weight:600;font-size:21px;line-height:1.1}
+.pf-meta .s{display:block;font-size:13px;color:rgba(255,255,255,.82);margin-top:5px}
+.pf-cell.wide .pf-meta{left:24px;right:24px;bottom:22px}
+.pf-cell.wide .pf-meta .t{font-size:26px}
+.pf-cell.wide .pf-meta .s{font-size:13.5px;margin-top:6px}
 
 .folio{display:grid;grid-template-columns:1fr;grid-auto-rows:190px;gap:16px}
 /* Vignettes du portfolio : aucune lecture vidéo n'est proposée, d'où l'absence
@@ -461,9 +503,6 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:56px 0 3
 .skip:focus{left:0}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.opt:focus-visible,.opt-check:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-
 /* ---------- 3. Enrichissements progressifs ---------- */
 
 /* Grands téléphones en paysage et petites tablettes */
@@ -482,6 +521,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .icp-grid,.steps{grid-template-columns:1fr 1fr}
   .row2{grid-template-columns:1fr 1fr}
   .folio{grid-template-columns:repeat(2,1fr)}
+  .pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pf-cell.wide{grid-column:span 2}
   .a,.b,.c,.d,.e,.f{grid-column:span 2;grid-row:span 1}
   .contact-l{padding:46px 40px}
   .contact-r{padding:44px 40px}
@@ -530,6 +571,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
      subgrid ci-dessous reprend tel quel. */
   .price-grid{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px;row-gap:0}
   .folio{grid-template-columns:repeat(6,1fr)}
+  .pf-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
   .a{grid-column:span 4;grid-row:span 2}
   .b,.c,.d{grid-column:span 2;grid-row:span 1}
   .e,.f{grid-column:span 3;grid-row:span 1}
@@ -566,6 +608,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
+  /* Les soulèvements de cartes sont supprimés, pas seulement rendus
+     instantanés par la coupure des transitions ci-dessus. */
+  .icp:hover,.plan:hover,.tcard:hover,.post:hover,.pf-cell:hover,.pf-cell:hover img{transform:none}
   html{scroll-behavior:auto}
 }
 
@@ -577,8 +622,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .apres-bloc{display:grid;gap:clamp(24px,5vw,44px);max-width:960px;margin:0 auto;
   background:var(--cream);border:1px solid var(--line);border-radius:26px;padding:clamp(24px,5vw,40px)}
 .apres-qui{text-align:center}
-.apres-qui img{width:112px;height:112px;border-radius:50%;object-fit:cover;margin:0 auto 16px;
-  border:5px solid var(--paper);box-shadow:0 12px 30px var(--shadow)}
+.apres-qui img{width:112px;height:112px;border-radius:50%;object-fit:contain;margin:0 auto 16px;
+  background:var(--paper);padding:14px;border:5px solid var(--paper);box-shadow:0 12px 30px var(--shadow)}
 .apres-sig{font-family:'Fraunces';font-style:italic;font-size:clamp(17px,4.4vw,19.5px);
   line-height:1.34;color:var(--ink);max-width:34ch;margin:0 auto 8px}
 .apres-nom{font-size:13.5px;color:var(--ink-soft);font-weight:600}
