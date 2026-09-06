@@ -214,7 +214,10 @@ body.menu-open header{z-index:97}
 
 .price-grid{display:grid;grid-template-columns:1fr;gap:24px;align-items:stretch}
 .plan{background:var(--paper);border:2px solid var(--line);border-radius:26px;padding:34px 30px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
-.plan:hover{transform:translateY(-6px);box-shadow:0 20px 44px var(--shadow)}
+/* Sélecteur volontairement plus spécifique que .reveal.in, déclaré plus bas :
+   à spécificité égale il gagnait et remettait transform:none, ce qui annulait
+   le soulèvement au survol. */
+.price-grid .plan:hover{transform:translateY(-6px);box-shadow:0 20px 44px var(--shadow)}
 .plan.feat{border-color:var(--coral);background:linear-gradient(180deg,#fff6f2,var(--paper));position:relative;box-shadow:0 20px 50px rgba(255,107,74,.18)}
 .plan.feat::before{content:"⭐ Le plus demandé";position:absolute;top:-15px;left:50%;transform:translateX(-50%);
   background:var(--coral);color:#fff;font-size:13px;font-weight:700;font-family:'DM Sans';padding:6px 18px;border-radius:100px;white-space:nowrap}
@@ -605,9 +608,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
-  /* Le soulèvement et le zoom des vignettes du portfolio sont supprimés, pas
-     seulement rendus instantanés. */
-  .pf-grid .pf-cell:hover,.pf-cell:hover img{transform:none}
+  /* Soulèvements supprimés, pas seulement rendus instantanés. */
+  .pf-grid .pf-cell:hover,.pf-cell:hover img,.price-grid .plan:hover{transform:none}
   html{scroll-behavior:auto}
 }
 
