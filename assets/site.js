@@ -4,7 +4,22 @@
 'use strict';
 
   const hd=document.getElementById('hd');
-  if(hd){window.addEventListener('scroll',()=>{hd.classList.toggle('scrolled',window.scrollY>20)},{passive:true});}
+  // Barre de progression de lecture (accueil). Elle partage l'ecouteur de
+  // l'en-tete : un seul passage par evenement de defilement.
+  const progress=document.getElementById('progress');
+  if(hd||progress){
+    const onScroll=()=>{
+      const y=window.scrollY;
+      if(hd)hd.classList.toggle('scrolled',y>20);
+      if(progress){
+        const max=document.documentElement.scrollHeight-window.innerHeight;
+        progress.style.width=(max>0?Math.min(y/max,1)*100:0)+'%';
+      }
+    };
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll,{passive:true});
+    onScroll();
+  }
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*70)+'ms';io.observe(el)});
   // === Formspree : remplacez VOTRE_ID_CONTACT par l'ID de votre formulaire Formspree ===
@@ -122,8 +137,8 @@
       if(y<800){
         const p1=collage.querySelector('.p1'),p2=collage.querySelector('.p2'),p3=collage.querySelector('.p3');
         if(p1)p1.style.transform='rotate(2deg) translateY('+(y*-0.04)+'px)';
-        if(p2)p2.style.transform='rotate(-3deg) translateY('+(y*0.05)+'px)';
-        if(p3)p3.style.transform='rotate(-6deg) translateY('+(y*-0.03)+'px)';
+        if(p2)p2.style.transform='rotate(-2deg) translateY('+(y*0.05)+'px)';
+        if(p3)p3.style.transform='rotate(-3deg) translateY('+(y*-0.03)+'px)';
       }
     },{passive:true});
   }
