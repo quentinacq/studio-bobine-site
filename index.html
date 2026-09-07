@@ -13,13 +13,13 @@
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Studio Bobine">
-<meta property="og:title" content="Studio Bobine — Vos plus beaux voyages, montés en vraie histoire">
+<meta property="og:title" content="Studio Bobine — Vos plus beaux moments, montés en vraie histoire">
 <meta property="og:description" content="Envoyez vos rushs, recevez un montage pro en 48 h. Vlogs, voyages, famille, Reels & Shorts. Dès 89€, aucun logiciel à installer. Devis gratuit sous 24 h.">
 <meta property="og:url" content="https://www.studiobobine.fr/">
 <meta property="og:image" content="https://www.studiobobine.fr/images/og-cover.jpg">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Studio Bobine — Vos plus beaux voyages, montés en vraie histoire">
+<meta name="twitter:title" content="Studio Bobine — Vos plus beaux moments, montés en vraie histoire">
 <meta name="twitter:description" content="Envoyez vos rushs, recevez un montage pro en 48 h. Vlogs, voyages, famille, Reels & Shorts. Dès 89€, aucun logiciel à installer. Devis gratuit sous 24 h.">
 <meta name="twitter:image" content="https://www.studiobobine.fr/images/og-cover.jpg">
 <meta name="theme-color" content="#ff6b4a">
@@ -42,6 +42,7 @@
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <header id="hd">
   <div class="wrap">
     <nav>
@@ -74,13 +75,14 @@
 </nav>
 
 <main id="contenu">
-<section class="hero">
+<section class="hero accueil">
   <div class="blob b1"></div>
   <div class="blob b2"></div>
   <div class="wrap hero-inner">
     <div>
-      <h1>Vos plus beaux <em>voyages</em>,<br>montés en <span class="u">vraie histoire</span>.</h1>
-      <p class="lead">Vous filmez, on transforme vos rushs en vidéos qui donnent des frissons. Pour les créateurs, les couples et les familles qui veulent garder leurs souvenirs vivants.</p>
+      <p class="dispo"><span class="pt" aria-hidden="true"></span>3 places de montage libres cette semaine</p>
+      <h1>Vos plus beaux<br><em>moments</em>,<br>montés en vraie<br><span class="u">histoire.</span></h1>
+      <p class="lead">Vous nous confiez vos souvenirs, nous les transformons en vidéos exceptionnelles, à garder, à partager ou à offrir à ceux que vous aimez. Pour chaque moment précieux.</p>
       <div class="hero-cta">
         <a href="/contact" class="btn btn-main">Demander mon devis →</a>
         <a href="/realisations" class="btn btn-out">Voir nos réalisations</a>
@@ -101,10 +103,12 @@
           <img src="/images/avatars/client-3.jpg" data-local="avatars/client-3.jpg" alt="Créateur de contenu client de Studio Bobine" loading="eager" width="120" height="120">
           <img src="/images/avatars/client-4.jpg" data-local="avatars/client-4.jpg" alt="Vlogueuse cliente de Studio Bobine" loading="eager" width="120" height="120">
         </div>
-        <div class="stars">
-          <div class="s">★★★★★</div>
-          <small>+300 vidéos livrées à des clients ravis</small>
+        <div class="note">
+          <span class="s" aria-hidden="true">★★★★★</span>
+          <span class="n">4,9/5</span>
         </div>
+        <span class="sep" aria-hidden="true"></span>
+        <small>+35 vidéos livrées à des clients ravis</small>
       </div>
     </div>
     <div class="collage">
@@ -116,10 +120,13 @@
   </div>
 </section>
 
-<div class="strip">
-  <div class="track">
-    <span>Vlogs de voyage <span class="dot">✦</span> Souvenirs de famille <span class="dot">✦</span> Reels &amp; Shorts <span class="dot">✦</span> Road-trips <span class="dot">✦</span> Demandes en mariage <span class="dot">✦</span> Aftermovies <span class="dot">✦</span></span>
-    <span>Vlogs de voyage <span class="dot">✦</span> Souvenirs de famille <span class="dot">✦</span> Reels &amp; Shorts <span class="dot">✦</span> Road-trips <span class="dot">✦</span> Demandes en mariage <span class="dot">✦</span> Aftermovies <span class="dot">✦</span></span>
+<!-- Bandeau défilant. Le second jeu de mots est un doublon décoratif :
+     c'est lui qui permet de reboucler sans saut (translateX -50%). Il est
+     masqué aux lecteurs d'écran pour ne pas répéter la liste. -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-set"><span class="m">Vlogs de voyage</span><span class="d" aria-hidden="true">✦</span><span class="m">Souvenirs de famille</span><span class="d" aria-hidden="true">✦</span><span class="m">Reels &amp; Shorts</span><span class="d" aria-hidden="true">✦</span><span class="m">Road-trips</span><span class="d" aria-hidden="true">✦</span><span class="m">Demandes en mariage</span><span class="d" aria-hidden="true">✦</span><span class="m">Aftermovies</span><span class="d" aria-hidden="true">✦</span></span>
+    <span class="ticker-set" aria-hidden="true"><span class="m">Vlogs de voyage</span><span class="d" aria-hidden="true">✦</span><span class="m">Souvenirs de famille</span><span class="d" aria-hidden="true">✦</span><span class="m">Reels &amp; Shorts</span><span class="d" aria-hidden="true">✦</span><span class="m">Road-trips</span><span class="d" aria-hidden="true">✦</span><span class="m">Demandes en mariage</span><span class="d" aria-hidden="true">✦</span><span class="m">Aftermovies</span><span class="d" aria-hidden="true">✦</span></span>
   </div>
 </div>
 
@@ -169,70 +176,64 @@
   </div>
 </section>
 
-<section class="fcta">
-  <div class="wrap">
-    <!-- Variante « duo » : texte à gauche, actions à droite. Réservée à
-         l'accueil — les autres pages gardent le bloc centré d'origine. -->
-    <div class="fcta-box duo reveal">
-      <div class="c">
-        <div class="fcta-l">
-          <h2>Vos rushs dorment quelque part.</h2>
-          <p>Dites-nous ce que vous avez filmé. On vous répond sous 24h avec un devis gratuit, et vous décidez ensuite — ou pas.</p>
+<!-- Relance devis. Variante « bande » propre à l'accueil : pleine largeur,
+     filet sun en haut, texte à gauche et actions à droite. Les autres pages
+     gardent le bloc arrondi et centré. -->
+<section class="fcta bande">
+  <div class="fcta-box duo reveal">
+    <div class="c wrap">
+      <div class="fcta-l">
+        <h2>Vos vidéos dorment quelque part.</h2>
+        <p>Dites-nous ce que vous avez filmé. On vous répond sous 24h avec un devis gratuit, et vous décidez ensuite.</p>
+      </div>
+      <div class="fcta-r">
+        <a href="/contact" class="btn">Demander mon devis →</a>
+        <div class="fcta-liens">
+          <a href="https://instagram.com/studiobobine" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+          <span class="sep" aria-hidden="true"></span>
+          <a href="mailto:hello.studiobobine@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
         </div>
-        <div class="fcta-r">
-          <a href="/contact" class="btn">Demander mon devis →</a>
-          <div class="fcta-liens">
-            <a href="https://wa.me/33600000000?text=Bonjour%20Studio%20Bobine%2C%20j%27aimerais%20vous%20parler%20d%27un%20projet" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 5 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>WhatsApp</a>
-            <span class="sep" aria-hidden="true"></span>
-            <a href="mailto:hello.studiobobine@gmail.com">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
-          </div>
-          <p class="fcta-note">Gratuit, sans engagement, réponse sous 24h.</p>
-        </div>
+        <p class="fcta-note">Gratuit, sans engagement, réponse sous 24h.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="stats">
+<!-- Pourquoi nous. Deux colonnes propres à l'accueil (.pq-*) : l'argumentaire
+     et la citation à gauche, les trois preuves chiffrées à droite. Les autres
+     pages gardent la grille .why-grid sur fond encre. -->
+<section class="pq" id="pourquoi">
   <div class="wrap">
-    <div class="stats-grid">
-      <div class="stat reveal"><div class="n" data-to="300" data-suffix="+">0</div><div class="l">vidéos livrées</div></div>
-      <div class="stat reveal"><div class="n" data-to="48" data-suffix=" h">0</div><div class="l">délai moyen</div></div>
-      <div class="stat reveal"><div class="n" data-to="4.9" data-suffix="/5" data-dec="1">0</div><div class="l">note moyenne</div></div>
-      <div class="stat reveal"><div class="n" data-to="92" data-suffix="%">0</div><div class="l">de clients qui reviennent</div></div>
-    </div>
-  </div>
-</div>
-
-<section class="why">
-  <div class="wrap">
-    <div class="head reveal">
-      <span class="eyebrow">Pourquoi nous</span>
-      <h2>Le soin d'un studio, l'écoute d'un ami.</h2>
-    </div>
-    <div class="why-grid">
-      <div class="wcard reveal"><div class="big">48 h</div><h3>Rapidité tenue</h3><p>Un délai annoncé et respecté. Votre calendrier de publication n'attend pas, nous non plus.</p></div>
-      <div class="wcard reveal"><div class="big">1 pour 1</div><h3>Un vrai interlocuteur</h3><p>Vous parlez directement à votre monteur. Pas de robot ni de service anonyme entre vous et le projet.</p></div>
-      <div class="wcard reveal"><div class="big">100%</div><h3>À votre image</h3><p>Chaque montage part de vos références et de votre ligne. On s'efface derrière votre style.</p></div>
-    </div>
-    <div class="quote reveal">
-      <img src="/images/avatars/camille-theo.jpg" data-local="avatars/camille-theo.jpg" alt="Portrait cliente" width="400" height="400" loading="lazy" decoding="async">
-      <div>
-        <blockquote>« On leur a envoyé 3 h de rushs de notre voyage au Japon. Ils en ont fait un petit film qu'on a regardé en pleurant. Exactement notre histoire. »</blockquote>
-        <div class="who">— Camille &amp; Théo, vlog en couple</div>
+    <div class="pq-grid">
+      <div class="pq-intro reveal">
+        <span class="eyebrow">Pourquoi nous</span>
+        <h2>Le soin d'un studio, l'écoute d'un ami.</h2>
+        <figure class="pq-quote">
+          <blockquote>« On leur a envoyé 3 h de rushs de notre voyage au Japon. Ils en ont fait un petit film qu'on a regardé en pleurant. »</blockquote>
+          <figcaption>
+            <img src="/images/avatars/camille-theo.jpg" data-local="avatars/camille-theo.jpg" alt="" width="400" height="400" loading="lazy" decoding="async">
+            <span>Camille &amp; Théo, vlog en couple</span>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="pq-cards">
+        <div class="pq-card reveal"><span class="pq-n">48 h</span><div><h3>Rapidité tenue</h3><p>Un délai annoncé et respecté. Votre calendrier de publication n'attend pas, nous non plus.</p></div></div>
+        <div class="pq-card reveal"><span class="pq-n">1:1</span><div><h3>Un vrai interlocuteur</h3><p>Vous parlez directement à votre monteur. Pas de robot ni de service anonyme entre vous et le projet.</p></div></div>
+        <div class="pq-card reveal"><span class="pq-n">100%</span><div><h3>À votre image</h3><p>Chaque montage part de vos références et de votre ligne. On s'efface derrière votre style.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="avis">
+<section class="avis" id="avis">
   <div class="wrap">
     <div class="head reveal">
       <span class="eyebrow">Avis clients</span>
       <h2>Ils nous ont confié leurs souvenirs.</h2>
       <p>Créateurs, couples, familles : voici ce qu'ils disent après avoir reçu leur vidéo.</p>
+      <p class="avis-note"><span class="s" aria-hidden="true">★★★★★</span><span class="n">4,9/5</span><span class="c">sur 35 avis</span></p>
     </div>
     <div class="tgrid">
       <div class="tcard reveal">
@@ -256,7 +257,7 @@
 
 <!-- Ce qui se passe APRÈS le clic. Complète « Le soin d'un studio » (qui dit
      pourquoi nous) en répondant à une autre question : et ensuite ? -->
-<section class="apres" id="apres">
+<section class="apres clair" id="apres">
   <div class="wrap">
     <div class="head reveal">
       <span class="eyebrow">Après votre message</span>
@@ -277,7 +278,12 @@
     </div>
     <div class="apres-fin reveal">
       <a href="/contact" class="btn btn-main">Parlons de votre projet →</a>
-      <p>C'est gratuit et sans engagement. Et si nous ne sommes pas les bonnes personnes pour votre film, on vous le dira aussi.</p>
+      <ul class="apres-plus">
+        <li><span aria-hidden="true">⚡</span> Réponse sous 24 h</li>
+        <li><span aria-hidden="true">💬</span> Un échange, pas un formulaire</li>
+        <li><span aria-hidden="true">🎁</span> Devis gratuit, sans engagement</li>
+      </ul>
+      <p>Et si nous ne sommes pas les bonnes personnes pour votre film, on vous le dira aussi.</p>
     </div>
   </div>
 </section>
@@ -311,9 +317,9 @@
 </footer>
 
 <div class="float" id="float">
-  <a class="fbtn wa" href="https://wa.me/33600000000?text=Bonjour%20Studio%20Bobine%2C%20j%27aimerais%20vous%20parler%20d%27un%20projet" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
-    <span class="tip">Nous écrire sur WhatsApp</span>
-    <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.9-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 5 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
+  <a class="fbtn ig" href="https://instagram.com/studiobobine" target="_blank" rel="noopener" aria-label="Nous suivre sur Instagram">
+    <span class="tip">Nous suivre sur Instagram</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="#fff" stroke="none"/></svg>
   </a>
   <a class="fbtn rdv" href="/contact" aria-label="Parlons de votre projet">
     <span class="tip">Parlons de votre projet</span>
