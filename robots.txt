@@ -3,16 +3,5 @@
 User-agent: *
 Allow: /
 
-# --- Pages non publiques : documents de travail, maquettes de style,
-# --- tunnel de commande. Elles portent aussi une balise noindex.
-Disallow: /checklist-lancement
-Disallow: /feuille-de-route
-Disallow: /styles-comparateur
-Disallow: /style-brutaliste
-Disallow: /style-editorial-couleurs
-Disallow: /montage-video
-Disallow: /commande-upload
-Disallow: /commande-confirmation
-
 # Emplacement du plan du site
 Sitemap: https://www.studiobobine.fr/sitemap.xml
