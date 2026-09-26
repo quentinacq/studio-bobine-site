@@ -1023,7 +1023,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .apres-plus li{font-size:14.5px;color:var(--ink-soft)}
 
 /* ---------- Action flottante Instagram ---------- */
-.fbtn.ig{background:var(--ink)}
+.fbtn.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
 
 @media(min-width:761px){
   /* Dans la bande, la colonne d'actions reste alignée à gauche comme sur la
