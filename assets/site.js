@@ -135,11 +135,13 @@
       let opts=0;
       calc.querySelectorAll('.opt-check.active').forEach(c=>opts+=parseInt(c.dataset.val));
       const total=base+complexite+opts;
-      // Délai selon la durée
+      // Délai : celui des formules affichées plus haut. L'option express
+      // prime ; au-delà de la formule Avancé, le délai se fixe au devis.
       const duree=val('duree');
-      let delay='Livraison estimée en 72 h';
-      if(duree>=329)delay='Livraison estimée en 5 à 7 jours';
-      else if(duree>=189)delay='Livraison estimée en 48 h';
+      const express=calc.querySelector('.opt-check[data-express].active');
+      let delay='Délai confirmé dans votre devis';
+      if(express)delay='Livraison express en moins de 72 h';
+      else if(duree===189)delay='Livraison estimée entre 7 et 12 jours';
       document.getElementById('calcTotal').textContent=total;
       document.getElementById('calcBase').textContent=base+'€';
       document.getElementById('calcExtra').textContent='+'+complexite+'€';
