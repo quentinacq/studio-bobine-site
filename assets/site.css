@@ -451,7 +451,6 @@ footer{background:var(--paper);border-top:1px solid var(--line);padding:56px 0 3
   box-shadow:0 8px 24px rgba(0,0,0,.22);cursor:pointer;transition:transform .2s;position:relative;border:none}
 .fbtn:hover{transform:scale(1.08)}
 .fbtn svg{width:28px;height:28px}
-.fbtn.wa{background:#25d366}
 .fbtn.rdv{background:var(--coral)}
 /* L'infobulle ne sert qu'au survol : inutile et encombrante sur écran tactile */
 .fbtn .tip{display:none;position:absolute;right:68px;top:50%;transform:translateY(-50%);background:var(--ink);color:#fff;
