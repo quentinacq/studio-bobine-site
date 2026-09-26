@@ -23,5 +23,11 @@ feuille-de-route.html
 commande-upload.html
 commande-confirmation.html
 
+# --- Outils de développement (compétences d'agent, config Git) ---
+.agents/
+.claude/
+skills-lock.json
+.gitignore
+
 # --- Système ---
 .DS_Store
