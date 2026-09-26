@@ -18,5 +18,10 @@ styles-comparateur.html
 checklist-lancement.html
 feuille-de-route.html
 
+# --- Tunnel de commande de démonstration (paiement simulé, fichiers non envoyés,
+# --- Formspree non configuré) : à republier seulement une fois branché pour de vrai ---
+commande-upload.html
+commande-confirmation.html
+
 # --- Système ---
 .DS_Store
