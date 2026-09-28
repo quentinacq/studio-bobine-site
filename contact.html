@@ -14,6 +14,7 @@
 <link rel="icon" type="image/svg+xml" href="/images/logo-mark.svg">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
+<script src="/assets/analytics.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Studio Bobine">
 <meta property="og:title" content="Contact et devis gratuit — Studio Bobine">
@@ -121,28 +122,30 @@
 
       <!-- COLONNE B — le formulaire, l'objet principal de la page.
 
-           DESTINATION : aucun service tiers n'est branché pour l'instant. On
-           retombe donc sur le pis-aller documenté — un envoi mailto, qui
-           fonctionne partout mais ouvre le client de messagerie du visiteur.
-           Pour brancher un vrai service (Formspree, Basin, Web3Forms…),
-           remplacer action par l'URL du service et supprimer enctype. -->
-      <form class="devis-carte" method="post" action="mailto:hello.studiobobine@gmail.com" enctype="text/plain">
+           DESTINATION : /api/contact (api/contact.js), qui revalide tout côté
+           serveur, filtre le spam puis transmet la demande par email.
+           Sans JavaScript, l'envoi classique fonctionne aussi : le serveur
+           répond alors par une courte page de confirmation. -->
+      <form class="devis-carte" id="devis-form" method="post" action="/api/contact">
+        <div class="devis-alerte" id="devis-alerte" role="alert" hidden></div>
         <p class="devis-requis">Les champs marqués d'un <abbr title="obligatoire">*</abbr> sont nécessaires pour vous répondre.</p>
 
         <div class="field">
           <label for="prenom">Votre prénom <abbr title="obligatoire">*</abbr></label>
-          <input id="prenom" name="prenom" type="text" placeholder="Camille" autocomplete="given-name" required>
+          <input id="prenom" name="prenom" type="text" placeholder="Camille" autocomplete="given-name" required maxlength="60" aria-describedby="prenom-erreur">
+          <p class="devis-erreur" id="prenom-erreur">Indiquez votre prénom.</p>
         </div>
 
         <div class="row2">
           <div class="field">
             <label for="email">Email <abbr title="obligatoire">*</abbr></label>
-            <input id="email" name="email" type="email" placeholder="camille@exemple.fr" autocomplete="email" required aria-describedby="email-erreur">
+            <input id="email" name="email" type="email" placeholder="camille@exemple.fr" autocomplete="email" required maxlength="254" aria-describedby="email-erreur">
             <p class="devis-erreur" id="email-erreur">Vérifiez cette adresse&nbsp;: c'est là qu'arrivera le devis.</p>
           </div>
           <div class="field">
             <label for="telephone">Téléphone <span class="devis-facultatif">(facultatif)</span></label>
-            <input id="telephone" name="telephone" type="tel" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel">
+            <input id="telephone" name="telephone" type="tel" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel" maxlength="25" aria-describedby="telephone-erreur">
+            <p class="devis-erreur" id="telephone-erreur">Ce numéro semble incomplet. Exemple&nbsp;: 06 12 34 56 78</p>
           </div>
         </div>
 
@@ -185,18 +188,34 @@
 
         <div class="field">
           <label for="message">Racontez-nous ce que vous avez filmé <abbr title="obligatoire">*</abbr></label>
-          <textarea id="message" name="message" rows="5" placeholder="Trois semaines au Japon en janvier, filmées au téléphone et avec une petite caméra. J'aimerais un film qu'on puisse montrer à la famille." required aria-describedby="message-aide"></textarea>
+          <textarea id="message" name="message" rows="5" placeholder="Trois semaines au Japon en janvier, filmées au téléphone et avec une petite caméra. J'aimerais un film qu'on puisse montrer à la famille." required minlength="20" maxlength="4000" aria-describedby="message-aide message-erreur"></textarea>
+          <p class="devis-erreur" id="message-erreur">Dites-nous-en un peu plus (20 caractères minimum).</p>
           <p class="devis-aide" id="message-aide">Le ton que vous voulez, l'occasion, une date de livraison si vous en avez une&nbsp;: tout ce que vous ajoutez rend le devis plus juste.</p>
         </div>
 
         <div class="devis-accord">
-          <input id="accord" name="accord" type="checkbox" required>
-          <label for="accord">J'accepte que Studio Bobine utilise ces informations pour me répondre. <abbr title="obligatoire">*</abbr></label>
+          <input id="accord" name="accord" type="checkbox" required aria-describedby="accord-erreur">
+          <label for="accord">J'accepte que Studio Bobine utilise ces informations pour me répondre (<a href="/mentions-legales#confidentialite">en savoir plus</a>). <abbr title="obligatoire">*</abbr></label>
         </div>
+        <p class="devis-erreur devis-erreur-accord" id="accord-erreur">Cochez cette case pour que nous puissions vous répondre.</p>
 
-        <button type="submit" class="devis-envoi">Envoyer ma demande <span aria-hidden="true">→</span></button>
+        <!-- Anti-spam invisible : un humain ne voit pas ce champ et le laisse
+             vide ; « t » date l'affichage du formulaire (rempli par site.js). -->
+        <div class="devis-piege" aria-hidden="true">
+          <label for="site_web">Ne pas remplir ce champ</label>
+          <input id="site_web" name="site_web" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <input type="hidden" name="t" id="devis-t">
+
+        <button type="submit" class="devis-envoi" id="devis-envoi">Envoyer ma demande <span aria-hidden="true">→</span></button>
         <p class="devis-note">Gratuit, sans engagement. Réponse sous 24h.</p>
       </form>
+      <div class="devis-carte devis-merci" id="devis-merci" tabindex="-1" hidden>
+        <p class="devis-merci-ic" aria-hidden="true">✓</p>
+        <h2>Merci, votre demande est bien partie&nbsp;!</h2>
+        <p>Nous vous répondons sous 24&nbsp;h à l'adresse indiquée, avec de vraies questions sur votre projet et un devis gratuit.</p>
+        <p class="devis-note">Pensez à vérifier vos courriers indésirables si vous ne voyez rien arriver.</p>
+      </div>
 
     </div>
   </div>
