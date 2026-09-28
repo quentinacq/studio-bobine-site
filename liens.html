@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liens — Studio Bobine</title>
+<meta name="description" content="Studio Bobine, studio de montage vidéo à distance : demandez un devis, découvrez nos réalisations, nos tarifs et nos conseils.">
+<meta name="author" content="Studio Bobine">
+<!-- Page de liens pour les bios Instagram et TikTok : utile aux visiteurs,
+     inutile dans les résultats de recherche. Ne pas l'ajouter au sitemap ni
+     la bloquer dans robots.txt, sinon Google ne verrait plus ce noindex. -->
+<meta name="robots" content="noindex, follow">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/svg+xml" href="/images/logo-mark.svg">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<script src="/assets/analytics.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Studio Bobine">
+<meta property="og:title" content="Studio Bobine — Montage vidéo à distance">
+<meta property="og:description" content="Demandez un devis, découvrez nos réalisations, nos tarifs et nos conseils.">
+<meta property="og:url" content="https://www.studiobobine.fr/liens">
+<meta property="og:image" content="https://www.studiobobine.fr/images/og-studio-bobine.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Studio Bobine, studio de montage vidéo à distance : donnez vie à vos souvenirs">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Studio Bobine — Montage vidéo à distance">
+<meta name="twitter:description" content="Demandez un devis, découvrez nos réalisations, nos tarifs et nos conseils.">
+<meta name="twitter:image" content="https://www.studiobobine.fr/images/og-studio-bobine.jpg">
+<meta name="twitter:image:alt" content="Studio Bobine, studio de montage vidéo à distance : donnez vie à vos souvenirs">
+<meta name="theme-color" content="#ff6b4a">
+
+<link rel="preload" href="/assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<!-- Styles propres à cette page : elle n'a ni en-tête ni pied de page, et
+     doit tenir sur un écran de téléphone sans défiler. Pas de <header> ni de
+     <footer> ici : site.css les stylise globalement (en-tête fixe, fond). -->
+<style>
+.liens{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  max-width:440px;margin:0 auto;padding:clamp(20px,5vh,40px) 20px}
+.liens-tete{text-align:center;margin-bottom:clamp(18px,3.5vh,28px)}
+.liens-tete img{width:52px;height:auto;margin:0 auto 10px}
+.liens-tete h1{font-size:30px;margin-bottom:8px}
+.liens-tete p{color:var(--ink-soft);font-size:15.5px;line-height:1.45;max-width:30ch;margin:0 auto}
+.liens nav{display:block;height:auto}
+.liens-liste{list-style:none;display:flex;flex-direction:column;gap:12px}
+.liens-liste .btn{display:flex;width:100%;min-height:54px;padding:12px 22px;font-size:16px;line-height:1.3;text-align:center}
+.liens-liste .btn-main{font-size:17px;min-height:60px}
+.liens-liste .btn-out{background:var(--paper)}
+.liens-liste .btn-out:hover{background:var(--ink);color:var(--cream)}
+.liens-liste .btn small{display:block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--coral-deep)}
+.liens-liste .btn:hover small{color:inherit}
+.liens-pied{margin-top:clamp(18px,3.5vh,28px);text-align:center;font-size:14px;color:var(--ink-soft)}
+.liens-pied a{display:inline-block;padding:14px 6px;text-decoration:underline;text-underline-offset:3px}
+.liens-pied a:hover{color:var(--ink)}
+.liens-liste .btn small{margin-bottom:1px}
+/* Écrans courts (navigateur intégré d'Instagram, petits téléphones) :
+   on resserre pour que tout tienne sans défiler. */
+@media(max-height:680px){
+  .liens{padding-top:16px;padding-bottom:8px}
+  .liens-tete{margin-bottom:16px}
+  .liens-tete img{width:40px;margin-bottom:6px}
+  .liens-tete h1{font-size:26px;margin-bottom:4px}
+  .liens-tete p{font-size:14.5px}
+  .liens-liste{gap:8px}
+  .liens-liste .btn{min-height:50px;padding:8px 22px}
+  .liens-liste .btn-main{min-height:54px}
+  .liens-pied{margin-top:8px}
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+</style>
+</head>
+<body>
+<main class="liens">
+  <div class="liens-tete">
+    <img src="/images/logo-mark.svg" alt="" width="60" height="72">
+    <h1>Studio Bobine</h1>
+    <p>Studio de montage vidéo à distance pour raconter vos plus beaux moments en vidéo.</p>
+  </div>
+
+  <nav aria-label="Liens Studio Bobine">
+    <ul class="liens-liste">
+      <li><a class="btn btn-main" href="/contact">Demander un devis</a></li>
+      <li><a class="btn btn-out" href="/realisations">Voir nos réalisations</a></li>
+      <li><a class="btn btn-out" href="/tarifs">Nos tarifs</a></li>
+      <li><a class="btn btn-out" href="/blog-prix-montage-video"><span><small>À lire</small> Combien coûte un montage vidéo&nbsp;?</span></a></li>
+      <li><a class="btn btn-out" href="https://www.tiktok.com/@studio.bobine" target="_blank" rel="noopener">Notre TikTok <span aria-hidden="true">↗</span><span class="sr-only"> (nouvel onglet)</span></a></li>
+    </ul>
+  </nav>
+
+  <div class="liens-pied">
+    <a href="/">Accueil du site</a> · <a href="/mentions-legales">Mentions légales</a>
+  </div>
+</main>
+</body>
+</html>
