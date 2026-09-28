@@ -45,12 +45,16 @@
   }
 
   // Accordéon FAQ
-  document.querySelectorAll('.faq button').forEach(btn=>{
+  // aria-expanded annonce aux lecteurs d'écran si la réponse est ouverte.
+  const faqBtns=document.querySelectorAll('.faq button');
+  faqBtns.forEach(btn=>{
+    btn.setAttribute('aria-expanded','false');
     btn.addEventListener('click',()=>{
       const item=btn.parentElement;
       const wasOpen=item.classList.contains('open');
       document.querySelectorAll('.faq').forEach(f=>f.classList.remove('open'));
-      if(!wasOpen)item.classList.add('open');
+      faqBtns.forEach(b=>b.setAttribute('aria-expanded','false'));
+      if(!wasOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
     });
   });
 
@@ -111,10 +115,12 @@
     calc.querySelectorAll('.opts[data-group]').forEach(group=>{
       group.querySelectorAll('.opt').forEach(opt=>{
         const choose=()=>{
-          group.querySelectorAll('.opt').forEach(o=>o.classList.remove('active'));
+          group.querySelectorAll('.opt').forEach(o=>{o.classList.remove('active');o.setAttribute('aria-pressed','false');});
           opt.classList.add('active');
+          opt.setAttribute('aria-pressed','true');
           update();
         };
+        opt.setAttribute('aria-pressed',opt.classList.contains('active')?'true':'false');
         opt.addEventListener('click',choose);
         opt.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();choose();}});
       });
