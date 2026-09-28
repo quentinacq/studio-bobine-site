@@ -1,0 +1,14 @@
+{
+  "name": "Studio Bobine",
+  "short_name": "Studio Bobine",
+  "description": "Studio de montage vidéo à distance pour donner vie à vos souvenirs.",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fff8ef",
+  "theme_color": "#ff6b4a",
+  "icons": [
+    { "src": "/images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
