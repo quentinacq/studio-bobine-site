@@ -23,6 +23,107 @@
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*70)+'ms';io.observe(el)});
 
+  // Formulaire de devis (page Contact). Les mêmes règles sont revérifiées
+  // côté serveur dans api/contact.js : ce contrôle-ci sert seulement à
+  // prévenir le visiteur avant l'envoi.
+  const form=document.getElementById('devis-form');
+  if(form){
+    const track=(n,d)=>{if(window.sbTrack)window.sbTrack(n,d);};
+    const alerte=document.getElementById('devis-alerte');
+    const merci=document.getElementById('devis-merci');
+    const envoi=document.getElementById('devis-envoi');
+    const libelleEnvoi=envoi.innerHTML;
+    form.noValidate=true; // le script prend le relais des bulles du navigateur
+    const t=document.getElementById('devis-t'); if(t)t.value=String(Date.now());
+
+    const REGLES={
+      prenom:v=>!v.trim()?'Indiquez votre prénom.':v.trim().length>60?'Ce prénom est trop long (60 caractères maximum).':!/^[\p{L}][\p{L}\p{M}' .-]*$/u.test(v.trim())?'Utilisez uniquement des lettres, espaces, tirets ou apostrophes.':'',
+      email:v=>!v.trim()?'Indiquez votre email : c’est là qu’arrivera le devis.':!/^[^\s@<>()[\],;:"]+@[^\s@<>()[\],;:"]+\.[a-z]{2,}$/i.test(v.trim())?'Cette adresse email semble incomplète. Exemple : camille@exemple.fr':'',
+      telephone:v=>v.trim()&&!/^\+?\d{8,15}$/.test(v.replace(/[\s.\-()]/g,''))?'Ce numéro semble incomplet. Exemple : 06 12 34 56 78':'',
+      message:v=>v.trim().length<20?'Dites-nous-en un peu plus (20 caractères minimum).':v.length>4000?'Votre message est trop long (4 000 caractères maximum).':'',
+      accord:(v,el)=>!el.checked?'Cochez cette case pour que nous puissions vous répondre.':''
+    };
+    const erreurDe=nom=>document.getElementById(nom+'-erreur');
+    function afficher(nom,msg){
+      const el=form.elements[nom],p=erreurDe(nom);
+      if(!el||!p)return;
+      el.setAttribute('aria-invalid',msg?'true':'false');
+      if(msg)p.textContent=msg;
+      p.classList.toggle('visible',!!msg);
+    }
+    function verifier(nom){
+      const el=form.elements[nom];
+      const msg=REGLES[nom](el.value||'',el);
+      afficher(nom,msg);
+      return !msg;
+    }
+    // On ne signale une erreur qu'une fois le champ quitté, puis on la
+    // retire dès que la saisie devient correcte.
+    Object.keys(REGLES).forEach(nom=>{
+      const el=form.elements[nom];
+      el.addEventListener('blur',()=>{if(el.value||nom==='accord')verifier(nom);});
+      el.addEventListener(nom==='accord'?'change':'input',()=>{if(el.getAttribute('aria-invalid')==='true')verifier(nom);});
+    });
+
+    let commence=false;
+    form.addEventListener('focusin',()=>{if(!commence){commence=true;track('formulaire_debut');}});
+
+    const echapper=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    function montrerAlerte(html){alerte.innerHTML=html;alerte.hidden=false;}
+    function lienSecours(){
+      const f=form.elements;
+      const corps=`Prénom : ${f.prenom.value}\nTéléphone : ${f.telephone.value}\nProjet : ${f.type_de_projet.value}\nDurée : ${f.duree_souhaitee.value}\nRushs : ${f.volume_de_rushs.value}\n\n${f.message.value}`;
+      return 'mailto:hello.studiobobine@gmail.com?subject='+encodeURIComponent('Demande de devis — '+f.prenom.value)+'&body='+encodeURIComponent(corps.slice(0,1500));
+    }
+    function confirmer(){
+      form.hidden=true;merci.hidden=false;merci.focus();
+      merci.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+    }
+    function chargement(actif){
+      envoi.disabled=actif;
+      form.setAttribute('aria-busy',actif?'true':'false');
+      envoi.innerHTML=actif?'<span class="devis-roue" aria-hidden="true"></span>Envoi en cours…':libelleEnvoi;
+    }
+
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();
+      alerte.hidden=true;
+      const invalides=Object.keys(REGLES).filter(nom=>!verifier(nom));
+      if(invalides.length){
+        montrerAlerte(invalides.length===1?'Un champ est à corriger avant l’envoi.':invalides.length+' champs sont à corriger avant l’envoi.');
+        form.elements[invalides[0]].focus();
+        track('formulaire_invalide',{champs:invalides.join(',')});
+        return;
+      }
+      const f=form.elements;
+      const donnees={prenom:f.prenom.value,email:f.email.value,telephone:f.telephone.value,type_de_projet:f.type_de_projet.value,
+        duree_souhaitee:f.duree_souhaitee.value,volume_de_rushs:f.volume_de_rushs.value,message:f.message.value,
+        accord:f.accord.checked,site_web:f.site_web.value,t:f.t.value};
+      chargement(true);
+      const ctrl=new AbortController();const minuterie=setTimeout(()=>ctrl.abort(),15000);
+      try{
+        const r=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(donnees),signal:ctrl.signal});
+        const rep=await r.json().catch(()=>({}));
+        if(r.ok&&rep.ok){track('formulaire_envoye',{projet:donnees.type_de_projet});confirmer();return;}
+        if(r.status===400&&rep.erreurs){
+          Object.entries(rep.erreurs).forEach(([nom,msg])=>afficher(nom,msg));
+          const premier=Object.keys(rep.erreurs)[0];
+          if(form.elements[premier])form.elements[premier].focus();
+          montrerAlerte(echapper(rep.message||'Certains champs sont à corriger.'));
+          track('formulaire_invalide',{champs:Object.keys(rep.erreurs).join(','),serveur:true});
+          return;
+        }
+        throw new Error(rep.message||'HTTP '+r.status);
+      }catch(err){
+        const msg=err&&err.name!=='AbortError'&&err.message&&!/^HTTP|fetch|network/i.test(err.message)?err.message:'Votre message n’a pas pu partir (connexion interrompue ou serveur indisponible).';
+        montrerAlerte(echapper(msg)+' <a href="'+echapper(lienSecours())+'">Envoyer la même demande depuis ma messagerie</a>.');
+        alerte.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+        track('formulaire_echec',{raison:err&&err.name==='AbortError'?'delai':'serveur'});
+      }finally{clearTimeout(minuterie);chargement(false);}
+    });
+
+  }
+
   // Menu mobile
   const burger=document.getElementById('burger');
   const menu=document.getElementById('mobileMenu');
