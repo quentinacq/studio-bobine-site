@@ -181,8 +181,23 @@
       chargement(true);
       const ctrl=new AbortController();const minuterie=setTimeout(()=>ctrl.abort(),15000);
       try{
-        const r=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(donnees),signal:ctrl.signal});
-        const rep=await r.json().catch(()=>({}));
+        const cle=f.access_key?f.access_key.value.trim():'';
+        let r,rep;
+        if(cle){
+          // Envoi direct à Web3Forms. Robot probable (champ piège rempli ou
+          // envoi en moins de 3 s) : on affiche « envoyé » sans rien transmettre.
+          if(donnees.site_web||Date.now()-Number(donnees.t)<3000){confirmer();return;}
+          const lignes={'Prénom':donnees.prenom,'Email':donnees.email,'Téléphone':donnees.telephone||'—','Projet':donnees.type_de_projet};
+          if(donnees.code_carte)lignes['Carte cadeau']=donnees.code_carte;
+          Object.assign(lignes,{'Durée souhaitée':donnees.duree_souhaitee,'Volume de rushs':donnees.volume_de_rushs,'Message':donnees.message});
+          r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},signal:ctrl.signal,
+            body:JSON.stringify(Object.assign({access_key:cle,subject:'Nouvelle demande — '+donnees.prenom.trim()+' ('+donnees.type_de_projet+')',from_name:'Site Studio Bobine',email:donnees.email.trim(),botcheck:''},lignes))});
+          const brut=await r.json().catch(()=>({}));
+          rep={ok:!!brut.success,message:brut.success?'':'Votre message n’a pas pu partir.'};
+        }else{
+          r=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(donnees),signal:ctrl.signal});
+          rep=await r.json().catch(()=>({}));
+        }
         if(r.ok&&rep.ok){track('formulaire_envoye',{projet:donnees.type_de_projet});confirmer();return;}
         if(r.status===400&&rep.erreurs){
           Object.entries(rep.erreurs).forEach(([nom,msg])=>afficher(nom,msg));
