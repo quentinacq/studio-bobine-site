@@ -13,6 +13,21 @@
       "permanent": false
     },
     {
+      "source": "/montage-video(.html)?",
+      "destination": "/contact",
+      "permanent": false
+    },
+    {
+      "source": "/commande-upload(.html)?",
+      "destination": "/contact",
+      "permanent": false
+    },
+    {
+      "source": "/commande-confirmation(.html)?",
+      "destination": "/contact",
+      "permanent": false
+    },
+    {
       "source": "/evenements",
       "destination": "/services",
       "statusCode": 301
