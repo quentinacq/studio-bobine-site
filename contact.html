@@ -49,6 +49,7 @@
         <a href="/services">Services</a>
         <a href="/tarifs">Tarifs</a>
         <a href="/realisations">Réalisations</a>
+        <a href="/noel" class="nav-offrir">Offrir</a>
         <a href="/conseils">Conseils</a>
       </div>
       <a href="/contact" class="btn btn-main" aria-current="page"><span class="lbl-court">Parlons-en</span><span class="lbl-long">Parlons de votre projet</span></a>
@@ -67,6 +68,7 @@
   <a href="/services">Services</a>
   <a href="/tarifs">Tarifs</a>
   <a href="/realisations">Réalisations</a>
+  <a href="/noel" class="nav-offrir">Offrir</a>
   <a href="/conseils">Conseils</a>
   <a href="/contact" class="btn btn-main" aria-current="page">Parlons de votre projet</a>
 </nav>
@@ -153,6 +155,9 @@
           <label for="type_de_projet">Quel type de projet&nbsp;?</label>
           <select id="type_de_projet" name="type_de_projet">
             <option>Vlogs de voyage</option>
+            <option>Film surprise (Noël)</option>
+            <option>Offrir une carte cadeau</option>
+            <option>J’ai une carte cadeau</option>
             <option>Souvenirs de famille</option>
             <option>Reels &amp; Shorts</option>
             <option>Road-trips</option>
@@ -160,6 +165,12 @@
             <option>Aftermovies</option>
             <option>Autre, ou je ne sais pas encore</option>
           </select>
+        </div>
+
+        <div class="field" id="champ-carte" hidden>
+          <label for="code_carte">Numéro de votre carte cadeau <span class="devis-facultatif">(inscrit sur la carte)</span></label>
+          <input id="code_carte" name="code_carte" type="text" placeholder="BOB-N26-0001" autocomplete="off" maxlength="20" spellcheck="false" aria-describedby="code_carte-erreur">
+          <p class="devis-erreur" id="code_carte-erreur">Ce numéro ne ressemble pas à celui de la carte. Exemple&nbsp;: BOB-N26-0001</p>
         </div>
 
         <div class="row2">
@@ -231,7 +242,7 @@
       </div>
       <div class="foot-cols">
         <div class="foot-col"><h2>Le site</h2>
-          <a href="/notre-concept">Notre concept</a><a href="/services">Services</a><a href="/tarifs">Tarifs</a><a href="/realisations">Réalisations</a><a href="/conseils">Conseils</a>
+          <a href="/notre-concept">Notre concept</a><a href="/services">Services</a><a href="/tarifs">Tarifs</a><a href="/realisations">Réalisations</a><a href="/noel">Offrir un film</a><a href="/conseils">Conseils</a>
         </div>
         <div class="foot-col"><h2>Suivez-nous</h2>
           <a href="https://www.instagram.com/studiobobine_fr/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@studio.bobine" target="_blank" rel="noopener">TikTok</a>
