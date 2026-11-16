@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Montage vidéo à distance pour vos souvenirs — Studio Bobine</title>
-<meta name="description" content="Vos vidéos de voyage, de famille ou de couple dorment sur votre téléphone ? Envoyez-les, on en fait un vrai film. Montage à distance dès 89 €.">
+<title>Offrez un film souvenir à Noël : carte cadeau dès 89 € — Studio Bobine</title>
+<meta name="description" content="Cette année, offrez-lui ses souvenirs : un film monté à partir de ses photos et vidéos. Carte cadeau dès 89 €, envoyée sous 24 h, ou film surprise livré avant Noël.">
 <meta name="author" content="Studio Bobine">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="format-detection" content="telephone=no">
@@ -17,21 +17,21 @@
 <script src="/assets/analytics.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Studio Bobine">
-<meta property="og:title" content="Studio Bobine — Vos plus beaux moments, montés en vraie histoire">
-<meta property="og:description" content="Studio de montage vidéo à distance pour donner vie à vos souvenirs. Envoyez vos vidéos, on en fait un vrai film.">
+<meta property="og:title" content="Cette année, offrez-lui ses souvenirs — Studio Bobine">
+<meta property="og:description" content="Un film monté à partir de ses photos et vidéos. Carte cadeau dès 89 €, envoyée sous 24 h, ou film surprise.">
 <meta property="og:url" content="https://www.studiobobine.fr/">
-<meta property="og:image" content="https://www.studiobobine.fr/images/og-studio-bobine.jpg">
+<meta property="og:image" content="https://www.studiobobine.fr/images/og-noel.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Studio Bobine, studio de montage vidéo à distance : donnez vie à vos souvenirs">
+<meta property="og:image:alt" content="Carte cadeau Studio Bobine en forme de billet de cinéma : bon pour un film">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Studio Bobine — Vos plus beaux moments, montés en vraie histoire">
-<meta name="twitter:description" content="Studio de montage vidéo à distance pour donner vie à vos souvenirs. Envoyez vos vidéos, on en fait un vrai film.">
-<meta name="twitter:image" content="https://www.studiobobine.fr/images/og-studio-bobine.jpg">
-<meta name="twitter:image:alt" content="Studio Bobine, studio de montage vidéo à distance : donnez vie à vos souvenirs">
-<meta name="theme-color" content="#ff6b4a">
+<meta name="twitter:title" content="Cette année, offrez-lui ses souvenirs — Studio Bobine">
+<meta name="twitter:description" content="Un film monté à partir de ses photos et vidéos. Carte cadeau dès 89 €, envoyée sous 24 h, ou film surprise.">
+<meta name="twitter:image" content="https://www.studiobobine.fr/images/og-noel.jpg">
+<meta name="twitter:image:alt" content="Carte cadeau Studio Bobine en forme de billet de cinéma : bon pour un film">
+<meta name="theme-color" content="#1f2e29">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
  {"@type":"ProfessionalService","@id":"https://www.studiobobine.fr/#business","name":"Studio Bobine",
@@ -39,7 +39,12 @@
   "url":"https://www.studiobobine.fr/","email":"hello.studiobobine@gmail.com","image":"https://www.studiobobine.fr/images/og-studio-bobine.jpg","logo":"https://www.studiobobine.fr/images/logo.png","priceRange":"€€",
   "areaServed":{"@type":"Country","name":"France"},"serviceType":"Montage vidéo","knowsLanguage":"fr"},
  {"@type":"WebSite","@id":"https://www.studiobobine.fr/#website","url":"https://www.studiobobine.fr/","name":"Studio Bobine","inLanguage":"fr-FR",
-  "publisher":{"@id":"https://www.studiobobine.fr/#business"}}]}
+  "publisher":{"@id":"https://www.studiobobine.fr/#business"}},
+ {"@type":"OfferCatalog","name":"Offrir un film souvenir","url":"https://www.studiobobine.fr/","provider":{"@id":"https://www.studiobobine.fr/#business"},
+  "itemListElement":[
+   {"@type":"Offer","name":"Carte cadeau Court-métrage","price":"89","priceCurrency":"EUR"},
+   {"@type":"Offer","name":"Carte cadeau Le Film","price":"189","priceCurrency":"EUR"},
+   {"@type":"Offer","name":"Film surprise","price":"189","priceCurrency":"EUR"}]}]}
 </script>
 
 <link rel="preload" as="image" href="/images/hero/couple-montagne.webp" fetchpriority="high">
@@ -48,9 +53,8 @@
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
 <link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
+<body class="page-sombre accueil-noel">
 <a class="skip" href="#contenu">Aller au contenu</a>
-<div class="progress" id="progress" aria-hidden="true"></div>
 <header id="hd">
   <div class="wrap">
     <nav>
@@ -60,10 +64,10 @@
         <a href="/services">Services</a>
         <a href="/tarifs">Tarifs</a>
         <a href="/realisations">Réalisations</a>
-        <a href="/noel" class="nav-offrir">Offrir</a>
+        <a href="#offres" class="nav-offrir">Offrir</a>
         <a href="/conseils">Conseils</a>
       </div>
-      <a href="/contact" class="btn btn-main"><span class="lbl-court">Parlons-en</span><span class="lbl-long">Parlons de votre projet</span></a>
+      <a href="#offres" class="btn btn-or"><span class="lbl-court">Offrir</span><span class="lbl-long">Offrir un film</span></a>
       <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
@@ -79,104 +83,230 @@
   <a href="/services">Services</a>
   <a href="/tarifs">Tarifs</a>
   <a href="/realisations">Réalisations</a>
-  <a href="/noel" class="nav-offrir">Offrir</a>
+  <a href="#offres" class="nav-offrir">Offrir</a>
   <a href="/conseils">Conseils</a>
-  <a href="/contact" class="btn btn-main">Parlons de votre projet</a>
+  <a href="#offres" class="btn btn-or">Offrir un film</a>
+  <a href="/contact">Demander un devis</a>
 </nav>
 
 <main id="contenu">
-<section class="hero accueil">
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
+<section class="hero nl-hero">
+  <div class="nl-lueurs" aria-hidden="true"></div>
   <div class="wrap hero-inner">
     <div>
-      <a class="dispo" href="/noel"><span class="pt" aria-hidden="true"></span>Noël : offrez un film souvenir <span aria-hidden="true">→</span></a>
-      <h1>Vos plus beaux<br><em>moments</em>,<br>montés en vraie<br><span class="u">histoire.</span></h1>
-      <p class="lead">Vous nous confiez vos souvenirs, nous les transformons en vidéos exceptionnelles, à garder, à partager ou à offrir à ceux que vous aimez. Pour chaque moment précieux.</p>
+      <p class="nl-pill"><span class="pt" aria-hidden="true"></span>Noël 2026 · L'idée cadeau<span id="nl-jours" hidden></span></p>
+      <h1>Cette année, offrez-lui <em>ses</em> souvenirs.</h1>
+      <p class="lead">Les vacances de l'été, le voyage à deux, les premiers pas des enfants : tout dort dans un téléphone. Offrez le film qui les réunit enfin, monté avec soin par un vrai monteur, à regarder ensemble.</p>
       <div class="hero-cta">
-        <a href="/contact" class="btn btn-main">Demander mon devis →</a>
-        <a href="/realisations" class="btn btn-out">Voir nos réalisations</a>
+        <a href="#offres" class="btn btn-or nl-xl">Offrir un film <span class="nl-des">dès 89 €</span></a>
+        <a href="#comment" class="btn btn-givre nl-xl">Comment ça marche</a>
       </div>
-      <!-- Réassurance manuscrite : la flèche est décorative (masquée aux
-           lecteurs d'écran), le texte reste du vrai HTML lisible et indexable. -->
       <p class="reassur">
         <svg class="reassur-fleche" viewBox="0 0 124 74" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
           <path d="M120 62C99 72 70 73 47 62 31 54 21 40 16 24c-1-4-2-8-2-11"/>
           <path d="M4 31 14 10l15 11"/>
         </svg>
-        <span>gratuit, réponse sous 24h</span>
+        <span>carte envoyée sous 24 h, même le 23 décembre</span>
       </p>
       <div class="trust">
         <div class="avs">
-          <img src="/images/avatars/client-1.webp" data-local="avatars/client-1.jpg" alt="" loading="eager" width="120" height="120">
-          <img src="/images/avatars/client-2.webp" data-local="avatars/client-2.jpg" alt="" loading="eager" width="120" height="120">
-          <img src="/images/avatars/client-3.webp" data-local="avatars/client-3.jpg" alt="" loading="eager" width="120" height="120">
-          <img src="/images/avatars/client-4.webp" data-local="avatars/client-4.jpg" alt="" loading="eager" width="120" height="120">
+          <img src="/images/avatars/client-1.webp" alt="" loading="eager" width="120" height="120">
+          <img src="/images/avatars/client-2.webp" alt="" loading="eager" width="120" height="120">
+          <img src="/images/avatars/client-3.webp" alt="" loading="eager" width="120" height="120">
+          <img src="/images/avatars/client-4.webp" alt="" loading="eager" width="120" height="120">
         </div>
         <div class="note">
           <span class="s" aria-hidden="true">★★★★★</span>
           <span class="n">4,9/5</span>
         </div>
         <span class="sep" aria-hidden="true"></span>
-        <small>+35 vidéos livrées à des clients ravis</small>
+        <small>+35 films livrés à des clients ravis</small>
       </div>
     </div>
-    <div class="collage">
-      <div class="ph p1"><img src="/images/hero/couple-montagne.webp" data-local="hero/couple-montagne.png" alt="Couple enlacé dans la neige, face aux sommets enneigés" width="400" height="500" fetchpriority="high"></div>
-      <div class="ph p2"><img src="/images/hero/famille-montagnes.jpg" data-local="hero/famille-montagnes.jpg" alt="Famille face aux montagnes" width="960" height="960" loading="eager"></div>
-      <div class="ph p3"><img src="/images/hero/randonneuse.webp" data-local="hero/randonneuse.png" alt="Randonneuse en montagne" width="400" height="400" loading="eager"></div>
-      <div class="badge-play"><span class="tri"></span>Montage en cours…</div>
-    </div>
-  </div>
-</section>
-
-<!-- Bandeau défilant. Le second jeu de mots est un doublon décoratif :
-     c'est lui qui permet de reboucler sans saut (translateX -50%). Il est
-     masqué aux lecteurs d'écran pour ne pas répéter la liste. -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ticker-set"><span class="m">Vlogs de voyage</span><span class="d" aria-hidden="true">✦</span><span class="m">Souvenirs de famille</span><span class="d" aria-hidden="true">✦</span><span class="m">Reels &amp; Shorts</span><span class="d" aria-hidden="true">✦</span><span class="m">Road-trips</span><span class="d" aria-hidden="true">✦</span><span class="m">Demandes en mariage</span><span class="d" aria-hidden="true">✦</span><span class="m">Aftermovies</span><span class="d" aria-hidden="true">✦</span><span class="m">Cartes cadeaux</span><span class="d" aria-hidden="true">✦</span></span>
-    <span class="ticker-set" aria-hidden="true"><span class="m">Vlogs de voyage</span><span class="d" aria-hidden="true">✦</span><span class="m">Souvenirs de famille</span><span class="d" aria-hidden="true">✦</span><span class="m">Reels &amp; Shorts</span><span class="d" aria-hidden="true">✦</span><span class="m">Road-trips</span><span class="d" aria-hidden="true">✦</span><span class="m">Demandes en mariage</span><span class="d" aria-hidden="true">✦</span><span class="m">Aftermovies</span><span class="d" aria-hidden="true">✦</span><span class="m">Cartes cadeaux</span><span class="d" aria-hidden="true">✦</span></span>
-  </div>
-</div>
-
-<!-- Campagne « Offrir un film » : encart vers /noel. À retirer ou à
-     réécrire en « Offrir un film » toute l'année après les fêtes. -->
-<section class="nl-accueil" aria-labelledby="nl-accueil-titre">
-  <div class="wrap">
-    <div class="nl-encart reveal">
-      <div class="nl-encart-txt">
-        <span class="eyebrow">Noël 2026</span>
-        <h2 id="nl-accueil-titre">Cette année, offrez-lui <em>ses souvenirs.</em></h2>
-        <p>Une carte cadeau envoyée sous 24 h, ou un film surprise monté à partir de ses photos et vidéos. Le cadeau qu'on revoit toute une vie.</p>
-        <div class="nl-encart-actions">
-          <a href="/noel" class="btn btn-or">Découvrir les cadeaux →</a>
-          <span class="main">dès 89 €</span>
-        </div>
-      </div>
-      <div class="nl-encart-vis" aria-hidden="true">
-        <img src="/images/hero/couple-lac-800.webp" alt="" width="800" height="534" loading="lazy" decoding="async">
-        <div class="billet">
+    <div class="nl-scene" aria-hidden="true">
+      <div class="nl-photo nl-p2"><img src="/images/hero/couple-lac-400.webp" alt="" width="400" height="267" loading="eager"></div>
+      <div class="nl-photo nl-p1"><img src="/images/hero/couple-montagne.webp" alt="" width="400" height="500" fetchpriority="high"></div>
+      <div class="nl-ruban"></div>
+      <div class="nl-etiquette"><i></i>Son film · 6 min 32</div>
+      <div class="billet">
           <div class="billet-corps">
             <span class="billet-marque"><img src="/images/logo-mark.svg" alt="" width="11" height="13">Studio Bobine</span>
             <p class="billet-titre">Bon pour <em>un film</em></p>
-            <dl><dt>Pour</dt><dd class="main">Camille</dd><dt>De la part de</dt><dd class="main">Théo</dd></dl>
+            <dl><dt>Pour</dt><dd class="main">Mamie Jo</dd><dt>De la part de</dt><dd class="main">Léa &amp; Tom</dd><dt>Séance</dt><dd>quand tu veux, en 2027</dd></dl>
+          </div>
+          <div class="billet-souche">N° <span>BOB-N26-0142</span></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bandeau défilant. Le second jeu est un doublon décoratif, masqué aux
+     lecteurs d'écran, qui permet de reboucler sans saut. -->
+<div class="ticker nl-ticker">
+  <div class="ticker-track">
+    <span class="ticker-set"><span class="m">Carte cadeau sous 24 h</span><span class="d" aria-hidden="true">✦</span><span class="m">Film surprise</span><span class="d" aria-hidden="true">✦</span><span class="m">Dès 89 €</span><span class="d" aria-hidden="true">✦</span><span class="m">Valable 12 mois</span><span class="d" aria-hidden="true">✦</span><span class="m">Monté par un vrai monteur</span><span class="d" aria-hidden="true">✦</span><span class="m">À imprimer ou à envoyer</span><span class="d" aria-hidden="true">✦</span></span>
+    <span class="ticker-set" aria-hidden="true"><span class="m">Carte cadeau sous 24 h</span><span class="d" aria-hidden="true">✦</span><span class="m">Film surprise</span><span class="d" aria-hidden="true">✦</span><span class="m">Dès 89 €</span><span class="d" aria-hidden="true">✦</span><span class="m">Valable 12 mois</span><span class="d" aria-hidden="true">✦</span><span class="m">Monté par un vrai monteur</span><span class="d" aria-hidden="true">✦</span><span class="m">À imprimer ou à envoyer</span><span class="d" aria-hidden="true">✦</span></span>
+  </div>
+</div>
+
+<section class="nl-offres" id="offres">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Les cadeaux</span>
+      <h2>Deux façons d'offrir un film.</h2>
+      <p>Vous avez accès à ses photos et vidéos ? Faites-lui la surprise. Sinon, offrez-lui la carte : c'est lui ou elle qui choisira quoi raconter.</p>
+    </div>
+    <div class="nl-offres-grille">
+      <article class="nl-offre nl-carte reveal">
+        <div class="nl-offre-vis" aria-hidden="true">
+          <div class="billet">
+          <div class="billet-corps">
+            <span class="billet-marque"><img src="/images/logo-mark.svg" alt="" width="11" height="13">Studio Bobine</span>
+            <p class="billet-titre">Bon pour <em>un film</em></p>
+            <dl><dt>Pour</dt><dd class="main">Papa</dd><dt>De la part de</dt><dd class="main">Inès</dd><dt>Séance</dt><dd>quand tu veux, en 2027</dd></dl>
+          </div>
+          <div class="billet-souche">N° <span>BOB-N26-0087</span></div>
+        </div>
+        </div>
+        <span class="nl-lbl">Notre conseil · Prête en 24 h</span>
+        <h3>La carte cadeau</h3>
+        <p class="nl-pitch">Il ou elle choisit ses souvenirs et l'histoire à raconter. On s'occupe du film, au moment où il le souhaite dans l'année.</p>
+        <fieldset class="nl-choix">
+          <legend>Choisissez la carte</legend>
+          <label><input type="radio" name="nl-carte" value="court" checked><span class="nl-nom">Court-métrage</span><span class="nl-montant">89 €</span><span class="nl-desc">Jusqu'à 3 min de film, à partir d'1 h de vidéos</span></label>
+          <label><input type="radio" name="nl-carte" value="film"><span class="nl-nom">Le Film</span><span class="nl-montant">189 €</span><span class="nl-desc">Jusqu'à 7 min, 3 h de vidéos et 50 photos, couleurs travaillées, 1 retouche</span></label>
+        </fieldset>
+        <ul class="nl-inclus">
+          <li>Une carte-billet à son prénom, avec votre message</li>
+          <li>En PDF à imprimer et en image à envoyer par message</li>
+          <li>Valable 12 mois, sans date de réservation imposée</li>
+        </ul>
+        <a href="/contact?projet=offrir-carte&amp;carte=court" class="btn btn-or nl-xl" id="nl-offrir-carte">Offrir la carte cadeau →</a>
+        <p class="nl-petit">Carte personnalisée reçue par e-mail sous 24 h.</p>
+      </article>
+      <article class="nl-offre nl-surprise reveal">
+        <div class="nl-offre-vis" aria-hidden="true">
+          <div class="nl-extrait"><img src="/images/portfolio/mariage-400.webp" alt="" width="400" height="229" loading="lazy" decoding="async"><i></i></div>
+        </div>
+        <span class="nl-lbl">Édition limitée · Avant Noël</span>
+        <h3>Le film surprise</h3>
+        <p class="nl-pitch">Vous rassemblez ses photos et vidéos en secret. On en fait son film, et vous le découvrez avant tout le monde.</p>
+        <p class="nl-prix">189 €<small>le film, jusqu'à 7 min</small></p>
+        <ul class="nl-inclus">
+          <li>L'affiche de son film, à glisser sous le sapin</li>
+          <li>Un échange avec le monteur pour bien raconter son histoire</li>
+          <li>On ne le contacte jamais : la surprise reste entière</li>
+          <li>Lien privé pour regarder et télécharger le film</li>
+        </ul>
+        <!-- PLACES : mettre à jour à chaque réservation. Un <i class="pris"> par
+             place réservée, et le texte « X places sur 6 ». Ce bloc disparaît
+             seul le 7 décembre (data-jusqua) et laisse la place au suivant. -->
+        <p class="nl-places" data-jusqua="2026-12-07"><span class="nl-points" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b>6 places sur 6</b> encore livrables avant Noël. Souvenirs à envoyer avant le 6 décembre.</span></p>
+        <p class="nl-places" data-des="2026-12-07" hidden><span><b>Les films livrés avant Noël sont complets.</b> Réservez maintenant : vous offrez l'affiche le 25, le film arrive début janvier.</span></p>
+        <a href="/contact?projet=film-surprise" class="btn btn-ink nl-xl" id="nl-reserver">Réserver un film surprise →</a>
+        <p class="nl-petit">Après le 6 décembre : l'affiche pour le 25, le film début janvier.</p>
+      </article>
+    </div>
+    <ul class="nl-garanties reveal">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><b>Paiement sécurisé</b>Par carte bancaire</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Carte reçue sous 24 h</b>Même commandée le 23 décembre</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h11a5 5 0 0 1 0 10H9"/><path d="M8 5 4 9l4 4"/></svg><span><b>14 jours pour changer d'avis</b>Tant que la carte n'est pas utilisée</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="nl-pourqui" id="pour-qui">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Pour qui</span>
+      <h2>Dans son téléphone, il y a déjà un film.</h2>
+      <p>Des centaines de photos et de vidéos que personne ne regarde. On en fait quelques minutes qu'on revoit toute une vie.</p>
+    </div>
+    <div class="nl-qui-grille">
+      <article class="nl-qui reveal">
+        <div class="nl-qui-ph"><img src="/images/portfolio/ete-famille-800.webp" srcset="/images/portfolio/ete-famille-400.webp 400w, /images/portfolio/ete-famille-800.webp 800w" sizes="(max-width: 760px) calc(100vw - 40px), 360px" alt="Une famille marche sur la plage, bras dessus bras dessous" width="800" height="533" loading="lazy" decoding="async"><span class="nl-qui-tag">pour vos parents</span></div>
+        <h3>Trente ans de souvenirs, enfin réunis.</h3>
+        <p>Les vacances, les anniversaires, les dimanches. Un film à regarder en famille le soir du réveillon, ou à garder pour plus tard.</p>
+        <a href="#offres">Offrir à mes parents →</a>
+      </article>
+      <article class="nl-qui reveal">
+        <div class="nl-qui-ph"><img src="/images/hero/couple-lac-800.webp" srcset="/images/hero/couple-lac-400.webp 400w, /images/hero/couple-lac-800.webp 800w" sizes="(max-width: 760px) calc(100vw - 40px), 360px" alt="Un couple main dans la main au coucher du soleil" width="800" height="534" loading="lazy" decoding="async"><span class="nl-qui-tag">pour votre moitié</span></div>
+        <h3>Votre année à deux, en quelques minutes.</h3>
+        <p>Du premier road-trip au dernier week-end. Le genre de cadeau qui ne finit pas dans un placard.</p>
+        <a href="#offres">Offrir à ma moitié →</a>
+      </article>
+      <article class="nl-qui reveal">
+        <div class="nl-qui-ph"><img src="/images/hero/famille-rando-800.webp" srcset="/images/hero/famille-rando-400.webp 400w, /images/hero/famille-rando-800.webp 800w" sizes="(max-width: 760px) calc(100vw - 40px), 360px" alt="Trois amis marchent dans la lumière du soir" width="800" height="470" loading="lazy" decoding="async"><span class="nl-qui-tag">pour vos amis</span></div>
+        <h3>Le voyage que personne n'a jamais monté.</h3>
+        <p>Les vidéos du groupe, éparpillées dans dix téléphones. On les rassemble en un film que tout le monde voudra revoir.</p>
+        <a href="#offres">Offrir à mes amis →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="nl-deux">
+  <div class="wrap nl-deux-grille">
+    <div class="nl-table reveal" aria-hidden="true">
+      <div class="nl-ruban"></div>
+      <div class="billet">
+          <div class="billet-corps">
+            <span class="billet-marque"><img src="/images/logo-mark.svg" alt="" width="11" height="13">Studio Bobine</span>
+            <p class="billet-titre">Bon pour <em>un film</em></p>
+            <dl><dt>Pour</dt><dd class="main">Camille</dd><dt>De la part de</dt><dd class="main">Théo</dd><dt>Séance</dt><dd>quand tu veux, en 2027</dd></dl>
           </div>
           <div class="billet-souche">N° <span>BOB-N26-0031</span></div>
         </div>
+      <div class="nl-affiche"><img src="/images/portfolio/mariage-800.webp" alt="" width="800" height="457" loading="lazy" decoding="async"><div class="nl-affiche-txt"><b>Le jour où tu as dit oui</b><span>Un film Studio Bobine · Bientôt à l'écran</span></div></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Le jour J</span>
+      <h2>Un cadeau qui se déballe deux fois.</h2>
+      <p class="nl-intro">D'abord sous le sapin, ensuite sur l'écran du salon.</p>
+      <div class="nl-moments">
+        <div class="nl-moment"><span class="nl-date">25 déc.</span><div><h3>Il découvre sa carte, ou l'affiche de son film</h3><p>Imprimée sur un beau papier ou envoyée par message. Le titre et le prénom lui disent déjà ce qui l'attend.</p></div></div>
+        <div class="nl-moment"><span class="nl-date">Plus tard</span><div><h3>Il découvre le film</h3><p>Quelques minutes de sa propre vie, montées comme un vrai film. Le moment qu'on regarde à plusieurs, et qu'on revoit.</p></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Aperçu du portfolio. Grille propre à l'accueil (.pf-*) : cellules à ratio
-     fixe avec badge de durée, distincte de la mosaïque .folio de /realisations. -->
+<section id="comment">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Comment ça marche</span>
+      <h2>Simple pour vous, magique pour lui.</h2>
+    </div>
+    <div class="nl-etapes-grille">
+      <div class="nl-etapes reveal">
+        <h3>La carte cadeau <small>prête en 24 h</small></h3>
+        <ol>
+          <li><div><b>Vous choisissez la carte</b><span>Court-métrage ou Le Film, avec son prénom et votre message.</span></div></li>
+          <li><div><b>Vous la recevez sous 24 h</b><span>Par e-mail, en PDF à imprimer et en image à envoyer.</span></div></li>
+          <li><div><b>Il nous contacte quand il veut</b><span>Avec le numéro de sa carte, dans les 12 mois. On l'aide à rassembler ses souvenirs.</span></div></li>
+          <li><div><b>Il reçoit son film</b><span>Dans le délai annoncé de sa formule, en lien privé à garder et partager.</span></div></li>
+        </ol>
+      </div>
+      <div class="nl-etapes reveal">
+        <h3>Le film surprise <small>6 places avant Noël</small></h3>
+        <ol>
+          <li><div><b>Vous réservez votre place</b><span>Et vous nous parlez de la personne : ce qu'elle aime, ce que vous voulez lui dire.</span></div></li>
+          <li><div><b>Vous envoyez ses souvenirs</b><span>Photos et vidéos par un lien de dépôt privé, avant le 6 décembre pour une livraison avant Noël.</span></div></li>
+          <li><div><b>Vous validez le film</b><span>Vous le voyez en premier. Une retouche est incluse.</span></div></li>
+          <li><div><b>Vous l'offrez</b><span>Le film, l'affiche à imprimer, et le moment où il appuie sur lecture.</span></div></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Les films déjà réalisés : la preuve de ce que le bénéficiaire recevra. -->
 <section class="pf" id="realisations">
   <div class="wrap">
     <div class="pf-head reveal">
       <div class="head">
-        <span class="eyebrow">Réalisations</span>
-        <h2>Vos rushs, une fois racontés.</h2>
+        <span class="eyebrow">Nos films</span>
+        <h2>Voilà à quoi ressemblera son film.</h2>
       </div>
       <a href="/realisations" class="pf-all">Voir tous les montages <span aria-hidden="true">→</span></a>
     </div>
@@ -215,54 +345,20 @@
   </div>
 </section>
 
-<!-- Relance devis. Variante « bande » propre à l'accueil : pleine largeur,
-     filet sun en haut, texte à gauche et actions à droite. Les autres pages
-     gardent le bloc arrondi et centré. -->
-<section class="fcta bande">
-  <div class="fcta-box duo reveal">
-    <div class="c wrap">
-      <div class="fcta-l">
-        <h2>Vos vidéos dorment quelque part.</h2>
-        <p>Dites-nous ce que vous avez filmé. On vous répond sous 24h avec un devis gratuit, et vous décidez ensuite.</p>
-      </div>
-      <div class="fcta-r">
-        <a href="/contact" class="btn">Demander mon devis →</a>
-        <div class="fcta-liens">
-          <a href="https://www.instagram.com/studiobobine_fr/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><defs><radialGradient id="igGrad" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285aeb"/></radialGradient></defs><rect x="1" y="1" width="22" height="22" rx="6" fill="url(#igGrad)"/><g fill="none" stroke="#fff" stroke-width="1.8"><rect x="5.5" y="5.5" width="13" height="13" rx="3.8"/><circle cx="12" cy="12" r="3.1"/></g><circle cx="15.9" cy="8.1" r=".9" fill="#fff"/></svg>Instagram</a>
-          <span class="sep" aria-hidden="true"></span>
-          <a href="mailto:hello.studiobobine@gmail.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>Email</a>
-        </div>
-        <p class="fcta-note">Gratuit, sans engagement, réponse sous 24h.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Pourquoi nous. Deux colonnes propres à l'accueil (.pq-*) : l'argumentaire
-     et la citation à gauche, les trois preuves chiffrées à droite. Les autres
-     pages gardent la grille .why-grid sur fond encre. -->
-<section class="pq" id="pourquoi">
+<section class="nl-dates">
   <div class="wrap">
-    <div class="pq-grid">
-      <div class="pq-intro reveal">
-        <span class="eyebrow">Pourquoi nous</span>
-        <h2>Le soin d'un studio, l'écoute d'un ami.</h2>
-        <figure class="pq-quote">
-          <blockquote>« On leur a envoyé 3 h de rushs de notre voyage au Japon. Ils en ont fait un petit film qu'on a regardé en pleurant. »</blockquote>
-          <figcaption>
-            <img src="/images/avatars/camille-theo.webp" data-local="avatars/camille-theo.jpg" alt="" width="400" height="400" loading="lazy" decoding="async">
-            <span>Camille &amp; Théo, vlog en couple</span>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="pq-cards">
-        <div class="pq-card reveal"><span class="pq-n">24 h</span><div><h3>Rapidité tenue</h3><p>Une réponse sous 24 h, puis un délai annoncé dans le devis et respecté. Pressé ? L'option express livre en moins de 72 h.</p></div></div>
-        <div class="pq-card reveal"><span class="pq-n">1:1</span><div><h3>Un vrai interlocuteur</h3><p>Vous parlez directement à votre monteur. Pas de robot ni de service anonyme entre vous et le projet.</p></div></div>
-        <div class="pq-card reveal"><span class="pq-n">100%</span><div><h3>À votre image</h3><p>Chaque montage part de vos références et de votre ligne. On s'efface derrière votre style.</p></div></div>
-      </div>
+    <div class="head reveal">
+      <span class="eyebrow">Les dates</span>
+      <h2>Ce qu'on peut vous promettre, noir sur blanc.</h2>
+      <p>Pas de promesse intenable : voici exactement ce qui arrive à temps pour Noël.</p>
     </div>
+    <ol class="nl-frise reveal">
+      <li><span class="nl-jour">6 déc.</span><p>Dernier jour pour envoyer les souvenirs d'un film surprise livré avant Noël.</p></li>
+      <li><span class="nl-jour">20 déc.</span><p>Livraison des films surprise réservés à temps.</p></li>
+      <li><span class="nl-jour">23 déc.</span><p>Commande de carte avant 18 h : carte reçue le 24 au matin.</p></li>
+      <li><span class="nl-jour">Toute l'année</span><p>La carte cadeau reste disponible pour les anniversaires et les fêtes.</p></li>
+    </ol>
   </div>
 </section>
 
@@ -271,15 +367,10 @@
     <div class="head reveal">
       <span class="eyebrow">Avis clients</span>
       <h2>Ils nous ont confié leurs souvenirs.</h2>
-      <p>Créateurs, couples, familles : voici ce qu'ils disent après avoir reçu leur vidéo.</p>
+      <p>Familles, couples, créateurs : voici ce qu'ils disent après avoir reçu leur film.</p>
       <p class="avis-note"><span class="s" aria-hidden="true">★★★★★</span><span class="n">4,9/5</span><span class="c">sur 35 avis</span></p>
     </div>
     <div class="tgrid">
-      <div class="tcard reveal">
-        <div class="st">★★★★★</div>
-        <p>« Je poste 3 vidéos par semaine sur YouTube. Depuis que je délègue le montage, je gagne 10 h et mes vues ont grimpé. Le rythme est parfait. »</p>
-        <div class="person"><img src="/images/avatars/lucas.webp" data-local="avatars/lucas.jpg" alt="" loading="lazy" width="100" height="100"><div><div class="nm">Lucas M.</div><div class="rl">Créateur · 45k abonnés</div></div></div>
-      </div>
       <div class="tcard reveal">
         <div class="st">★★★★★</div>
         <p>« Pour les 60 ans de mon père, on voulait une surprise. Le montage de nos vidéos de famille a fait pleurer toute la table. Merci mille fois. »</p>
@@ -290,40 +381,48 @@
         <p>« Réactifs, à l'écoute, et le rendu dépasse ce qu'on imaginait. On leur envoie déjà les rushs de notre prochain road-trip. »</p>
         <div class="person"><img src="/images/avatars/emma-yanis.webp" data-local="avatars/emma-yanis.jpg" alt="" loading="lazy" width="100" height="100"><div><div class="nm">Emma &amp; Yanis</div><div class="rl">Vlog en couple</div></div></div>
       </div>
+      <div class="tcard reveal">
+        <div class="st">★★★★★</div>
+        <p>« Je poste 3 vidéos par semaine sur YouTube. Depuis que je délègue le montage, je gagne 10 h et mes vues ont grimpé. Le rythme est parfait. »</p>
+        <div class="person"><img src="/images/avatars/lucas.webp" data-local="avatars/lucas.jpg" alt="" loading="lazy" width="100" height="100"><div><div class="nm">Lucas M.</div><div class="rl">Créateur · 45k abonnés</div></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Ce qui se passe APRÈS le clic. Complète « Le soin d'un studio » (qui dit
-     pourquoi nous) en répondant à une autre question : et ensuite ? -->
-<section class="apres clair" id="apres">
+
+<section class="nl-faq" id="questions">
   <div class="wrap">
     <div class="head reveal">
-      <span class="eyebrow">Après votre message</span>
-      <h2>Racontez-nous votre histoire.</h2>
-      <p>Pas de formulaire qui part dans le vide, pas de réponse automatique. Voilà exactement ce qui se passe quand vous nous écrivez.</p>
+      <span class="eyebrow">Questions</span>
+      <h2>Avant d'offrir.</h2>
     </div>
-    <div class="apres-bloc reveal">
-      <div class="apres-qui">
-        <img src="/images/logo-mark.svg" alt="Studio Bobine" width="90" height="109" loading="lazy" decoding="async">
-        <p class="apres-sig">« C'est moi qui lis vos messages, et c'est moi qui monterai votre film. »</p>
-        <p class="apres-nom">Le fondateur de Studio Bobine</p>
-      </div>
-      <ol class="apres-etapes">
-        <li><span class="apres-n" aria-hidden="true">1</span><div><h3>On lit tout, vraiment</h3><p>Votre message arrive directement à la personne qui montera votre film. Personne d'autre entre les deux.</p></div></li>
-        <li><span class="apres-n" aria-hidden="true">2</span><div><h3>On vous répond sous 24 h</h3><p>Avec de vraies questions sur votre projet : l'occasion, les gens, ce que vous aimeriez ressentir en le revoyant.</p></div></li>
-        <li><span class="apres-n" aria-hidden="true">3</span><div><h3>Le prix vient après</h3><p>Une fois qu'on a compris ce que vous voulez raconter. Vous recevez une proposition faite pour votre film, pas un tarif sur catalogue.</p></div></li>
-      </ol>
+    <div class="faq-wrap">
+      <div class="faq reveal"><button>Le film sera-t-il prêt pour Noël ?</button><div class="ans"><p>Pour un film surprise, oui si vous réservez une des 6 places et nous envoyez les souvenirs avant le 6 décembre. Sinon, vous offrez l'affiche le 25 et le film arrive début janvier. La carte cadeau, elle, est toujours prête sous 24 h.</p></div></div>
+      <div class="faq reveal"><button>Combien de temps la carte est-elle valable ?</button><div class="ans"><p>12 mois à partir de l'achat. La date figure sur la carte.</p></div></div>
+      <div class="faq reveal"><button>Je n'ai pas accès à ses photos. Que choisir ?</button><div class="ans"><p>La carte cadeau. Il nous enverra lui-même ses souvenirs, depuis son téléphone, quand il le voudra.</p></div></div>
+      <div class="faq reveal"><button>Peut-il choisir une formule plus complète ?</button><div class="ans"><p>Oui. Il paie simplement la différence au moment de commander son film.</p></div></div>
+      <div class="faq reveal"><button>Comment envoie-t-on les vidéos ?</button><div class="ans"><p>Par un lien de dépôt privé que nous envoyons par e-mail. Ça marche depuis un téléphone, sans rien installer.</p></div></div>
+      <div class="faq reveal"><button>Et si je change d'avis ?</button><div class="ans"><p>Vous disposez de 14 jours après l'achat pour annuler une carte non utilisée. Elle vous est remboursée intégralement. <a href="/mentions-legales#cartes-cadeaux">Toutes les conditions</a>.</p></div></div>
     </div>
-    <div class="apres-fin reveal">
-      <a href="/contact" class="btn btn-main">Parlons de votre projet →</a>
-      <ul class="apres-plus">
-        <li><span aria-hidden="true">⚡</span> Réponse sous 24 h</li>
-        <li><span aria-hidden="true">💬</span> Un échange, pas un formulaire</li>
-        <li><span aria-hidden="true">🎁</span> Devis gratuit, sans engagement</li>
-      </ul>
-      <p>Et si nous ne sommes pas les bonnes personnes pour votre film, on vous le dira aussi.</p>
-    </div>
+  </div>
+</section>
+
+<section class="nl-fin">
+  <div class="nl-ruban" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">Noël 2026</span>
+    <h2 class="reveal">Le plus beau cadeau est peut-être <em>déjà dans son téléphone.</em></h2>
+    <p>Carte cadeau envoyée sous 24 h. Film surprise sur réservation, dans la limite des places.</p>
+    <a href="#offres" class="btn btn-or nl-xl">Offrir un film <span class="nl-des">dès 89 €</span></a>
+    <p class="nl-fin-note">et c'est nous qui faisons le montage</p>
+  </div>
+</section>
+
+<section class="nl-devis">
+  <div class="wrap">
+    <p><b>Un film pour vous, cette fois ?</b> Voyages, mariages, vlogs : le studio monte vos vidéos toute l'année.</p>
+    <a href="/contact" class="btn btn-out">Demander un devis →</a>
   </div>
 </section>
 
@@ -338,7 +437,7 @@
       </div>
       <div class="foot-cols">
         <div class="foot-col"><h2>Le site</h2>
-          <a href="/notre-concept">Notre concept</a><a href="/services">Services</a><a href="/tarifs">Tarifs</a><a href="/realisations">Réalisations</a><a href="/noel">Offrir un film</a><a href="/conseils">Conseils</a>
+          <a href="/notre-concept">Notre concept</a><a href="/services">Services</a><a href="/tarifs">Tarifs</a><a href="/realisations">Réalisations</a><a href="#offres">Offrir un film</a><a href="/conseils">Conseils</a>
         </div>
         <div class="foot-col"><h2>Suivez-nous</h2>
           <a href="https://www.instagram.com/studiobobine_fr/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@studio.bobine" target="_blank" rel="noopener">TikTok</a>
@@ -355,6 +454,7 @@
   </div>
 </footer>
 
+<div class="nl-barre" id="nl-barre"><span><b>Offrir un film souvenir</b>Carte cadeau dès 89 €, prête en 24 h</span><a href="#offres" class="btn btn-or">Choisir</a></div>
 <aside aria-label="Raccourcis">
 <div class="float" id="float">
   <a class="fbtn ig" href="https://www.instagram.com/studiobobine_fr/" target="_blank" rel="noopener" aria-label="Nous suivre sur Instagram">

@@ -16,9 +16,11 @@
   const FIN_ANNONCE=new Date('2027-01-05T00:00:00');
   const maintenant=new Date();
   const hdAnnonce=document.getElementById('hd');
-  if(hdAnnonce&&maintenant<FIN_ANNONCE&&!/^\/noel/.test(location.pathname)){
+  // Pendant les fêtes, l'accueil est la page cadeau : pas de bandeau dessus.
+  const surAccueil=/^\/(index(\.html)?)?$/.test(location.pathname);
+  if(hdAnnonce&&maintenant<FIN_ANNONCE&&!surAccueil&&!/^\/noel/.test(location.pathname)){
     const a=document.createElement('a');
-    a.className='annonce';a.href='/noel';
+    a.className='annonce';a.href='/';
     a.innerHTML='<span class="tick" aria-hidden="true"></span><span class="court">Noël : offrez un film souvenir <strong>→</strong></span><span class="long">Noël · Offrez un film souvenir. Carte cadeau envoyée sous 24 h. <strong>Découvrir →</strong></span>';
     hdAnnonce.prepend(a);
     document.body.classList.add('avec-annonce');
@@ -39,6 +41,23 @@
     document.querySelectorAll('input[name="nl-carte"]').forEach(r=>r.addEventListener('change',majCarte));
     majCarte();
     boutonCarte.addEventListener('click',()=>{if(window.sbTrack)window.sbTrack('noel_carte',{carte:boutonCarte.dataset.carte});});
+  }
+  // Compte à rebours discret dans la pastille du hero : « J-39 ».
+  const jours=document.getElementById('nl-jours');
+  if(jours){
+    const noel=new Date(maintenant.getFullYear(),11,25);
+    const j=Math.ceil((noel-maintenant)/864e5);
+    if(j>0&&j<=60){jours.textContent=' · J-'+j;jours.hidden=false;}
+  }
+  // Barre d'achat collante (téléphone) : visible après le hero, masquée
+  // tant que la section des offres est à l'écran.
+  const barre=document.getElementById('nl-barre');
+  const offres=document.getElementById('offres');
+  if(barre&&offres){
+    let offresVisibles=false;
+    const majBarre=()=>barre.classList.toggle('show',window.scrollY>520&&!offresVisibles);
+    new IntersectionObserver(es=>{offresVisibles=es[0].isIntersecting;majBarre();},{threshold:.08}).observe(offres);
+    window.addEventListener('scroll',majBarre,{passive:true});
   }
   const boutonSurprise=document.getElementById('nl-reserver');
   if(boutonSurprise)boutonSurprise.addEventListener('click',()=>{if(window.sbTrack)window.sbTrack('noel_surprise');});
