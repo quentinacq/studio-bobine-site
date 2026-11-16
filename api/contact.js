@@ -159,7 +159,12 @@ async function envoyerEmail(d) {
     }),
     signal: AbortSignal.timeout(10000),
   });
-  if (!reponse.ok) throw new Error(`Resend ${reponse.status}`);
+  if (!reponse.ok) {
+    // Le message de Resend explique la cause (clé invalide, domaine non
+    // vérifié, destinataire refusé…) et ne contient pas les données du visiteur.
+    const detail = await reponse.json().then((j) => j && (j.message || j.name)).catch(() => '');
+    throw new Error(`Resend ${reponse.status}${detail ? ` — ${String(detail).slice(0, 300)}` : ''}`);
+  }
 }
 
 // Répond en JSON au JavaScript du site, ou par une petite page HTML quand
