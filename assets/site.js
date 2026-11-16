@@ -3,6 +3,65 @@
 (function(){
 'use strict';
 
+  // ---------- Campagne « Offrir un film » (Noël) ----------
+  // Liens de paiement Stripe des cartes cadeaux (Stripe > Liens de paiement).
+  // Tant qu'un lien est vide, le bouton mène au formulaire de contact avec
+  // « Offrir une carte cadeau » présélectionné : la vente reste possible.
+  const CARTES_CADEAUX={
+    court:'',   // Carte « Court-métrage », 89 €
+    film:''     // Carte « Le Film », 189 €
+  };
+  // Le bandeau d'annonce s'affiche sur toutes les pages qui ont l'en-tête,
+  // sauf /noel et /noel-merci, et disparaît seul à cette date.
+  const FIN_ANNONCE=new Date('2027-01-05T00:00:00');
+  const maintenant=new Date();
+  const hdAnnonce=document.getElementById('hd');
+  // Pendant les fêtes, l'accueil est la page cadeau : pas de bandeau dessus.
+  const surAccueil=/^\/(index(\.html)?)?$/.test(location.pathname);
+  if(hdAnnonce&&maintenant<FIN_ANNONCE&&!surAccueil&&!/^\/noel/.test(location.pathname)){
+    const a=document.createElement('a');
+    a.className='annonce';a.href='/';
+    a.innerHTML='<span class="tick" aria-hidden="true"></span><span class="court">Noël : offrez un film souvenir <strong>→</strong></span><span class="long">Noël · Offrez un film souvenir. Carte cadeau envoyée sous 24 h. <strong>Découvrir →</strong></span>';
+    hdAnnonce.prepend(a);
+    document.body.classList.add('avec-annonce');
+  }
+  // Blocs datés : data-jusqua="AAAA-MM-JJ" disparaît ce jour-là,
+  // data-des="AAAA-MM-JJ" apparaît ce jour-là (attribut hidden dans le HTML).
+  document.querySelectorAll('[data-jusqua]').forEach(el=>{if(maintenant>=new Date(el.dataset.jusqua+'T00:00:00'))el.hidden=true;});
+  document.querySelectorAll('[data-des]').forEach(el=>{if(maintenant>=new Date(el.dataset.des+'T00:00:00'))el.hidden=false;});
+  // Choix de la carte sur /noel : le bouton suit la carte cochée.
+  const boutonCarte=document.getElementById('nl-offrir-carte');
+  if(boutonCarte){
+    const majCarte=()=>{
+      const choix=document.querySelector('input[name="nl-carte"]:checked');
+      const cle=choix?choix.value:'court';
+      boutonCarte.href=CARTES_CADEAUX[cle]||'/contact?projet=offrir-carte&carte='+cle;
+      boutonCarte.dataset.carte=cle;
+    };
+    document.querySelectorAll('input[name="nl-carte"]').forEach(r=>r.addEventListener('change',majCarte));
+    majCarte();
+    boutonCarte.addEventListener('click',()=>{if(window.sbTrack)window.sbTrack('noel_carte',{carte:boutonCarte.dataset.carte});});
+  }
+  // Compte à rebours discret dans la pastille du hero : « J-39 ».
+  const jours=document.getElementById('nl-jours');
+  if(jours){
+    const noel=new Date(maintenant.getFullYear(),11,25);
+    const j=Math.ceil((noel-maintenant)/864e5);
+    if(j>0&&j<=60){jours.textContent=' · J-'+j;jours.hidden=false;}
+  }
+  // Barre d'achat collante (téléphone) : visible après le hero, masquée
+  // tant que la section des offres est à l'écran.
+  const barre=document.getElementById('nl-barre');
+  const offres=document.getElementById('offres');
+  if(barre&&offres){
+    let offresVisibles=false;
+    const majBarre=()=>barre.classList.toggle('show',window.scrollY>520&&!offresVisibles);
+    new IntersectionObserver(es=>{offresVisibles=es[0].isIntersecting;majBarre();},{threshold:.08}).observe(offres);
+    window.addEventListener('scroll',majBarre,{passive:true});
+  }
+  const boutonSurprise=document.getElementById('nl-reserver');
+  if(boutonSurprise)boutonSurprise.addEventListener('click',()=>{if(window.sbTrack)window.sbTrack('noel_surprise');});
+
   const hd=document.getElementById('hd');
   // Barre de progression de lecture (accueil). Elle partage l'ecouteur de
   // l'en-tete : un seul passage par evenement de defilement.
@@ -35,6 +94,25 @@
     const libelleEnvoi=envoi.innerHTML;
     form.noValidate=true; // le script prend le relais des bulles du navigateur
     const t=document.getElementById('devis-t'); if(t)t.value=String(Date.now());
+
+    // Projet présélectionné par l'adresse (/contact?projet=film-surprise),
+    // et champ « numéro de carte » visible seulement pour une carte reçue.
+    const PROJETS={'film-surprise':'Film surprise (Noël)','offrir-carte':'Offrir une carte cadeau','carte-cadeau':'J’ai une carte cadeau'};
+    const params=new URLSearchParams(location.search);
+    const projet=form.elements.type_de_projet;
+    if(PROJETS[params.get('projet')])projet.value=PROJETS[params.get('projet')];
+    const champCarte=document.getElementById('champ-carte');
+    const majChampCarte=()=>{if(champCarte)champCarte.hidden=projet.value!=='J’ai une carte cadeau';};
+    projet.addEventListener('change',majChampCarte);majChampCarte();
+    const messageEl=form.elements.message;
+    if(!messageEl.value){
+      if(params.get('projet')==='offrir-carte'){
+        const nomCarte=params.get('carte')==='film'?'« Le Film » (189 €)':'« Court-métrage » (89 €)';
+        messageEl.value='Je souhaite offrir la carte cadeau '+nomCarte+' à : \nMon message pour la carte : ';
+      }else if(params.get('projet')==='film-surprise'){
+        messageEl.value='Je voudrais offrir un film surprise à : \nCe qu’il ou elle aime, ce que j’ai comme photos et vidéos : ';
+      }
+    }
 
     const REGLES={
       prenom:v=>!v.trim()?'Indiquez votre prénom.':v.trim().length>60?'Ce prénom est trop long (60 caractères maximum).':!/^[\p{L}][\p{L}\p{M}' .-]*$/u.test(v.trim())?'Utilisez uniquement des lettres, espaces, tirets ou apostrophes.':'',
@@ -72,7 +150,7 @@
     function montrerAlerte(html){alerte.innerHTML=html;alerte.hidden=false;}
     function lienSecours(){
       const f=form.elements;
-      const corps=`Prénom : ${f.prenom.value}\nTéléphone : ${f.telephone.value}\nProjet : ${f.type_de_projet.value}\nDurée : ${f.duree_souhaitee.value}\nRushs : ${f.volume_de_rushs.value}\n\n${f.message.value}`;
+      const corps=`Prénom : ${f.prenom.value}\nTéléphone : ${f.telephone.value}\nProjet : ${f.type_de_projet.value}${f.code_carte&&f.code_carte.value?' (carte '+f.code_carte.value+')':''}\nDurée : ${f.duree_souhaitee.value}\nRushs : ${f.volume_de_rushs.value}\n\n${f.message.value}`;
       return 'mailto:hello.studiobobine@gmail.com?subject='+encodeURIComponent('Demande de devis — '+f.prenom.value)+'&body='+encodeURIComponent(corps.slice(0,1500));
     }
     function confirmer(){
@@ -98,6 +176,7 @@
       const f=form.elements;
       const donnees={prenom:f.prenom.value,email:f.email.value,telephone:f.telephone.value,type_de_projet:f.type_de_projet.value,
         duree_souhaitee:f.duree_souhaitee.value,volume_de_rushs:f.volume_de_rushs.value,message:f.message.value,
+        code_carte:f.code_carte?f.code_carte.value:'',
         accord:f.accord.checked,site_web:f.site_web.value,t:f.t.value};
       chargement(true);
       const ctrl=new AbortController();const minuterie=setTimeout(()=>ctrl.abort(),15000);

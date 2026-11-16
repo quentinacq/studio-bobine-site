@@ -18,7 +18,7 @@ const FROM = process.env.CONTACT_FROM || 'Studio Bobine <onboarding@resend.dev>'
 
 // Valeurs autorisées : exactement les options des listes du formulaire.
 const CHOIX = {
-  type_de_projet: ['Vlogs de voyage', 'Souvenirs de famille', 'Reels & Shorts', 'Road-trips',
+  type_de_projet: ['Vlogs de voyage', 'Film surprise (Noël)', 'Offrir une carte cadeau', 'J’ai une carte cadeau', 'Souvenirs de famille', 'Reels & Shorts', 'Road-trips',
     'Demandes en mariage', 'Aftermovies', 'Autre, ou je ne sais pas encore'],
   duree_souhaitee: ["Moins d'une minute", '1 à 3 minutes', '3 à 6 minutes', '6 à 10 minutes',
     'Plus de 10 minutes', 'Je ne sais pas encore'],
@@ -64,6 +64,7 @@ function valider(corps) {
     duree_souhaitee: nettoyer(corps.duree_souhaitee),
     volume_de_rushs: nettoyer(corps.volume_de_rushs),
     message: nettoyer(corps.message, true),
+    code_carte: nettoyer(corps.code_carte).toUpperCase(),
     accord: corps.accord === true || corps.accord === 'on' || corps.accord === 'true',
   };
 
@@ -85,6 +86,11 @@ function valider(corps) {
 
   for (const champ of Object.keys(CHOIX)) {
     if (!CHOIX[champ].includes(d[champ])) erreurs[champ] = 'Choisissez une option dans la liste.';
+  }
+
+  // Numéro de carte cadeau : facultatif, vérifié à la main dans le registre.
+  if (d.code_carte && !/^[A-Z0-9-]{3,20}$/.test(d.code_carte)) {
+    erreurs.code_carte = 'Ce numéro ne ressemble pas à celui de la carte. Exemple : BOB-N26-0001';
   }
 
   if (d.message.length < LIMITES.message[0]) erreurs.message = 'Dites-nous-en un peu plus (20 caractères minimum).';
@@ -133,7 +139,7 @@ function origineAutorisee(req) {
 async function envoyerEmail(d) {
   const lignes = [
     ['Prénom', d.prenom], ['Email', d.email], ['Téléphone', d.telephone || '—'],
-    ['Projet', d.type_de_projet], ['Durée souhaitée', d.duree_souhaitee], ['Volume de rushs', d.volume_de_rushs],
+    ['Projet', d.type_de_projet], ...(d.code_carte ? [['Carte cadeau', d.code_carte]] : []), ['Durée souhaitée', d.duree_souhaitee], ['Volume de rushs', d.volume_de_rushs],
   ];
   const texte = lignes.map(([k, v]) => `${k} : ${v}`).join('\n') + `\n\nMessage :\n${d.message}\n`;
   const html = '<table cellpadding="6" style="font-family:sans-serif;font-size:15px">'

@@ -3,6 +3,16 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/noel",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/accueil-classique",
+      "destination": "/",
+      "permanent": false
+    },
+    {
       "source": "/evenements",
       "destination": "/services",
       "statusCode": 301
